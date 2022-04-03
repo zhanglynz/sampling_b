@@ -13,6 +13,17 @@ Member/Item ID | Var$_1$ | Var$_2$ | $\cdots$ | Var$_m$
 
 So essentially **a population is a list of members/items with associated characteristic variables that are of interest to the study.** However, when it comes to the fine details in the population concept, things are kind of complicated. Following Lohr (2019), we distinguish three populations, namely, *target population*, *sampling frame population* and *sampled population*; see Figure X.
 
+Insert a figure here.
+
+Let's have an example.
+
+- Target population: all private dwellings in New Zealand.
+- Sampling frame population: address list purchased from New Zealand Post.
+- Not eligible for survey: some non-private dwellings, e.g. a prison.
+- Not included in sampling frame: some new private dwellings not included in NZ Post system.
+
+
+
 ## What is a good sample?
 
 ## On sampling error
