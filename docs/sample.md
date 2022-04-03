@@ -1,0 +1,18 @@
+# Understanding Sample {#sample}
+
+## What is a sample?
+
+The question in the title is easy to answer: **A sample is a subset of a population.** Now, what is a population? Well, a population is defined in the planning stage of a study and is determined by study objectives.We can visualize a population using the following table:
+
+Member/Item ID | Var$_1$ | Var$_2$ | $\cdots$ | Var$_m$
+:---------|:-------|:-------|:----------|:-------
+ 1        |        |        |           |
+ 2        |        |        |           |
+ $\vdots$ |        |        |           |
+ $N$      |        |        |           |
+
+So essentially **a population is a list of members/items with associated characteristic variables that are of interest to the study.** However, when it comes to the fine details in the population concept, things are kind of complicated. Following Lohr (2019), we distinguish three populations, namely, *target population*, *sampling frame population* and *sampled population*; see Figure X.
+
+## What is a good sample?
+
+## On sampling error
