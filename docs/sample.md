@@ -21,9 +21,43 @@ Let's have an example.
 - Sampling frame population: address list purchased from New Zealand Post.
 - Not eligible for survey: some non-private dwellings, e.g. a prison.
 - Not included in sampling frame: some new private dwellings not included in NZ Post system.
-
+- Not reachable: e.g. some private dwellings in certain islands are too costly to be visited
 
 
 ## What is a good sample?
 
+According to Lohr (2019), "A good sample will be representative in the sense that characteristics of interest in the population can be estimated from the sample with a known degree of accuracy." So a good sample should meet the following requirements:
+
+1. No serious over and under *coverage issues*, that is, the sampled population should sufficiently close to the target population.
+1. No serious *selection bias issue*.
+1. *Measurement and processing errors* are negligible. 
+
+If the "soup" (a metaphor for the population) is not well mixed before we take a sample from it, then the sample cannot be good. Even if the "soup" is well mixed, selection bias may happen because of e.g. *biased sampling frame* or *biased response*. By a biased sampling frame, we mean for whatever reasons the sampling frame excludes a subset of the population, resulting discrepancy between it and the target population. That's why we are concerned about coverage issues---under coverage may cause serious selection bias. By *biased response*, we mean the responding sample is not representative. At survey operational level, we monitor *response rate*. If response rate is low, we worry that we get biased response. If response rate is very low, say 20% or even lower, then the sample is very likely suffering response bias.
+
+We omit details about measurement/processing errors here and refer readers to Lohr (2019), but we want to emphasize a point: Sampling is a very practical thing.
+
+
 ## On sampling error
+
+In the last Section, we mentioned coverage issue, selection bias, measurement and processing issues---these are all in the scope of *non-sampling error*. The flip side of the coin is *sampling error*, which is resulted from difference between a sample and the population in terms of characteristic variables. **Sampling error is unavoidable!** Let's have a toy example. The population is shown below.
+
+Unit_ID | $Y$
+:-------| :------
+  1| 6
+  2| 7
+  3| 8
+  4| 1
+  5| 5
+  
+We can list all the 10 possible samples of size 3 by collecting the ID's:
+$$
+\{1, 2, 3\}, \ \{1, 2, 4\}, \ \{1, 2, 5\}, \ \{1, 3, 4\}, \ \{1, 3, 5\}
+$$
+$$
+\{1, 4, 5\}, \ \{2, 3, 4\}, \ \{2, 3, 5\}, \ \{2, 4, 5\}, \ \{3, 4, 5\}
+$$
+The mean of $Y$ (or population mean) is
+$$
+\mu = \frac{6+7+8+1+5}{5}=\frac{27}{5}.
+$$
+The 10 sample means are: 7, 14/3, 6, 5, 19/3, 4, 16/3, 20/3, 13/3, and 14/3, respectively. When we use one of the sample means to estimate the population mean, we expect that our estimate is away from the truth---this is sampling error. 
