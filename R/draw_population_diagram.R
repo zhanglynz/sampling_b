@@ -1,25 +1,25 @@
-library(showtext)
+library(showtext) # Using Fonts More Easily in R Graphs
 library(grid)
 library(RColorBrewer)
 
-font.add.google("Poppins", "myfont")
-showtext.auto()
+font_add_google("Poppins", "myfont")
+showtext_auto()
 palette <- brewer.pal(3, "Set1")
 
-radius <- 0.3
+radius <- 0.38
 strokecol <- "grey50"
 linewidth <- 4
 fs <- 11
 
 draw_diagram <- function(){
   grid.newpage()
-  grid.circle(0.45, 0.5, 0.38, gp = 
+  grid.circle(0.45, 0.5, radius, gp = 
                 gpar(col = strokecol,
                      fill = palette[1],
                      alpha = 0.2,
                      lwd = linewidth))
   
-  grid.circle(0.55, 0.5, 0.38, gp =
+  grid.circle(0.55, 0.5, radius, gp =
                 gpar(col = strokecol,
                      fill = palette[2],
                      alpha = 0.2,
