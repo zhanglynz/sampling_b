@@ -24,7 +24,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2022-04-09" />
+<meta name="date" content="2022-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -208,7 +208,43 @@ The mean of <span class="math inline">\(Y\)</span> (or population mean) is
 <span class="math display">\[
 \mu = \frac{6+7+8+1+5}{5}=\frac{27}{5}.
 \]</span>
-The 10 sample means are: 7, 14/3, 6, 5, 19/3, 4, 16/3, 20/3, 13/3, and 14/3, respectively. When we use one of the sample means to estimate the population mean, we expect that our estimate is away from the truth—this is sampling error.</p>
+The 10 sample means are: 7, 14/3, 6, 5, 19/3, 4, 16/3, 20/3, 13/3, and 14/3, respectively. When we use one of the sample means to estimate the population mean, we expect that our estimate is away from the truth—this shows sampling error. We often use <em>mean square error</em> (MSE) or <em>standard mean square error</em> (SMSE) to measure sampling error.
+<span class="math display">\[
+\hbox{MSE}=\hbox{average of}\ (\hat{\theta}-\theta)^2\ \hbox{over all possible samples},
+\]</span>
+where <span class="math inline">\(\theta\)</span> is the population parameter (e.g. population mean <span class="math inline">\(\mu\)</span>) and <span class="math inline">\(\hat{\theta}\)</span> is a sample estimator (e.g. sample mean <span class="math inline">\(\hat{\mu}\)</span>).
+<span class="math display">\[
+\hbox{SMSE}=\sqrt{\hbox{MSE}}.
+\]</span>
+It can be shown that
+<span class="math display">\[
+\hbox{MSE}= \hbox{var}(\hat{\theta}) + \left(\hbox{bias}(\hat{\theta})\right)^2,
+\]</span>
+where
+<span class="math display">\[
+\hbox{var}(\hat{\theta})=\hbox{average of}\ \left(\hat{\theta}-\hbox{avg}(\hat{\theta})\right)^2\ \hbox{over all possible samples}
+\]</span>
+and
+<span class="math display">\[
+\hbox{bias}(\hat{\theta})=\hbox{avg}(\hat{\theta})-\theta,
+\]</span>
+in which
+<span class="math display">\[
+\hbox{avg}(\hat{\theta})=\hbox{average of}\ \hat{\theta}\ \hbox{over all possible samples.}
+\]</span>
+By the way, if
+<span class="math display">\[
+\hbox{bias}(\hat{\theta})=0
+\]</span>
+then we say that <span class="math inline">\(\hat{\theta}\)</span> is an <strong>unbiased</strong> estimator.</p>
+<p>For the toy example above,
+<span class="math display">\[
+\hbox{MSE}=\frac{(7-27/5)^2+(14/3-27/5)^2+\cdots+(14/3-27/5)^2}{10}=0.973,
+\]</span>
+and
+<span class="math display">\[
+\hbox{SMSE}=\sqrt{\hbox{MSE}}=0.987.
+\]</span></p>
 
 </div>
 </div>

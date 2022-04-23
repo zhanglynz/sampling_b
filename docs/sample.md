@@ -60,4 +60,41 @@ The mean of $Y$ (or population mean) is
 $$
 \mu = \frac{6+7+8+1+5}{5}=\frac{27}{5}.
 $$
-The 10 sample means are: 7, 14/3, 6, 5, 19/3, 4, 16/3, 20/3, 13/3, and 14/3, respectively. When we use one of the sample means to estimate the population mean, we expect that our estimate is away from the truth---this is sampling error. 
+The 10 sample means are: 7, 14/3, 6, 5, 19/3, 4, 16/3, 20/3, 13/3, and 14/3, respectively. When we use one of the sample means to estimate the population mean, we expect that our estimate is away from the truth---this shows sampling error. We often use *mean square error* (MSE) or *standard mean square error* (SMSE) to measure sampling error.
+$$
+\hbox{MSE}=\hbox{average of}\ (\hat{\theta}-\theta)^2\ \hbox{over all possible samples},
+$$
+where $\theta$ is the population parameter (e.g. population mean $\mu$) and $\hat{\theta}$ is a sample estimator (e.g. sample mean $\hat{\mu}$).
+$$
+\hbox{SMSE}=\sqrt{\hbox{MSE}}.
+$$
+It can be shown that 
+$$
+\hbox{MSE}= \hbox{var}(\hat{\theta}) + \left(\hbox{bias}(\hat{\theta})\right)^2,
+$$
+where 
+$$
+\hbox{var}(\hat{\theta})=\hbox{average of}\ \left(\hat{\theta}-\hbox{avg}(\hat{\theta})\right)^2\ \hbox{over all possible samples}
+$$
+and
+$$
+\hbox{bias}(\hat{\theta})=\hbox{avg}(\hat{\theta})-\theta,
+$$
+in which 
+$$
+\hbox{avg}(\hat{\theta})=\hbox{average of}\ \hat{\theta}\ \hbox{over all possible samples.}
+$$
+By the way, if
+$$
+\hbox{bias}(\hat{\theta})=0
+$$
+then we say that $\hat{\theta}$ is an **unbiased** estimator.
+
+For the toy example above, 
+$$
+\hbox{MSE}=\frac{(7-27/5)^2+(14/3-27/5)^2+\cdots+(14/3-27/5)^2}{10}=0.973,
+$$
+and 
+$$
+\hbox{SMSE}=\sqrt{\hbox{MSE}}=0.987.
+$$
