@@ -133,8 +133,8 @@ we can find that nine out of the ten resulted confidence intervals do contain th
    <th style="text-align:center;"> y_bar </th>
    <th style="text-align:center;"> s2 </th>
    <th style="text-align:center;"> sigma </th>
-   <th style="text-align:center;"> LL </th>
-   <th style="text-align:center;"> UL </th>
+   <th style="text-align:center;"> lower_limit </th>
+   <th style="text-align:center;"> upper_limit </th>
    <th style="text-align:center;"> indi </th>
   </tr>
  </thead>

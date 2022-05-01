@@ -18,7 +18,9 @@ all_samples <-
   mutate(sigma = sqrt((1 - 3/5) * (1/3) * s2)) %>% 
   mutate(LL = y_bar - 3 * sigma,
          UL = y_bar + 3 * sigma) %>% 
-  mutate(indi = ifelse((Y_bar - LL) * (UL - Y_bar) > 0, 1, 0))
+  mutate(indi = ifelse((Y_bar - LL) * (UL - Y_bar) > 0, 1, 0)) %>% 
+  rename(lower_limit = LL,
+         upper_limit = UL)
 
 the_re <- 
   all_samples %>% 
