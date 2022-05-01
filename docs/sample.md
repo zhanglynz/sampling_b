@@ -107,22 +107,22 @@ The MSE (or SMSE) is only useful in **theoretical evaluation** of a sampling met
 $$
 \hbox{bias}(\hat{\theta})=0,
 $$
-then we focus our attention on estimate of $\hbox{var}(\hat{\theta})$. A *confidence interval* can be constructed if estimates of $\hbox{bias}(\hat{\theta})$ and $\hbox{var}(\hat{\theta})$ are ready.
+then we focus our attention on estimate of $\hbox{var}(\hat{\theta})$. A *confidence interval* can be constructed if estimates of $\hat{\theta}$ and $\hbox{var}(\hat{\theta})$ are ready.
 
 For the toy example, for each possible sample we calculate
 $$
 s^2=\frac{1}{n-1}\sum_{i=1}^n (y_i-\bar{y})^2,
 $$
-where $n=3$, $\{y_1, \ldots, y_n\}$ consists of the sample and $\bar{y}$ is the sample mean (i.e. an observed $\hat{\theta}$).
+where $n=3$, $\{y_1, \ldots, y_n\}$ consists of the sample and $\bar{y}$ is the sample mean (i.e. an observed $\hat{\mu}$).
 Let us use 
 $$
 \sqrt{\left(1-\frac{n}{N}\right)\frac{1}{n}s^2,}
 $$
-where $N=5$, to estimate $\sqrt{\hbox{var}(\hat{\theta})}$; the estimate is denoted by $\hat{\sigma}$. We set confidence interval using the following formula:
+where $N=5$, to estimate $\sqrt{\hbox{var}(\hat{\mu})}$; the estimate is denoted by $\hat{\sigma}$. We set confidence interval using the following formula:
 $$
-(\hat{\theta} - 3\times \hat{\sigma},\  \hat{\theta} + 3\times \hat{\sigma});
+(\hat{\mu} - 3\times \hat{\sigma},\  \hat{\mu} + 3\times \hat{\sigma});
 $$
-we can find 9 out of the 10 resulted confidence intervals do contain the truth $27/5$. 
+we can find that nine out of the ten resulted confidence intervals do contain the truth $27/5$. 
 
 
 

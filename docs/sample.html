@@ -253,21 +253,21 @@ and
 <span class="math display">\[
 \hbox{bias}(\hat{\theta})=0,
 \]</span>
-then we focus our attention on estimate of <span class="math inline">\(\hbox{var}(\hat{\theta})\)</span>. A <em>confidence interval</em> can be constructed if estimates of <span class="math inline">\(\hbox{bias}(\hat{\theta})\)</span> and <span class="math inline">\(\hbox{var}(\hat{\theta})\)</span> are ready.</p>
+then we focus our attention on estimate of <span class="math inline">\(\hbox{var}(\hat{\theta})\)</span>. A <em>confidence interval</em> can be constructed if estimates of <span class="math inline">\(\hat{\theta}\)</span> and <span class="math inline">\(\hbox{var}(\hat{\theta})\)</span> are ready.</p>
 <p>For the toy example, for each possible sample we calculate
 <span class="math display">\[
 s^2=\frac{1}{n-1}\sum_{i=1}^n (y_i-\bar{y})^2,
 \]</span>
-where <span class="math inline">\(n=3\)</span>, <span class="math inline">\(\{y_1, \ldots, y_n\}\)</span> consists of the sample and <span class="math inline">\(\bar{y}\)</span> is the sample mean (i.e. an observed <span class="math inline">\(\hat{\theta}\)</span>).
+where <span class="math inline">\(n=3\)</span>, <span class="math inline">\(\{y_1, \ldots, y_n\}\)</span> consists of the sample and <span class="math inline">\(\bar{y}\)</span> is the sample mean (i.e. an observed <span class="math inline">\(\hat{\mu}\)</span>).
 Let us use
 <span class="math display">\[
 \sqrt{\left(1-\frac{n}{N}\right)\frac{1}{n}s^2,}
 \]</span>
-where <span class="math inline">\(N=5\)</span>, to estimate <span class="math inline">\(\sqrt{\hbox{var}(\hat{\theta})}\)</span>; the estimate is denoted by <span class="math inline">\(\hat{\sigma}\)</span>. We set confidence interval using the following formula:
+where <span class="math inline">\(N=5\)</span>, to estimate <span class="math inline">\(\sqrt{\hbox{var}(\hat{\mu})}\)</span>; the estimate is denoted by <span class="math inline">\(\hat{\sigma}\)</span>. We set confidence interval using the following formula:
 <span class="math display">\[
-(\hat{\theta} - 3\times \hat{\sigma},\  \hat{\theta} + 3\times \hat{\sigma});
+(\hat{\mu} - 3\times \hat{\sigma},\  \hat{\mu} + 3\times \hat{\sigma});
 \]</span>
-we can find 9 out of the 10 resulted confidence intervals do contain the truth <span class="math inline">\(27/5\)</span>.</p>
+we can find that nine out of the ten resulted confidence intervals do contain the truth <span class="math inline">\(27/5\)</span>.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 Toy example: 10 possible samples and confidence intervals.
