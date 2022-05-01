@@ -2,7 +2,7 @@
 knit: "bookdown::render_book"
 title: "Uderstanding Survey Sampling"
 author: "Lingyun Zhang"
-date: "2022-04-23"
+date: "2022-05-01"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book

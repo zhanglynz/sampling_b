@@ -39,7 +39,9 @@ We omit details about measurement/processing errors here and refer readers to Lo
 
 ## On sampling error
 
-In the last Section, we mentioned coverage issue, selection bias, measurement and processing issues---these are all in the scope of *non-sampling error*. The flip side of the coin is *sampling error*, which is resulted from difference between a sample and the population in terms of characteristic variables. **Sampling error is unavoidable!** Let's have a toy example. The population is shown below.
+In the last Section, we mentioned coverage issue, selection bias, measurement and processing issues---these are all in the scope of *non-sampling error*. The flip side of the coin is *sampling error*, which is resulted from difference between a sample and the population in terms of characteristic variables. **Sampling error is unavoidable!** 
+
+Let's have a toy example. The population is shown below.
 
 Unit_ID | $Y$
 :-------| :------
@@ -60,7 +62,9 @@ The mean of $Y$ (or population mean) is
 $$
 \mu = \frac{6+7+8+1+5}{5}=\frac{27}{5}.
 $$
-The 10 sample means are: 7, 14/3, 6, 5, 19/3, 4, 16/3, 20/3, 13/3, and 14/3, respectively. When we use one of the sample means to estimate the population mean, we expect that our estimate is away from the truth---this shows sampling error. We often use *mean square error* (MSE) or *standard mean square error* (SMSE) to measure sampling error.
+The 10 sample means are: 7, 14/3, 6, 5, 19/3, 4, 16/3, 20/3, 13/3, and 14/3, respectively. When we use one of the sample means to estimate the population mean, we expect that our estimate is away from the truth---this shows sampling error. 
+
+We often use *mean square error* (MSE) or *standard mean square error* (SMSE) to measure sampling error.
 $$
 \hbox{MSE}=\hbox{average of}\ (\hat{\theta}-\theta)^2\ \hbox{over all possible samples},
 $$
@@ -98,3 +102,123 @@ and
 $$
 \hbox{SMSE}=\sqrt{\hbox{MSE}}=0.987.
 $$
+
+The MSE (or SMSE) is only useful in **theoretical evaluation** of a sampling method. In practice, people are concerned about $\hbox{bias}(\hat{\theta})$ and $\hbox{var}(\hat{\theta})$. So we must have good estimates of $\hbox{bias}(\hat{\theta})$ and $\hbox{var}(\hat{\theta})$. If we have sound reasons to believe that 
+$$
+\hbox{bias}(\hat{\theta})=0,
+$$
+then we focus our attention on estimate of $\hbox{var}(\hat{\theta})$. A *confidence interval* can be constructed if estimates of $\hbox{bias}(\hat{\theta})$ and $\hbox{var}(\hat{\theta})$ are ready.
+
+For the toy example, for each possible sample we calculate
+$$
+s^2=\frac{1}{n-1}\sum_{i=1}^n (y_i-\bar{y})^2,
+$$
+where $n=3$, $\{y_1, \ldots, y_n\}$ consists of the sample and $\bar{y}$ is the sample mean (i.e. an observed $\hat{\theta}$).
+Let us use 
+$$
+\sqrt{\left(1-\frac{n}{N}\right)\frac{1}{n}s^2,}
+$$
+where $N=5$, to estimate $\sqrt{\hbox{var}(\hat{\theta})}$; the estimate is denoted by $\hat{\sigma}$. We set confidence interval using the following formula:
+$$
+(\hat{\theta} - 3\times \hat{\sigma},\  \hat{\theta} + 3\times \hat{\sigma});
+$$
+we can find 9 out of the 10 resulted confidence intervals do contain the truth $27/5$. 
+
+
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>Toy example: 10 possible samples and confidence intervals.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> y_bar </th>
+   <th style="text-align:center;"> s2 </th>
+   <th style="text-align:center;"> sigma </th>
+   <th style="text-align:center;"> LL </th>
+   <th style="text-align:center;"> UL </th>
+   <th style="text-align:center;"> indi </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> 4.000000 </td>
+   <td style="text-align:center;"> 7.000000 </td>
+   <td style="text-align:center;"> 0.9660918 </td>
+   <td style="text-align:center;"> 1.1017247 </td>
+   <td style="text-align:center;"> 6.898275 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 4.333333 </td>
+   <td style="text-align:center;"> 9.333333 </td>
+   <td style="text-align:center;"> 1.1155467 </td>
+   <td style="text-align:center;"> 0.9866932 </td>
+   <td style="text-align:center;"> 7.679973 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 4.666667 </td>
+   <td style="text-align:center;"> 12.333333 </td>
+   <td style="text-align:center;"> 1.2823589 </td>
+   <td style="text-align:center;"> 0.8195899 </td>
+   <td style="text-align:center;"> 8.513744 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 4.666667 </td>
+   <td style="text-align:center;"> 10.333333 </td>
+   <td style="text-align:center;"> 1.1737878 </td>
+   <td style="text-align:center;"> 1.1453033 </td>
+   <td style="text-align:center;"> 8.188030 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 5.000000 </td>
+   <td style="text-align:center;"> 13.000000 </td>
+   <td style="text-align:center;"> 1.3165612 </td>
+   <td style="text-align:center;"> 1.0503165 </td>
+   <td style="text-align:center;"> 8.949684 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 5.333333 </td>
+   <td style="text-align:center;"> 14.333333 </td>
+   <td style="text-align:center;"> 1.3824294 </td>
+   <td style="text-align:center;"> 1.1860451 </td>
+   <td style="text-align:center;"> 9.480622 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 6.000000 </td>
+   <td style="text-align:center;"> 1.000000 </td>
+   <td style="text-align:center;"> 0.3651484 </td>
+   <td style="text-align:center;"> 4.9045549 </td>
+   <td style="text-align:center;"> 7.095445 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 6.333333 </td>
+   <td style="text-align:center;"> 2.333333 </td>
+   <td style="text-align:center;"> 0.5577734 </td>
+   <td style="text-align:center;"> 4.6600133 </td>
+   <td style="text-align:center;"> 8.006653 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 6.666667 </td>
+   <td style="text-align:center;"> 2.333333 </td>
+   <td style="text-align:center;"> 0.5577734 </td>
+   <td style="text-align:center;"> 4.9933466 </td>
+   <td style="text-align:center;"> 8.339987 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 7.000000 </td>
+   <td style="text-align:center;"> 1.000000 </td>
+   <td style="text-align:center;"> 0.3651484 </td>
+   <td style="text-align:center;"> 5.9045549 </td>
+   <td style="text-align:center;"> 8.095445 </td>
+   <td style="text-align:center;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+
