@@ -28,13 +28,13 @@ Let's have an example.
 
 According to Lohr (2019), "A good sample will be representative in the sense that characteristics of interest in the population can be estimated from the sample with a known degree of accuracy." So a good sample should meet the following requirements:
 
-1. No serious over and under *coverage issues*, that is, the sampled population should sufficiently close to the target population.
+1. No serious over and under *coverage issues*, that is, the sampled population should be sufficiently close to the target population.
 1. No serious *selection bias issue*.
 1. *Measurement and processing errors* are negligible. 
 
 If the "soup" (a metaphor for the population) is not well mixed before we take a sample from it, then the sample cannot be good. Even if the "soup" is well mixed, selection bias may happen because of e.g. *biased sampling frame* or *biased response*. By a biased sampling frame, we mean for whatever reasons the sampling frame excludes a subset of the population, resulting discrepancy between it and the target population. That's why we are concerned about coverage issues---under coverage may cause serious selection bias. By *biased response*, we mean the responding sample is not representative. At survey operational level, we monitor *response rate*. If response rate is low, we worry that we get biased response. If response rate is very low, say 20% or even lower, then the sample is very likely suffering response bias.
 
-We omit details about measurement/processing errors here and refer readers to Lohr (2019), but we want to emphasize a point: Sampling is a very practical thing.
+We omit details about measurement/processing errors here and refer readers to Lohr (2019), but we want to emphasize a point: Sampling survey is a very practical thing.
 
 
 ## On sampling error
@@ -107,7 +107,7 @@ The MSE (or SMSE) is only useful in **theoretical evaluation** of a sampling met
 $$
 \hbox{bias}(\hat{\theta})=0,
 $$
-then we focus our attention on estimate of $\hbox{var}(\hat{\theta})$. A *confidence interval* can be constructed if estimates of $\hat{\theta}$ and $\hbox{var}(\hat{\theta})$ are ready.
+then we focus our attention on estimate of $\hbox{var}(\hat{\theta})$. A *confidence interval* can be constructed if $\hat{\theta}$ value and estimate of $\hbox{var}(\hat{\theta})$ are ready.
 
 For the toy example, for each possible sample we calculate
 $$
