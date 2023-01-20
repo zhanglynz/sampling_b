@@ -145,10 +145,10 @@ $$
 $$
 where $t_2$ is a random variable having $t$ distribution with 2 degrees of freedom.
 
-## Why take a sample?
+<!-- ## Why take a sample? -->
 
-A quick answer is:
+<!-- A quick answer is: -->
 
-- We want to save costs (such as money and time).
-- In some situations, e.g. *blood testing*, we must take a sample rather than do a **census.**
-- "Estimates based on sample surveys are often more accurate than those based on a census because investigators can be more careful when collecting data." (Lohr, 2019)
+<!-- - We want to save costs (such as money and time). -->
+<!-- - In some situations, e.g. *blood testing*, we must take a sample rather than do a **census.** -->
+<!-- - "Estimates based on sample surveys are often more accurate than those based on a census because investigators can be more careful when collecting data." (Lohr, 2019) -->

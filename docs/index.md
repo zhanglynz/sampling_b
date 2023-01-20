@@ -23,6 +23,6 @@ No matter what we want to study/learn, in my opinion---probably you agree with m
 
 - What is a *sample*?
 - What is a good sample?
-- Why take a sample?
+<!-- - Why take a sample? -->
 
 We cover these questions especially the answers to them in Chapter \@ref(sample).
