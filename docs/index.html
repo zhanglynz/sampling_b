@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Uderstanding Survey Sampling</title>
   <meta name="description" content="Uderstanding Survey Sampling" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Uderstanding Survey Sampling" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2022-05-08" />
+<meta name="date" content="2023-01-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 
 <link rel="next" href="sample.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -77,6 +76,7 @@
 <li class="chapter" data-level="1.1" data-path="sample.html"><a href="sample.html#what-is-a-sample"><i class="fa fa-check"></i><b>1.1</b> What is a sample?</a></li>
 <li class="chapter" data-level="1.2" data-path="sample.html"><a href="sample.html#what-is-a-good-sample"><i class="fa fa-check"></i><b>1.2</b> What is a good sample?</a></li>
 <li class="chapter" data-level="1.3" data-path="sample.html"><a href="sample.html#on-sampling-error"><i class="fa fa-check"></i><b>1.3</b> On sampling error</a></li>
+<li class="chapter" data-level="1.4" data-path="sample.html"><a href="sample.html#why-take-a-sample"><i class="fa fa-check"></i><b>1.4</b> Why take a sample?</a></li>
 </ul></li>
 </ul>
 
@@ -98,15 +98,16 @@
 <div id="header">
 <h1 class="title">Uderstanding Survey Sampling</h1>
 <p class="author"><em>Lingyun Zhang</em></p>
-<p class="date"><em>2022-05-08</em></p>
+<p class="date"><em>2023-01-20</em></p>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
+<div id="preface" class="section level1 unnumbered hasAnchor">
+<h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>How do you learn, or to be exact, how do you learn complex stuff? I guess that many different answers will come out, because we are all different in many aspects, such as culture background, knowledge level, and learning style etc. etc.. For myself, if I want to seriously learn some complex stuff, then I will write about it. Without doubts, <em>sampling</em> (or to be exact, <em>survey sampling</em>) is complex, and it is kind of boring, but it is important (for me, because I need it for my work, and for you the reasons may be different). So I have to learn and re-learn sampling, and this results in the current book.</p>
 <p>No matter what we want to study/learn, in my opinion—probably you agree with me—<strong>understanding</strong> is the most important goal that we want to archive. For understanding, we must focus our attention on <strong>what</strong>, <strong>how</strong> and <strong>why</strong>, with unequal emphasis, depending on circumstances. A good starting point of learning about survey sampling is a couple of what questions:</p>
 <ul>
 <li>What is a <em>sample</em>?</li>
 <li>What is a good sample?</li>
+<li>Why take a sample?</li>
 </ul>
 <p>We cover these questions especially the answers to them in Chapter <a href="sample.html#sample">1</a>.</p>
 
@@ -177,7 +178,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

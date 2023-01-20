@@ -2,7 +2,7 @@
 knit: "bookdown::render_book"
 title: "Uderstanding Survey Sampling"
 author: "Lingyun Zhang"
-date: "2022-05-08"
+date: "2023-01-20"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -23,5 +23,6 @@ No matter what we want to study/learn, in my opinion---probably you agree with m
 
 - What is a *sample*?
 - What is a good sample?
+- Why take a sample?
 
 We cover these questions especially the answers to them in Chapter \@ref(sample).

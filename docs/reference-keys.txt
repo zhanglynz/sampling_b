@@ -1,4 +1,6 @@
+tab:unnamed-chunk-2
 sample
 what-is-a-sample
 what-is-a-good-sample
 on-sampling-error
+why-take-a-sample

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1 Understanding Sample | Uderstanding Survey Sampling</title>
   <meta name="description" content="1 Understanding Sample | Uderstanding Survey Sampling" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1 Understanding Sample | Uderstanding Survey Sampling" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2022-05-08" />
+<meta name="date" content="2023-01-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,6 @@
   
 <link rel="prev" href="index.html"/>
 
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,8 +49,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -77,6 +76,7 @@
 <li class="chapter" data-level="1.1" data-path="sample.html"><a href="sample.html#what-is-a-sample"><i class="fa fa-check"></i><b>1.1</b> What is a sample?</a></li>
 <li class="chapter" data-level="1.2" data-path="sample.html"><a href="sample.html#what-is-a-good-sample"><i class="fa fa-check"></i><b>1.2</b> What is a good sample?</a></li>
 <li class="chapter" data-level="1.3" data-path="sample.html"><a href="sample.html#on-sampling-error"><i class="fa fa-check"></i><b>1.3</b> On sampling error</a></li>
+<li class="chapter" data-level="1.4" data-path="sample.html"><a href="sample.html#why-take-a-sample"><i class="fa fa-check"></i><b>1.4</b> Why take a sample?</a></li>
 </ul></li>
 </ul>
 
@@ -95,10 +95,10 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sample" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Understanding Sample</h1>
-<div id="what-is-a-sample" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> What is a sample?</h2>
+<div id="sample" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Understanding Sample<a href="sample.html#sample" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="what-is-a-sample" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> What is a sample?<a href="sample.html#what-is-a-sample" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The question in the title is easy to answer: <strong>A sample is a subset of a population.</strong> Now, what is a population? Well, a population is defined in the planning stage of a study and is determined by study objectives.We can visualize a population using the following table:</p>
 <table>
 <thead>
@@ -155,19 +155,19 @@
 <li>Not reachable: e.g. some private dwellings in certain islands are too costly to be visited</li>
 </ul>
 </div>
-<div id="what-is-a-good-sample" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> What is a good sample?</h2>
+<div id="what-is-a-good-sample" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> What is a good sample?<a href="sample.html#what-is-a-good-sample" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>According to Lohr (2019), “A good sample will be representative in the sense that characteristics of interest in the population can be estimated from the sample with a known degree of accuracy.” So a good sample should meet the following requirements:</p>
 <ol style="list-style-type: decimal">
 <li>No serious over and under <em>coverage issues</em>, that is, the sampled population should be sufficiently close to the target population.</li>
 <li>No serious <em>selection bias issue</em>.</li>
 <li><em>Measurement and processing errors</em> are negligible.</li>
 </ol>
-<p>If the “soup” (a metaphor for the population) is not well mixed before we take a sample from it, then the sample cannot be good. Even if the “soup” is well mixed, selection bias may happen because of e.g. <em>biased sampling frame</em> or <em>biased response</em>. By a biased sampling frame, we mean for whatever reasons the sampling frame excludes a subset of the population, resulting discrepancy between it and the target population. That’s why we are concerned about coverage issues—under coverage may cause serious selection bias. By <em>biased response</em>, we mean the responding sample is not representative. At survey operational level, we monitor <em>response rate</em>. If response rate is low, we worry that we get biased response. If response rate is very low, say 20% or even lower, then the sample is very likely suffering response bias.</p>
+<p>If the “soup” (a metaphor for the population) is not well mixed before we take a sample from it, then the sample cannot be good. Even if the “soup” is well mixed, selection bias may still happen because of e.g. <em>biased sampling frame</em> or <em>biased response</em>. By a biased sampling frame, we mean for whatever reasons the sampling frame excludes a subset of the population, resulting discrepancy between it and the target population. That’s why we are concerned about coverage issues—under coverage may cause serious selection bias. By <em>biased response</em>, we mean the responding sample is not representative. At survey operational level, we monitor <em>response rate</em>. If response rate is low, we worry that we may get biased response. If response rate is very low, say 20% or even lower, then the sample is quite likely suffering response bias.</p>
 <p>We omit details about measurement/processing errors here and refer readers to Lohr (2019), but we want to emphasize a point: Sampling survey is a very practical thing.</p>
 </div>
-<div id="on-sampling-error" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> On sampling error</h2>
+<div id="on-sampling-error" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> On sampling error<a href="sample.html#on-sampling-error" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the last Section, we mentioned coverage issue, selection bias, measurement and processing issues—these are all in the scope of <em>non-sampling error</em>. The flip side of the coin is <em>sampling error</em>, which is resulted from difference between a sample and the population in terms of characteristic variables. <strong>Sampling error is unavoidable!</strong></p>
 <p>Let’s have a toy example. The population is shown below.</p>
 <table>
@@ -270,7 +270,7 @@ where <span class="math inline">\(N=5\)</span>, to estimate <span class="math in
 we can find that nine out of the ten resulted confidence intervals do contain the truth <span class="math inline">\(27/5\)</span>.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-Toy example: 10 possible samples and confidence intervals.
+<span id="tab:unnamed-chunk-2">Table 1.1: </span>Toy example: 10 possible samples and confidence intervals.
 </caption>
 <thead>
 <tr>
@@ -497,6 +497,24 @@ indi
 </tr>
 </tbody>
 </table>
+<p>NB: Here is a quick explanation about “nine out of the ten resulted confidence intervals do contain the truth”.</p>
+<p><span class="math display">\[
+\begin{array}{cl}
+&amp; \hbox{Pr}(|\hat{\mu} - \mu| &lt; 3\hat{\sigma})\\
+\approx &amp; \hbox{Pr}(|t_2| &lt; 3)\\
+= &amp; 0.905\ \hbox{(keeping three decimal places)}
+\end{array}
+\]</span>
+where <span class="math inline">\(t_2\)</span> is a random variable having <span class="math inline">\(t\)</span> distribution with 2 degrees of freedom.</p>
+</div>
+<div id="why-take-a-sample" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Why take a sample?<a href="sample.html#why-take-a-sample" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A quick answer is:</p>
+<ul>
+<li>We want to save costs (such as money and time).</li>
+<li>In some situations, e.g. <em>blood testing</em>, we must take a sample rather than do a <strong>census.</strong></li>
+<li>“Estimates based on sample surveys are often more accurate than those based on a census because investigators can be more careful when collecting data.” (Lohr, 2019)</li>
+</ul>
 
 </div>
 </div>
@@ -566,7 +584,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
