@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Understanding Sampling | Uderstanding Survey Sampling</title>
+  <meta name="description" content="2 Understanding Sampling | Uderstanding Survey Sampling" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Understanding Sampling | Uderstanding Survey Sampling" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Understanding Sampling | Uderstanding Survey Sampling" />
+  
+  
+  
+
+<meta name="author" content="Lingyun Zhang" />
+
+
+<meta name="date" content="2023-05-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="sample.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="sample.html"><a href="sample.html"><i class="fa fa-check"></i><b>1</b> Understanding Sample</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="sample.html"><a href="sample.html#what-is-a-sample"><i class="fa fa-check"></i><b>1.1</b> What is a sample?</a></li>
+<li class="chapter" data-level="1.2" data-path="sample.html"><a href="sample.html#what-is-a-good-sample"><i class="fa fa-check"></i><b>1.2</b> What is a good sample?</a></li>
+<li class="chapter" data-level="1.3" data-path="sample.html"><a href="sample.html#on-sampling-error"><i class="fa fa-check"></i><b>1.3</b> On sampling error</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>2</b> Understanding Sampling</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="sampling.html"><a href="sampling.html#general-ideas"><i class="fa fa-check"></i><b>2.1</b> General ideas</a></li>
+<li class="chapter" data-level="2.2" data-path="sampling.html"><a href="sampling.html#three-theoretical-principles"><i class="fa fa-check"></i><b>2.2</b> Three theoretical principles</a></li>
+<li class="chapter" data-level="2.3" data-path="sampling.html"><a href="sampling.html#some-common-sampling-designs"><i class="fa fa-check"></i><b>2.3</b> Some common sampling designs</a></li>
+<li class="chapter" data-level="2.4" data-path="sampling.html"><a href="sampling.html#probability-proportional-to-size-sampling"><i class="fa fa-check"></i><b>2.4</b> Probability proportional to size sampling</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Uderstanding Survey Sampling</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sampling" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Understanding Sampling<a href="sampling.html#sampling" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="general-ideas" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> General ideas<a href="sampling.html#general-ideas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Throughout this chapter, <em>sampling design</em> means <em>probability sampling design</em>. Following (but not strictly) Tillé and Wilhelm (2017), the settings are as follows:</p>
+<ul>
+<li>The <em>population</em> is <span class="math inline">\({\cal P}=\{1, 2, \ldots, i, \ldots, N\}\)</span>.</li>
+<li>A <em>sample</em> <span class="math inline">\(s\)</span> is a subset of <span class="math inline">\({\cal P}\)</span>. We restrict that <span class="math inline">\(s\)</span> cannot be empty.</li>
+<li>There are <span class="math inline">\(2^N-1\)</span> possible samples. Let the set of all the possible samples be denoted by <span class="math inline">\(\Omega\)</span>.</li>
+</ul>
+<p>A sampling design specifies a probability distribution <span class="math inline">\(p(\cdot)\)</span> over <span class="math inline">\(\Omega\)</span> such that
+<span class="math display">\[
+p(s)\ge 0\ \hbox{and}\ \sum_{s\in \Omega} p(s)=1.
+\]</span></p>
+<p>Define
+<span class="math display">\[
+\pi_i = \hbox{the probability of selecting unit}\ i
+\]</span>
+and for <span class="math inline">\(i\neq j\)</span>
+<span class="math display">\[
+\pi_{ij} = \hbox{the probability that both units}\ i\ \hbox{and}\ j\ \hbox{are selected in the sample.}
+\]</span>
+Then,
+<span class="math display">\[
+\pi_i = \sum_{i \in s}p(s)\ \hbox{and}\ \pi_{ij}=\sum_{\{i,\ j\}\subset s}p(s).
+\]</span></p>
+<p>Examples of sampling designs:</p>
+<ul>
+<li><strong>simple random sampling:</strong>
+<span class="math display">\[
+p(s)=\left\{
+\begin{array}{ll}
+{N \choose n}^{-1}, &amp; \hbox{if}\ s\in S_n,\\
+0, &amp; \hbox{otherwise},
+\end{array}
+\right.
+\]</span>
+where <span class="math inline">\(S_n= \{s\in \Omega|\#s = n\}\)</span> and <span class="math inline">\(n\)</span> is the sample size. For this sampling design,
+<span class="math display">\[
+\pi_i = \frac{n}{N}\ \hbox{and}\ \pi_{ij}= \frac{n(n-1)}{N(N-1)}.
+\]</span></li>
+<li><strong>Stratified sampling:</strong>
+<span class="math display">\[
+p(s)=\left\{
+\begin{array}{ll}
+\prod_{h=1}^H{N_h \choose n_h}^{-1}, &amp;\hbox{if}\ \#(s\bigcap {\cal P}_h)=n_h\ \hbox{for}\ h=1,\ldots, H,\\
+0, &amp; \hbox{otherwise},
+\end{array}
+\right.
+\]</span>
+where the population <span class="math inline">\({\cal P}\)</span> is partitioned into <span class="math inline">\(H\)</span> strata and <span class="math inline">\(\# {\cal P}_h= N_h\)</span> for <span class="math inline">\(h=1, \ldots, H\)</span>; <span class="math inline">\(n_h\)</span> is the sample size for stratum <span class="math inline">\({\cal P}_h\)</span>. For this sampling design,
+<span class="math display">\[
+\pi_i = \frac{n_h}{N_h},\ \hbox{if}\ i\in {\cal P}_h,
+\]</span>
+and
+<span class="math display">\[
+\pi_{ij}=\left\{
+\begin{array}{ll}
+\frac{n_h(n_h-1)}{N_h(N_h-1)}, &amp; \hbox{if}\ i, j\in {\cal P}_h,\\
+\frac{n_gn_h}{N_gN_h}, &amp;\hbox{if}\ i \in {\cal P}_g,\ j\in {\cal P}_h,\ g\neq h.
+\end{array}
+\right.
+\]</span></li>
+</ul>
+</div>
+<div id="three-theoretical-principles" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Three theoretical principles<a href="sampling.html#three-theoretical-principles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Tillé and Wilhelm (2017)
+introduce three theoretical principles for sampling design.</p>
+<ul>
+<li><p><strong>Randomization:</strong> a) make sure there are as many samples as possible, while meeting other constraints; b) select a sample at random.</p></li>
+<li><p><strong>Overrepresentation:</strong> unequal inclusion probabilities often result in more efficient estimates, or in other words, we should “preferentially select units where the dispersion is larger.”</p></li>
+<li><p><strong>Restriction:</strong> avoid bad samples, e.g. using auxiliary information to make sure the estimates from a sample approximately equal the known totals. That is, “samples that either nonpractical or known to be inaccurate are avoided.”</p></li>
+</ul>
+<p>We quote the following from Tillé and Wilhelm (2017).</p>
+<blockquote>
+<p>“When auxiliary information is available, it is desired to include it in the sampling design in order to increase the precision of the estimates.”</p>
+</blockquote>
+<blockquote>
+<p>“A balanced sample is such that the estimated totals of the auxiliary variables are approximately equal to the true totals.”</p>
+</blockquote>
+</div>
+<div id="some-common-sampling-designs" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Some common sampling designs<a href="sampling.html#some-common-sampling-designs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="probability-proportional-to-size-sampling" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Probability proportional to size sampling<a href="sampling.html#probability-proportional-to-size-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In a sampling design, an important part is <em>selection probabilities</em>, which accompany the items/individuals in the population. We can distinguish two cases. Case 1: all the selection probabilities are equal. Case 2: the selection probabilities are not equal. Simple random sampling is an example of Case 1; probability proportional to size (PPS) sampling is an example of Case 2.</p>
+<p>Under PPS, the selection probability of item/individual <span class="math inline">\(i\)</span> is defined as
+<span class="math display" id="eq:pi">\[\begin{equation}
+\pi_i = n \frac{Z_i}{\sum_{i=1}^N Z_i},\ \text{for}\ i=1, \ldots, N,
+\tag{2.1}
+\end{equation}\]</span>
+where <span class="math inline">\(n\)</span> and <span class="math inline">\(N\)</span> are the sample size and population size, respectively, <span class="math inline">\(Z_i\)</span> is the <em>size/importance</em> of item/individual <span class="math inline">\(i\)</span>.</p>
+<p><strong>Remarks:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>If some of <span class="math inline">\(\pi_i\)</span> resulted from <a href="sampling.html#eq:pi">(2.1)</a> are greater than 1, then we set them as 1, and recalculate the rest <span class="math inline">\(\pi_i\)</span>’s. The iteration process finishes until no <span class="math inline">\(\pi\)</span>’s are greater than 1. See <em>PPS action R program</em> in the Appendix part.</p></li>
+<li><p>It is easy to see from <a href="sampling.html#eq:pi">(2.1)</a> that
+<span class="math display" id="eq:pisum">\[\begin{equation}
+\sum_{i=1}^N \pi_i = n.
+\tag{2.2}
+\end{equation}\]</span>
+Actually, <a href="sampling.html#eq:pisum">(2.2)</a> is always hold if the sample size is fixed as <span class="math inline">\(n\)</span>; below is a quick proof.</p></li>
+</ol>
+<p><strong>Proof:</strong>
+<span class="math display">\[\begin{align}
+\sum_{i=1}^N \pi_i &amp;= \sum_{i=1}^N\sum_{i\in S}p(S) \notag\\
+&amp;= \frac{N\binom{N-1}{n-1}}{\binom{N}{n}}\sum_{S\in \Omega}p(S) \notag\\
+&amp;= n\times 1 \notag\\
+&amp;= n \notag
+\end{align}\]</span></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sample.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

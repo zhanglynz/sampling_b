@@ -1,5 +1,12 @@
 tab:unnamed-chunk-2
+eq:pi
+eq:pisum
 sample
 what-is-a-sample
 what-is-a-good-sample
 on-sampling-error
+sampling
+general-ideas
+three-theoretical-principles
+some-common-sampling-designs
+probability-proportional-to-size-sampling

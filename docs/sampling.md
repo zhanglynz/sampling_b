@@ -1,0 +1,118 @@
+# Understanding Sampling {#sampling}
+
+## General ideas
+
+Throughout this chapter, *sampling design* means *probability sampling design*. Following (but not strictly) Tillé and Wilhelm (2017), the settings are as follows:
+
+- The *population* is ${\cal P}=\{1, 2, \ldots, i, \ldots, N\}$.
+- A *sample* $s$ is a subset of ${\cal P}$. We restrict that $s$ cannot be empty.
+- There are $2^N-1$ possible samples. Let the set of all the possible samples be denoted by $\Omega$.
+
+A sampling design specifies a probability distribution $p(\cdot)$ over $\Omega$ such that
+$$
+p(s)\ge 0\ \hbox{and}\ \sum_{s\in \Omega} p(s)=1.
+$$
+
+Define 
+$$
+\pi_i = \hbox{the probability of selecting unit}\ i
+$$
+and for $i\neq j$
+$$
+\pi_{ij} = \hbox{the probability that both units}\ i\ \hbox{and}\ j\ \hbox{are selected in the sample.}
+$$
+Then,
+$$
+\pi_i = \sum_{i \in s}p(s)\ \hbox{and}\ \pi_{ij}=\sum_{\{i,\ j\}\subset s}p(s).
+$$
+
+Examples of sampling designs:
+
+- **simple random sampling:**
+$$
+p(s)=\left\{
+\begin{array}{ll}
+{N \choose n}^{-1}, & \hbox{if}\ s\in S_n,\\
+0, & \hbox{otherwise},
+\end{array}
+\right.
+$$
+where $S_n= \{s\in \Omega|\#s = n\}$ and $n$ is the sample size. For this sampling design, 
+$$
+\pi_i = \frac{n}{N}\ \hbox{and}\ \pi_{ij}= \frac{n(n-1)}{N(N-1)}.
+$$
+- **Stratified sampling:**
+$$
+p(s)=\left\{
+\begin{array}{ll}
+\prod_{h=1}^H{N_h \choose n_h}^{-1}, &\hbox{if}\ \#(s\bigcap {\cal P}_h)=n_h\ \hbox{for}\ h=1,\ldots, H,\\
+0, & \hbox{otherwise},
+\end{array}
+\right.
+$$
+where the population ${\cal P}$ is partitioned into $H$ strata and $\# {\cal P}_h= N_h$ for $h=1, \ldots, H$; $n_h$ is the sample size for stratum ${\cal P}_h$. For this sampling design,
+$$
+\pi_i = \frac{n_h}{N_h},\ \hbox{if}\ i\in {\cal P}_h,
+$$
+and
+$$
+\pi_{ij}=\left\{
+\begin{array}{ll}
+\frac{n_h(n_h-1)}{N_h(N_h-1)}, & \hbox{if}\ i, j\in {\cal P}_h,\\
+\frac{n_gn_h}{N_gN_h}, &\hbox{if}\ i \in {\cal P}_g,\ j\in {\cal P}_h,\ g\neq h.
+\end{array}
+\right.
+$$
+
+## Three theoretical principles
+
+Tillé and Wilhelm (2017)
+introduce three theoretical principles for sampling design.
+
+- **Randomization:** a) make sure there are as many samples as possible, while meeting other constraints; b) select a sample at random.
+
+- **Overrepresentation:** unequal inclusion probabilities often result in more efficient estimates, or in other words, we should "preferentially select units where the dispersion is larger."
+
+- **Restriction:** avoid bad samples, e.g. using auxiliary information to make sure the estimates from a sample approximately equal the known totals. That is, "samples that either nonpractical or known to be inaccurate are avoided."
+
+We quote the following from Tillé and Wilhelm (2017).
+
+> "When auxiliary information is available, it is desired to include it in the sampling design in order to increase the precision of the estimates."
+>
+
+> "A balanced sample is such that the estimated totals of the auxiliary variables are approximately equal to the true totals."
+>
+
+## Some common sampling designs
+
+
+## Probability proportional to size sampling 
+
+In a sampling design, an important part is *selection probabilities*, which accompany the items/individuals in the population. We can distinguish two cases. Case 1: all the selection probabilities are equal. Case 2: the selection probabilities are not equal. Simple random sampling is an example of Case 1; probability proportional to size (PPS) sampling is an example of Case 2.
+
+Under PPS, the selection probability of item/individual $i$ is defined as
+\begin{equation}
+\pi_i = n \frac{Z_i}{\sum_{i=1}^N Z_i},\ \text{for}\ i=1, \ldots, N,
+(\#eq:pi)
+\end{equation}
+where $n$ and $N$ are the sample size and population size, respectively, $Z_i$ is the *size/importance* of item/individual $i$.
+
+**Remarks:**
+
+1. If some of $\pi_i$ resulted from \@ref(eq:pi) are greater than 1, then we set them as 1, and recalculate the rest $\pi_i$'s. The iteration process finishes until no $\pi$'s are greater than 1. See *PPS action R program* in the Appendix part. 
+
+2. It is easy to see from \@ref(eq:pi) that
+\begin{equation}
+\sum_{i=1}^N \pi_i = n.
+(\#eq:pisum)
+\end{equation}
+Actually, \@ref(eq:pisum) is always hold if the sample size is fixed as $n$; below is a quick proof.
+
+**Proof:** 
+\begin{align}
+\sum_{i=1}^N \pi_i &= \sum_{i=1}^N\sum_{i\in S}p(S) \notag\\
+&= \frac{N\binom{N-1}{n-1}}{\binom{N}{n}}\sum_{S\in \Omega}p(S) \notag\\
+&= n\times 1 \notag\\
+&= n \notag
+\end{align}
+
