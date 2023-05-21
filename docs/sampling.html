@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2023-05-14" />
+<meta name="date" content="2023-05-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -108,8 +108,8 @@
 <p>Throughout this chapter, <em>sampling design</em> means <em>probability sampling design</em>. Following (but not strictly) Tillé and Wilhelm (2017), the settings are as follows:</p>
 <ul>
 <li>The <em>population</em> is <span class="math inline">\({\cal P}=\{1, 2, \ldots, i, \ldots, N\}\)</span>.</li>
-<li>A <em>sample</em> <span class="math inline">\(s\)</span> is a subset of <span class="math inline">\({\cal P}\)</span>. We restrict that <span class="math inline">\(s\)</span> cannot be empty.</li>
-<li>There are <span class="math inline">\(2^N-1\)</span> possible samples. Let the set of all the possible samples be denoted by <span class="math inline">\(\Omega\)</span>.</li>
+<li>A <em>sample</em> <span class="math inline">\(s\)</span> is a subset of <span class="math inline">\({\cal P}\)</span>. Note that <span class="math inline">\(s\)</span> can be empty.</li>
+<li>There are <span class="math inline">\(2^N\)</span> possible samples. Let the set of all the possible samples be denoted by <span class="math inline">\(\Omega\)</span>.</li>
 </ul>
 <p>A sampling design specifies a probability distribution <span class="math inline">\(p(\cdot)\)</span> over <span class="math inline">\(\Omega\)</span> such that
 <span class="math display">\[
@@ -129,7 +129,7 @@ Then,
 \]</span></p>
 <p>Examples of sampling designs:</p>
 <ul>
-<li><strong>simple random sampling:</strong>
+<li><p><strong>simple random sampling:</strong>
 <span class="math display">\[
 p(s)=\left\{
 \begin{array}{ll}
@@ -141,8 +141,8 @@ p(s)=\left\{
 where <span class="math inline">\(S_n= \{s\in \Omega|\#s = n\}\)</span> and <span class="math inline">\(n\)</span> is the sample size. For this sampling design,
 <span class="math display">\[
 \pi_i = \frac{n}{N}\ \hbox{and}\ \pi_{ij}= \frac{n(n-1)}{N(N-1)}.
-\]</span></li>
-<li><strong>Stratified sampling:</strong>
+\]</span></p></li>
+<li><p><strong>Stratified sampling:</strong>
 <span class="math display">\[
 p(s)=\left\{
 \begin{array}{ll}
@@ -163,7 +163,26 @@ and
 \frac{n_gn_h}{N_gN_h}, &amp;\hbox{if}\ i \in {\cal P}_g,\ j\in {\cal P}_h,\ g\neq h.
 \end{array}
 \right.
-\]</span></li>
+\]</span></p></li>
+<li><p><strong>Bernoulli sampling:</strong>
+<span class="math inline">\(\pi_i = p\)</span>, where <span class="math inline">\(0 &lt; p &lt; 1\)</span>, for <span class="math inline">\(i=1, \ldots, N\)</span>; sample <span class="math inline">\(s\)</span> has units that are
+<strong>independently</strong> selected. Note that for Bernoulli sampling, <em>sample size</em> is a random variable and it follows
+Binomial<span class="math inline">\((N, p)\)</span>. The mean of the sample size is equal to <span class="math inline">\(Np\)</span>. Obviously,
+<span class="math display">\[\pi_{i, j}=p^2\ \hbox{for}\ i\neq j.\]</span> All the possible samples in <span class="math inline">\(\Omega\)</span> can be classified into
+<span class="math inline">\(N+1\)</span> classes using their <em>cardinality</em> (number of elements in a set), and we can check that</p></li>
+</ul>
+<p><span class="math display">\[
+\begin{array}{cl}
+&amp;\sum_{i=0,\ \#s = i}^Np(s)\\
+=&amp;\sum_{i=0}^N {N \choose i}p^i(1-p)^{N-i}\\
+=&amp;1.
+\end{array}
+\]</span></p>
+<ul>
+<li><p><strong>Poisson sampling:</strong> The setting is the same as Bernoulli sampling except that the
+selection probabilities for units are not all equal. The distribution of the sample size is
+called <em>Poisson binomial distribution</em>.</p></li>
+<li><p><strong>Conditional Poisson sampling:</strong> This design has prescribed <strong>unequal inclusion probabilities</strong> but results in samples with <strong>fixed sample size</strong>; see more details in Tillé and Wilhelm (2017).</p></li>
 </ul>
 </div>
 <div id="three-theoretical-principles" class="section level2 hasAnchor" number="2.2">

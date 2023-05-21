@@ -5,8 +5,8 @@
 Throughout this chapter, *sampling design* means *probability sampling design*. Following (but not strictly) Tillé and Wilhelm (2017), the settings are as follows:
 
 - The *population* is ${\cal P}=\{1, 2, \ldots, i, \ldots, N\}$.
-- A *sample* $s$ is a subset of ${\cal P}$. We restrict that $s$ cannot be empty.
-- There are $2^N-1$ possible samples. Let the set of all the possible samples be denoted by $\Omega$.
+- A *sample* $s$ is a subset of ${\cal P}$. Note that $s$ can be empty.
+- There are $2^N$ possible samples. Let the set of all the possible samples be denoted by $\Omega$.
 
 A sampling design specifies a probability distribution $p(\cdot)$ over $\Omega$ such that
 $$
@@ -63,6 +63,28 @@ $$
 \end{array}
 \right.
 $$
+
+- **Bernoulli sampling:**
+$\pi_i = p$, where $0 < p < 1$, for $i=1, \ldots, N$; sample $s$ has units that are 
+**independently** selected. Note that for Bernoulli sampling, *sample size* is a random variable and it follows
+Binomial$(N, p)$. The mean of the sample size is equal to $Np$. Obviously, 
+$$\pi_{i, j}=p^2\ \hbox{for}\ i\neq j.$$ All the possible samples in $\Omega$ can be classified into
+$N+1$ classes using their *cardinality* (number of elements in a set), and we can check that 
+
+$$
+\begin{array}{cl}
+ &\sum_{i=0,\ \#s = i}^Np(s)\\
+=&\sum_{i=0}^N {N \choose i}p^i(1-p)^{N-i}\\
+=&1.
+\end{array}
+$$ 
+
+
+- **Poisson sampling:** The setting is the same as Bernoulli sampling except that the
+selection probabilities for units are not all equal. The distribution of the sample size is
+called *Poisson binomial distribution*.
+
+- **Conditional Poisson sampling:** This design has prescribed **unequal inclusion probabilities** but results in samples with **fixed sample size**; see more details in Tillé and Wilhelm (2017).
 
 ## Three theoretical principles
 
