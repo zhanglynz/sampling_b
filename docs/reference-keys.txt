@@ -8,5 +8,10 @@ on-sampling-error
 sampling
 general-ideas
 three-theoretical-principles
-some-common-sampling-designs
-probability-proportional-to-size-sampling
+sampling-in-practice
+systematic-sampling
+probability-proportional-to-size
+exercises
+unit-selection-probability-in-srs
+all-possible-samples-for-srs-with-replacement
+an-algorithm-for-drawing-an-srs
