@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2023-06-02" />
+<meta name="date" content="2023-06-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -147,8 +147,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="sampling.html"><a href="sampling.html#three-theoretical-principles"><i class="fa fa-check"></i><b>2.2</b> Three theoretical principles</a></li>
 <li class="chapter" data-level="2.3" data-path="sampling.html"><a href="sampling.html#sampling-in-practice"><i class="fa fa-check"></i><b>2.3</b> Sampling in practice</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="sampling.html"><a href="sampling.html#systematic-sampling"><i class="fa fa-check"></i><b>2.3.1</b> Systematic sampling</a></li>
+<li class="chapter" data-level="2.3.1" data-path="sampling.html"><a href="sampling.html#sys1"><i class="fa fa-check"></i><b>2.3.1</b> Systematic sampling</a></li>
 <li class="chapter" data-level="2.3.2" data-path="sampling.html"><a href="sampling.html#probability-proportional-to-size"><i class="fa fa-check"></i><b>2.3.2</b> Probability proportional to size</a></li>
+<li class="chapter" data-level="2.3.3" data-path="sampling.html"><a href="sampling.html#systematic-sampling-with-unequal-selection-probabilities"><i class="fa fa-check"></i><b>2.3.3</b> Systematic sampling with unequal selection probabilities</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="sampling.html"><a href="sampling.html#exercises"><i class="fa fa-check"></i><b>2.4</b> Exercises</a>
 <ul>
@@ -291,8 +292,8 @@ large.</p>
 </div>
 <div id="sampling-in-practice" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Sampling in practice<a href="sampling.html#sampling-in-practice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="systematic-sampling" class="section level3 hasAnchor" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Systematic sampling<a href="sampling.html#systematic-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="sys1" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Systematic sampling<a href="sampling.html#sys1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As mentioned before, population and sample sizes are <span class="math inline">\(N\)</span> and <span class="math inline">\(n\)</span>, respectively.
 The ideas in systematic sampling can be described as follows.</p>
 <ol style="list-style-type: decimal">
@@ -511,14 +512,281 @@ where <span class="math inline">\(n\)</span> and <span class="math inline">\(N\)
 \sum_{i=1}^N \pi_i = n.
 \tag{2.2}
 \end{equation}\]</span>
-Actually, <a href="sampling.html#eq:pisum">(2.2)</a> is always hold if the sample size is fixed as <span class="math inline">\(n\)</span>; below is a quick proof:
-<span class="math display">\[\begin{align}
-\sum_{i=1}^N \pi_i &amp;= \sum_{i=1}^N\sum_{i\in s}p(s) \notag\\
-&amp;= n\sum_{s\in \Omega}p(s) \notag\\
-&amp;= n\times 1 \notag\\
-&amp;= n. \notag
-\end{align}\]</span></p></li>
+Actually, <a href="sampling.html#eq:pisum">(2.2)</a> is always hold if the sample size is fixed as <span class="math inline">\(n\)</span>—see a proof in ???.
+<!-- below is a quick proof: -->
+<!-- \begin{align} -->
+<!-- \sum_{i=1}^N \pi_i &= \sum_{i=1}^N\sum_{i\in s}p(s) \notag\\ -->
+<!-- &= n\sum_{s\in \Omega}p(s) \notag\\ -->
+<!-- &= n\times 1 \notag\\ -->
+<!-- &= n. \notag -->
+<!-- \end{align} --></p></li>
 </ol>
+</div>
+<div id="systematic-sampling-with-unequal-selection-probabilities" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Systematic sampling with unequal selection probabilities<a href="sampling.html#systematic-sampling-with-unequal-selection-probabilities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The settings are:</p>
+<ul>
+<li>Population has <span class="math inline">\(N\)</span> units, and they are referred to as units 1, 2, <span class="math inline">\(\ldots\)</span>, <span class="math inline">\(N\)</span>.</li>
+<li>Unit <span class="math inline">\(i\)</span> has selection probability <span class="math inline">\(\pi_i\)</span>.</li>
+</ul>
+<p>Note that
+<span class="math display">\[
+\sum_{i=1}^N \pi_i = n,
+\]</span>
+where <span class="math inline">\(n\)</span> is the sample size.</p>
+<p>In Section <a href="sampling.html#sys1">2.3.1</a>, we study systematic sampling, where the selection probabilities are
+all equal. An interesting question is: If the selection probabilities are not equal, how
+do we do systematic sampling? According to Antoine (2015) and Tillé (2010), an algorithm is as follows:</p>
+<ol style="list-style-type: decimal">
+<li>Generate a random number from Uniform(0, 1), say it is <span class="math inline">\(u\)</span>.</li>
+<li>Each unit in the population owns an interval, i.e. unit 1 owns interval <span class="math inline">\((0,\ \pi_1)\)</span>; unit 2 owns interval <span class="math inline">\((\pi_1,\ \sum_{i=1}^2 \pi_i)\)</span>; <span class="math inline">\(\cdots\)</span>; unit <span class="math inline">\(N\)</span> owns interval <span class="math inline">\((\sum_{i=1}^{N-1}\pi_i,\ n)\)</span>. Then, we find the intervals that contain <span class="math inline">\(u\)</span>, or <span class="math inline">\(u+1\)</span>, <span class="math inline">\(\cdots\)</span>, or <span class="math inline">\(u+(n-1)\)</span>, and the <span class="math inline">\(n\)</span> units that own these intervals are selected as a sample.</li>
+</ol>
+<p>The following is an R that implement the algorithm.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="sampling.html#cb4-1" aria-hidden="true" tabindex="-1"></a>sys_smpling <span class="ot">&lt;-</span> <span class="cf">function</span>(sel_prob)</span>
+<span id="cb4-2"><a href="sampling.html#cb4-2" aria-hidden="true" tabindex="-1"></a>{u <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="sampling.html#cb4-3" aria-hidden="true" tabindex="-1"></a> cum_sel_prob <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sel_prob)</span>
+<span id="cb4-4"><a href="sampling.html#cb4-4" aria-hidden="true" tabindex="-1"></a> m <span class="ot">&lt;-</span> <span class="fu">length</span>(sel_prob)</span>
+<span id="cb4-5"><a href="sampling.html#cb4-5" aria-hidden="true" tabindex="-1"></a> s <span class="ot">&lt;-</span> <span class="fu">rep</span>(0L, m)</span>
+<span id="cb4-6"><a href="sampling.html#cb4-6" aria-hidden="true" tabindex="-1"></a> <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>m)</span>
+<span id="cb4-7"><a href="sampling.html#cb4-7" aria-hidden="true" tabindex="-1"></a> {s[i] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(u <span class="sc">&lt;=</span> cum_sel_prob[i])</span>
+<span id="cb4-8"><a href="sampling.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(s[i] <span class="sc">==</span> 1L) u <span class="ot">&lt;-</span> u <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb4-9"><a href="sampling.html#cb4-9" aria-hidden="true" tabindex="-1"></a> }</span>
+<span id="cb4-10"><a href="sampling.html#cb4-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">return</span>(s)</span>
+<span id="cb4-11"><a href="sampling.html#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>The R function <code>UPsystematic()</code> in <strong><code>sampling</code></strong> package can do systematic sampling with
+unequal probabilities. Below, we show an example to test <code>sys_smpling()</code> and <code>sampling::UPsystematic()</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="sampling.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sampling)</span>
+<span id="cb5-2"><a href="sampling.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-3"><a href="sampling.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb5-4"><a href="sampling.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="sampling.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># for evaluation</span></span>
+<span id="cb5-6"><a href="sampling.html#cb5-6" aria-hidden="true" tabindex="-1"></a>eval_sampling <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">it_nbr =</span> <span class="dv">10000</span>, selec_prob, the_func)</span>
+<span id="cb5-7"><a href="sampling.html#cb5-7" aria-hidden="true" tabindex="-1"></a>{the_vec <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>it_nbr, </span>
+<span id="cb5-8"><a href="sampling.html#cb5-8" aria-hidden="true" tabindex="-1"></a>                          <span class="cf">function</span>(x) <span class="fu">which</span>(<span class="fu">the_func</span>(selec_prob) <span class="sc">==</span> <span class="dv">1</span>)))</span>
+<span id="cb5-9"><a href="sampling.html#cb5-9" aria-hidden="true" tabindex="-1"></a> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(the_vec)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-10"><a href="sampling.html#cb5-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">relative_freq =</span> Freq <span class="sc">/</span> it_nbr) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-11"><a href="sampling.html#cb5-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">the_pi =</span> selec_prob)</span>
+<span id="cb5-12"><a href="sampling.html#cb5-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-13"><a href="sampling.html#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="sampling.html#cb5-14" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span>  <span class="dv">6</span></span>
+<span id="cb5-15"><a href="sampling.html#cb5-15" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span>  <span class="dv">3</span></span>
+<span id="cb5-16"><a href="sampling.html#cb5-16" aria-hidden="true" tabindex="-1"></a>selc_prob <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>N)<span class="sc">/</span><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span>N) </span>
+<span id="cb5-17"><a href="sampling.html#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="sampling.html#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple example - sample selection </span></span>
+<span id="cb5-19"><a href="sampling.html#cb5-19" aria-hidden="true" tabindex="-1"></a>the_re_4_sys <span class="ot">&lt;-</span> <span class="fu">eval_sampling</span>(<span class="at">selec_prob =</span> selc_prob, </span>
+<span id="cb5-20"><a href="sampling.html#cb5-20" aria-hidden="true" tabindex="-1"></a>                              <span class="at">the_func =</span> sys_smpling)</span>
+<span id="cb5-21"><a href="sampling.html#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(the_re_4_sys)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+the_vec
+</th>
+<th style="text-align:right;">
+Freq
+</th>
+<th style="text-align:right;">
+relative_freq
+</th>
+<th style="text-align:right;">
+the_pi
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+1422
+</td>
+<td style="text-align:right;">
+0.1422
+</td>
+<td style="text-align:right;">
+0.1428571
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+2839
+</td>
+<td style="text-align:right;">
+0.2839
+</td>
+<td style="text-align:right;">
+0.2857143
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+4326
+</td>
+<td style="text-align:right;">
+0.4326
+</td>
+<td style="text-align:right;">
+0.4285714
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+5674
+</td>
+<td style="text-align:right;">
+0.5674
+</td>
+<td style="text-align:right;">
+0.5714286
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+7161
+</td>
+<td style="text-align:right;">
+0.7161
+</td>
+<td style="text-align:right;">
+0.7142857
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:right;">
+8578
+</td>
+<td style="text-align:right;">
+0.8578
+</td>
+<td style="text-align:right;">
+0.8571429
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="sampling.html#cb6-1" aria-hidden="true" tabindex="-1"></a>the_re_4_UPmaxentropy <span class="ot">&lt;-</span> <span class="fu">eval_sampling</span>(<span class="at">selec_prob =</span> selc_prob, </span>
+<span id="cb6-2"><a href="sampling.html#cb6-2" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">the_func =</span> UPmaxentropy)</span>
+<span id="cb6-3"><a href="sampling.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(the_re_4_UPmaxentropy)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+the_vec
+</th>
+<th style="text-align:right;">
+Freq
+</th>
+<th style="text-align:right;">
+relative_freq
+</th>
+<th style="text-align:right;">
+the_pi
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+1429
+</td>
+<td style="text-align:right;">
+0.1429
+</td>
+<td style="text-align:right;">
+0.1428571
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+2804
+</td>
+<td style="text-align:right;">
+0.2804
+</td>
+<td style="text-align:right;">
+0.2857143
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+4301
+</td>
+<td style="text-align:right;">
+0.4301
+</td>
+<td style="text-align:right;">
+0.4285714
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+5708
+</td>
+<td style="text-align:right;">
+0.5708
+</td>
+<td style="text-align:right;">
+0.5714286
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+7200
+</td>
+<td style="text-align:right;">
+0.7200
+</td>
+<td style="text-align:right;">
+0.7142857
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:right;">
+8558
+</td>
+<td style="text-align:right;">
+0.8558
+</td>
+<td style="text-align:right;">
+0.8571429
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="exercises" class="section level2 hasAnchor" number="2.4">

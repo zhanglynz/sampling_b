@@ -9,8 +9,9 @@ sampling
 general-ideas
 three-theoretical-principles
 sampling-in-practice
-systematic-sampling
+sys1
 probability-proportional-to-size
+systematic-sampling-with-unequal-selection-probabilities
 exercises
 unit-selection-probability-in-srs
 all-possible-samples-for-srs-with-replacement

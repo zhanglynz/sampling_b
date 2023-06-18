@@ -117,7 +117,7 @@ large.
 
 ## Sampling in practice
 
-### Systematic sampling
+### Systematic sampling {#sys1}
 
 As mentioned before, population and sample sizes are $N$ and $n$, respectively.
 The ideas in systematic sampling can be described as follows.
@@ -218,13 +218,82 @@ pps_action <- function(size_vec, the_n)
 \sum_{i=1}^N \pi_i = n.
 (\#eq:pisum)
 \end{equation}
-Actually, \@ref(eq:pisum) is always hold if the sample size is fixed as $n$; below is a quick proof:
-\begin{align}
-\sum_{i=1}^N \pi_i &= \sum_{i=1}^N\sum_{i\in s}p(s) \notag\\
-&= n\sum_{s\in \Omega}p(s) \notag\\
-&= n\times 1 \notag\\
-&= n. \notag
-\end{align}
+Actually, \@ref(eq:pisum) is always hold if the sample size is fixed as $n$---see a proof in ???.
+<!-- below is a quick proof: -->
+<!-- \begin{align} -->
+<!-- \sum_{i=1}^N \pi_i &= \sum_{i=1}^N\sum_{i\in s}p(s) \notag\\ -->
+<!-- &= n\sum_{s\in \Omega}p(s) \notag\\ -->
+<!-- &= n\times 1 \notag\\ -->
+<!-- &= n. \notag -->
+<!-- \end{align} -->
+
+
+### Systematic sampling with unequal selection probabilities
+
+The settings are:
+
+- Population has $N$ units, and they are referred to as units 1, 2, $\ldots$, $N$.
+- Unit $i$ has selection probability $\pi_i$.
+
+Note that 
+$$
+\sum_{i=1}^N \pi_i = n,
+$$
+where $n$ is the sample size.
+
+In Section \@ref(sys1), we study systematic sampling, where the selection probabilities are
+all equal. An interesting question is: If the selection probabilities are not equal, how
+do we do systematic sampling? According to Antoine (2015) and Till`r knitr::asis_output("\u00E9")` (2010), an algorithm is as follows:
+
+1. Generate a random number from Uniform(0, 1), say it is $u$.
+1. Each unit in the population owns an interval,  i.e. unit 1 owns interval $(0,\ \pi_1)$; unit 2 owns interval $(\pi_1,\ \sum_{i=1}^2 \pi_i)$; $\cdots$; unit $N$ owns interval $(\sum_{i=1}^{N-1}\pi_i,\ n)$. Then, we find the intervals that contain $u$, or $u+1$, $\cdots$, or $u+(n-1)$, and the $n$ units that own these intervals are selected as a sample.
+
+The following is an R that implement the algorithm.
+```{r}
+sys_smpling <- function(sel_prob)
+{u <- runif(1, 0, 1)
+ cum_sel_prob <- cumsum(sel_prob)
+ m <- length(sel_prob)
+ s <- rep(0L, m)
+ for(i in 1:m)
+ {s[i] <- as.integer(u <= cum_sel_prob[i])
+  if(s[i] == 1L) u <- u + 1
+ }
+ return(s)
+}
+```
+
+The R function `UPsystematic()` in **`sampling`** package can do systematic sampling with 
+unequal probabilities. Below, we show an example to test `sys_smpling()` and `sampling::UPsystematic()`.
+```{r, warning = FALSE, message = FALSE}
+library(sampling)
+library(dplyr)
+library(knitr)
+
+# for evaluation
+eval_sampling <- function(it_nbr = 10000, selec_prob, the_func)
+{the_vec <- unlist(lapply(1:it_nbr, 
+                          function(x) which(the_func(selec_prob) == 1)))
+ as.data.frame(table(the_vec)) %>% 
+   mutate(relative_freq = Freq / it_nbr) %>% 
+   mutate(the_pi = selec_prob)
+}
+
+N <-  6
+n <-  3
+selc_prob <- 3 * (1:N)/sum(1:N) 
+
+# Simple example - sample selection 
+the_re_4_sys <- eval_sampling(selec_prob = selc_prob, 
+                              the_func = sys_smpling)
+kable(the_re_4_sys)
+the_re_4_UPmaxentropy <- eval_sampling(selec_prob = selc_prob, 
+                                       the_func = UPmaxentropy)
+kable(the_re_4_UPmaxentropy)
+```
+
+
+
 
 ## Exercises
 
