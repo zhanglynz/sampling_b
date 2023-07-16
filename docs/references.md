@@ -7,7 +7,7 @@
 
 **Lohr, S.** (2010). Sampling: Design and Analysis. Second Edition.
 
-**Lohr, S.** (2021). Sampling: Design and Analysis. Third Edition. Chapman and Hall/CRC.
+**Lohr, S.** (2022). Sampling: Design and Analysis. Third Edition. Chapman and Hall/CRC.
 
 
 **Tillé, Y (2010). Algorithms of Sampling With Equal or Unequal Probabilities. Euskal Estatistika Erakundea XXIII Seminario, November 2010 http://www.eustat.es/productosServicios/52.1_Unequal_prob_sampling.pdf

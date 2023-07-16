@@ -5,6 +5,9 @@ rmd_files: [
   "index.Rmd",
   "sample.Rmd",
   "sampling.Rmd",
+  "weighting.Rmd",
+  "estimation.Rmd",
+  "variance.Rmd",
   "references.Rmd"
   
   

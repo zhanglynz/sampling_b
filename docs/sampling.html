@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2023-06-18" />
+<meta name="date" content="2023-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="sample.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="weighting-system.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -158,6 +158,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.3" data-path="sampling.html"><a href="sampling.html#an-algorithm-for-drawing-an-srs"><i class="fa fa-check"></i><b>2.4.3</b> An algorithm for drawing an SRS</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="weighting-system.html"><a href="weighting-system.html"><i class="fa fa-check"></i><b>3</b> Weighting System</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="weighting-system.html"><a href="weighting-system.html#general-ideas-about-weighting"><i class="fa fa-check"></i><b>3.1</b> General ideas about weighting</a></li>
+<li class="chapter" data-level="3.2" data-path="weighting-system.html"><a href="weighting-system.html#the-three-stages-in-producing-final-weights"><i class="fa fa-check"></i><b>3.2</b> The three stages in producing final weights</a></li>
+<li class="chapter" data-level="3.3" data-path="weighting-system.html"><a href="weighting-system.html#calibration"><i class="fa fa-check"></i><b>3.3</b> Calibration</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estimation-with-survey-data.html"><a href="estimation-with-survey-data.html"><i class="fa fa-check"></i><b>4</b> Estimation With Survey Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="estimation-with-survey-data.html"><a href="estimation-with-survey-data.html#estimating-quantiles"><i class="fa fa-check"></i><b>4.1</b> Estimating quantiles</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sampling-errors.html"><a href="sampling-errors.html"><i class="fa fa-check"></i><b>5</b> Sampling Errors</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -599,10 +610,10 @@ the_pi
 1
 </td>
 <td style="text-align:right;">
-1422
+1352
 </td>
 <td style="text-align:right;">
-0.1422
+0.1352
 </td>
 <td style="text-align:right;">
 0.1428571
@@ -613,10 +624,10 @@ the_pi
 2
 </td>
 <td style="text-align:right;">
-2839
+2885
 </td>
 <td style="text-align:right;">
-0.2839
+0.2885
 </td>
 <td style="text-align:right;">
 0.2857143
@@ -627,10 +638,10 @@ the_pi
 3
 </td>
 <td style="text-align:right;">
-4326
+4338
 </td>
 <td style="text-align:right;">
-0.4326
+0.4338
 </td>
 <td style="text-align:right;">
 0.4285714
@@ -641,10 +652,10 @@ the_pi
 4
 </td>
 <td style="text-align:right;">
-5674
+5662
 </td>
 <td style="text-align:right;">
-0.5674
+0.5662
 </td>
 <td style="text-align:right;">
 0.5714286
@@ -655,10 +666,10 @@ the_pi
 5
 </td>
 <td style="text-align:right;">
-7161
+7115
 </td>
 <td style="text-align:right;">
-0.7161
+0.7115
 </td>
 <td style="text-align:right;">
 0.7142857
@@ -669,10 +680,10 @@ the_pi
 6
 </td>
 <td style="text-align:right;">
-8578
+8648
 </td>
 <td style="text-align:right;">
-0.8578
+0.8648
 </td>
 <td style="text-align:right;">
 0.8571429
@@ -706,10 +717,10 @@ the_pi
 1
 </td>
 <td style="text-align:right;">
-1429
+1502
 </td>
 <td style="text-align:right;">
-0.1429
+0.1502
 </td>
 <td style="text-align:right;">
 0.1428571
@@ -720,10 +731,10 @@ the_pi
 2
 </td>
 <td style="text-align:right;">
-2804
+2888
 </td>
 <td style="text-align:right;">
-0.2804
+0.2888
 </td>
 <td style="text-align:right;">
 0.2857143
@@ -734,10 +745,10 @@ the_pi
 3
 </td>
 <td style="text-align:right;">
-4301
+4220
 </td>
 <td style="text-align:right;">
-0.4301
+0.4220
 </td>
 <td style="text-align:right;">
 0.4285714
@@ -748,10 +759,10 @@ the_pi
 4
 </td>
 <td style="text-align:right;">
-5708
+5754
 </td>
 <td style="text-align:right;">
-0.5708
+0.5754
 </td>
 <td style="text-align:right;">
 0.5714286
@@ -762,10 +773,10 @@ the_pi
 5
 </td>
 <td style="text-align:right;">
-7200
+7074
 </td>
 <td style="text-align:right;">
-0.7200
+0.7074
 </td>
 <td style="text-align:right;">
 0.7142857
@@ -776,10 +787,10 @@ the_pi
 6
 </td>
 <td style="text-align:right;">
-8558
+8562
 </td>
 <td style="text-align:right;">
-0.8558
+0.8562
 </td>
 <td style="text-align:right;">
 0.8571429
@@ -833,7 +844,7 @@ which is <span class="math inline">\(1/{N \choose n}\)</span>, of being selected
         </div>
       </div>
 <a href="sample.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="weighting-system.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

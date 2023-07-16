@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2023-06-18" />
+<meta name="date" content="2023-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,6 +158,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.3" data-path="sampling.html"><a href="sampling.html#an-algorithm-for-drawing-an-srs"><i class="fa fa-check"></i><b>2.4.3</b> An algorithm for drawing an SRS</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="weighting-system.html"><a href="weighting-system.html"><i class="fa fa-check"></i><b>3</b> Weighting System</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="weighting-system.html"><a href="weighting-system.html#general-ideas-about-weighting"><i class="fa fa-check"></i><b>3.1</b> General ideas about weighting</a></li>
+<li class="chapter" data-level="3.2" data-path="weighting-system.html"><a href="weighting-system.html#the-three-stages-in-producing-final-weights"><i class="fa fa-check"></i><b>3.2</b> The three stages in producing final weights</a></li>
+<li class="chapter" data-level="3.3" data-path="weighting-system.html"><a href="weighting-system.html#calibration"><i class="fa fa-check"></i><b>3.3</b> Calibration</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estimation-with-survey-data.html"><a href="estimation-with-survey-data.html"><i class="fa fa-check"></i><b>4</b> Estimation With Survey Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="estimation-with-survey-data.html"><a href="estimation-with-survey-data.html#estimating-quantiles"><i class="fa fa-check"></i><b>4.1</b> Estimating quantiles</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="sampling-errors.html"><a href="sampling-errors.html"><i class="fa fa-check"></i><b>5</b> Sampling Errors</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -180,7 +191,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">1</span> Understanding Sample<a href="sample.html#sample" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="what-is-a-sample" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> What is a sample?<a href="sample.html#what-is-a-sample" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The question in the title is easy to answer: <strong>A sample is a subset of a population.</strong> Now, what is a population? Well, a population is defined in the planning stage of a study and is determined by study objectives.We can visualize a population using the following table:</p>
+<p>The question in the section title is easy to answer: <strong>A sample is a subset of a population.</strong> Now, what is a population? Well, a population is defined in the planning stage of a study and is determined by study objectives.We can visualize a population using the following table:</p>
 <table>
 <thead>
 <tr class="header">
@@ -222,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>So essentially <strong>a population is a list of members/items with associated characteristic variables that are of interest to the study.</strong> However, when it comes to the fine details in the population concept, things are kind of complicated. Following Lohr (2019), we distinguish three populations, namely, <em>target population</em>, <em>sampling frame population</em> and <em>sampled population</em>; see Figure 1.</p>
+<p>So essentially <strong>a population is a list of members/items with associated characteristic variables that are of interest to the study.</strong> However, when it comes to the fine details in the population concept, things are kind of complicated. Following Lohr (2022), we distinguish three populations, namely, <em>target population</em>, <em>sampling frame population</em> and <em>sampled population</em>; see Figure 1.</p>
 <div class="figure">
 <img src="figs/population_diagram.png" alt="" />
 <p class="caption">Figure 1: Three-population diagram. (Created by using R with some code borrowed from Peter Ellis, <a href="http://freerangestats.info/blog/2015/08/30/starting-in-datascience" class="uri">http://freerangestats.info/blog/2015/08/30/starting-in-datascience</a>)</p>
@@ -238,14 +249,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="what-is-a-good-sample" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> What is a good sample?<a href="sample.html#what-is-a-good-sample" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>According to Lohr (2019), “A good sample will be representative in the sense that characteristics of interest in the population can be estimated from the sample with a known degree of accuracy.” So a good sample should meet the following requirements:</p>
+<p>According to Lohr (2010), “A good sample will be representative in the sense that characteristics of interest in the population can be estimated from the sample with a known degree of accuracy.” So a good sample should meet the following requirements:</p>
 <ol style="list-style-type: decimal">
 <li>No serious over and under <em>coverage issues</em>, that is, the sampled population should be sufficiently close to the target population.</li>
 <li>No serious <em>selection bias issue</em>.</li>
 <li><em>Measurement and processing errors</em> are negligible.</li>
 </ol>
 <p>If the “soup” (a metaphor for the population) is not well mixed before we take a sample from it, then the sample cannot be good. Even if the “soup” is well mixed, selection bias may still happen because of e.g. <em>biased sampling frame</em> or <em>biased response</em>. By a biased sampling frame, we mean for whatever reasons the sampling frame excludes a subset of the population, resulting discrepancy between it and the target population. That’s why we are concerned about coverage issues—under coverage may cause serious selection bias. By <em>biased response</em>, we mean the responding sample is not representative. At survey operational level, we monitor <em>response rate</em>. If response rate is low, we worry that we may get biased response. If response rate is very low, say 20% or even lower, then the sample is quite likely suffering response bias.</p>
-<p>We omit details about measurement/processing errors here and refer readers to Lohr (2019), but we want to emphasize a point: Sampling survey is a very practical thing.</p>
+<p>We omit details about measurement/processing errors here and refer readers to Lohr (2010), but we want to emphasize a point: Sampling survey is a very practical thing.</p>
 </div>
 <div id="on-sampling-error" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> On sampling error<a href="sample.html#on-sampling-error" class="anchor-section" aria-label="Anchor link to header"></a></h2>

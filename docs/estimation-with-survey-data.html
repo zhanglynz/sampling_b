@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Uderstanding Survey Sampling</title>
-  <meta name="description" content="Page not found | Uderstanding Survey Sampling" />
+  <title>4 Estimation With Survey Data | Uderstanding Survey Sampling</title>
+  <meta name="description" content="4 Estimation With Survey Data | Uderstanding Survey Sampling" />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Uderstanding Survey Sampling" />
+  <meta property="og:title" content="4 Estimation With Survey Data | Uderstanding Survey Sampling" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Uderstanding Survey Sampling" />
+  <meta name="twitter:title" content="4 Estimation With Survey Data | Uderstanding Survey Sampling" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="weighting-system.html"/>
+<link rel="next" href="sampling-errors.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -187,19 +187,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="estimation-with-survey-data" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Estimation With Survey Data<a href="estimation-with-survey-data.html#estimation-with-survey-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>By survey data, we mean in the data table one column is for the variable of
+interest <span class="math inline">\(Y\)</span> and another column is for weights <span class="math inline">\(W\)</span>. Let
+<span class="math display">\[
+Y=(y_1, y_2, \ldots, y_n)^T,
+\]</span>
+and
+<span class="math display">\[
+W=(w_1, w_2, \ldots, w_n)^T.
+\]</span></p>
+<div id="estimating-quantiles" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Estimating quantiles<a href="estimation-with-survey-data.html#estimating-quantiles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suppose we want to estimate the <span class="math inline">\(10th\)</span>, <span class="math inline">\(50th\)</span> and <span class="math inline">\(90th\)</span> percentiles. One idea is as follows:</p>
+<ol style="list-style-type: decimal">
+<li>Turn <span class="math inline">\((Y, W)\)</span> as a discrete distribution by normalizing the weights, that is,
+<span class="math display">\[
+p_i = \frac{w_i}{\sum_{i=1}^n w_i}, \ \hbox{for}\ i=1, \ldots, n.
+\]</span></li>
+<li>Take <span class="math inline">\(N\)</span> (e.g. <span class="math inline">\(N = 10^5\)</span>) i.i.d. values from the distribution
+<span class="math display">\[
+\left(
+\begin{array}{cccc}
+y_1 &amp; y_2 &amp; \cdots &amp; y_n\\
+p_1 &amp; p_2 &amp; \cdots &amp; p_n
+\end{array}
+\right).
+\]</span></li>
+<li>Using the empirical distribution formed by the i.i.d. values to estimate quantiles.</li>
+</ol>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="weighting-system.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sampling-errors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Uderstanding Survey Sampling</title>
-  <meta name="description" content="Page not found | Uderstanding Survey Sampling" />
+  <title>3 Weighting System | Uderstanding Survey Sampling</title>
+  <meta name="description" content="3 Weighting System | Uderstanding Survey Sampling" />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Uderstanding Survey Sampling" />
+  <meta property="og:title" content="3 Weighting System | Uderstanding Survey Sampling" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Uderstanding Survey Sampling" />
+  <meta name="twitter:title" content="3 Weighting System | Uderstanding Survey Sampling" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="sampling.html"/>
+<link rel="next" href="estimation-with-survey-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -187,19 +187,210 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="weighting-system" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Weighting System<a href="weighting-system.html#weighting-system" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The main reference for this chapter is Haziza and Beaumont (2017).</p>
+<div id="general-ideas-about-weighting" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> General ideas about weighting<a href="weighting-system.html#general-ideas-about-weighting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Since a sample is a part/portion of a population, each item/individual in the sample represents itself plus others in the population; that is, a weight <span class="math inline">\(w_i\)</span> should be attached to the item/individual <span class="math inline">\(i\)</span>. It’s obvious that</p>
+<p><span class="math display">\[w_i&gt;0\]</span>
+or sometimes
+<span class="math display">\[
+w_i \ge 1.
+\]</span></p>
+<p>Weights are important because they are used in estimation of population parameters. Given the data, i.e. variable values and weights</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(y\)</span></th>
+<th align="center">weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(y_1\)</span></td>
+<td align="center"><span class="math inline">\(w_1\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(y_2\)</span></td>
+<td align="center"><span class="math inline">\(w_2\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+<td align="center"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(y_n\)</span></td>
+<td align="center"><span class="math inline">\(w_n\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>we have estimates of the total and mean
+<span class="math display">\[\begin{align}
+\hat{t} &amp;= \sum_{i=1}^n w_i y_i,\\
+\hat{\bar{y}} &amp;= \frac{\sum_{i=1}^n w_i y_i}{\sum_{i=1}^n w_i}.
+\end{align}\]</span>
+In the literature, the estimator <span class="math inline">\(\hat{t}\)</span> is called the Horvitz-Thompson (HT) estimator.</p>
+</div>
+<div id="the-three-stages-in-producing-final-weights" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> The three stages in producing final weights<a href="weighting-system.html#the-three-stages-in-producing-final-weights" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Stage 1: design weights
+<span class="math display">\[
+d_i = \frac{1}{\pi_i},
+\]</span>
+where <span class="math inline">\(\pi_i\)</span> is the selection/inclusion probability for item/individual <span class="math inline">\(i\)</span>.</p></li>
+<li><p>Stage 2: weights adjusted for non-response. We use <span class="math inline">\(\tilde{d}_i\)</span> to denote the adjusted weight for item/individual <span class="math inline">\(i\)</span>.</p></li>
+<li><p>Stage 3: final weights. We use <span class="math inline">\(w_i\)</span> to denote the final weight for item/individual <span class="math inline">\(i\)</span>.</p></li>
+</ul>
+</div>
+<div id="calibration" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Calibration<a href="weighting-system.html#calibration" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Notation</strong></p>
+<ul>
+<li>We denote a population by <span class="math inline">\(U\)</span>.</li>
+<li>A sample is denoted by <span class="math inline">\(S\)</span>.</li>
+<li>Design weights: <span class="math inline">\(\{d_k,\ k\in S\}\)</span>.</li>
+<li>Final weights: <span class="math inline">\(\{w_k,\ k \in S\}\)</span>.</li>
+</ul>
+<p><strong>What does calibration mean?</strong></p>
+<p>Roughly speaking, calibration is to adjust from the design weights <span class="math inline">\(\{d_i\}\)</span> to final weights <span class="math inline">\(\{w_i\}\)</span> such that</p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(\{w_i\}\)</span> are as close to <span class="math inline">\(\{d_i\}\)</span> as possible;</li>
+<li><span class="math inline">\(\{w_i\}\)</span> satisfy calibration constraints.</li>
+</ol>
+<p>We will explain the exact meanings of a. and b. shortly.</p>
+<p><strong>Why do we do calibration?</strong></p>
+<p>According to Haziza and Beaumont (2017):</p>
+<blockquote>
+<p>The reasons for using calibration are three-fold:</p>
+</blockquote>
+<blockquote>
+<ol style="list-style-type: lower-roman">
+<li>to force consistency of certain survey estimates to known population quantities;</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2" style="list-style-type: lower-roman">
+<li>to reduce nonsampling errors such as nonresponse errors and coverage errors;</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3" style="list-style-type: lower-roman">
+<li>to improve the precision of estimates.</li>
+</ol>
+</blockquote>
+<p><strong>How do we do calibration?</strong></p>
+<p>It’s clear that calibration is an optimization problem, where the <em>decision variables</em> are <span class="math inline">\(\{w_i\}\)</span>. The <em>objective function</em> is
+<span class="math display">\[
+\sum_{k\in S} d_k\frac{G(w_k/d_k)}{q_k},
+\]</span>
+where <span class="math inline">\(G(\cdot)\)</span> is referred as a <em>distance function</em>—it measures the distance between <span class="math inline">\(\{w_i\}\)</span> and <span class="math inline">\(\{d_i\}\)</span>, “<span class="math inline">\(q_k\)</span> is a scale factor indicating the importance of unit <span class="math inline">\(k\)</span> in the distance calculation. In most practical situations <span class="math inline">\(q_k\)</span> is set to 1.” We assume that: a) <span class="math inline">\(G(w_k/d_k)\ge 0\)</span>; b) <span class="math inline">\(G(1)=0\)</span>; c) <span class="math inline">\(G(\cdot)\)</span> is differentiable; d) <span class="math inline">\(G(\cdot)\)</span> is strictly convex (i.e. the second derivative of <span class="math inline">\(G\)</span> is positive.)</p>
+<p>The constraints are
+<span class="math display">\[
+\sum_{k \in S} w_k \mathbf x_k = \mathbf t_{\mathbf x},
+\]</span>
+where
+<span class="math display">\[
+\mathbf x_k = (x_{1k}, \ldots, x_{Jk}),
+\]</span>
+and
+<span class="math display">\[
+\mathbf t_{\mathbf x}=(t_{x_1}, \ldots, t_{x_J}),
+\]</span>
+with
+<span class="math display">\[
+t_{x_j}=\sum_{k \in U} x_{jk}.
+\]</span></p>
+<p><strong>Example 1</strong> Suppose that the population size <span class="math inline">\(N\)</span> is known. Setting
+<span class="math display">\[
+x_k =1\ \hbox{and}\ q_k=q\ \hbox{for}\ k\in S,
+\]</span>
+we want to minimize
+<span class="math display">\[
+f(w_k;\ k\in S)=\sum_{k \in S}d_k G(w_k/d_k),
+\]</span>
+subject to
+<span class="math display">\[
+\sum_{k \in S}w_k= N.
+\]</span>
+It’s easy to derive that
+<span class="math display">\[
+w_k = N\frac{d_k}{\sum_{i \in S} d_i}.
+\]</span>
+In this case, the calibrated total estimator is
+<span class="math display">\[\begin{align}
+\hat{t}_{y,\ C} &amp; = \sum_{k \in S}w_k y_k\\
+&amp;= \sum_{k \in S} N \frac{d_k}{\sum_{i \in S} d_i} y_k\\
+&amp;= N\frac{\hat{t}_{y,\ \pi}}{\hat{N}_{\pi}}.
+\end{align}\]</span></p>
+<p><strong>Example 2</strong> Suppose <span class="math inline">\(x_k\)</span> is available for all <span class="math inline">\(k \in S\)</span> and it’s known that <span class="math inline">\(\sum_{k \in U} x_k= t_x\)</span>. Setting <span class="math inline">\(q_k=x_k^{-1}\)</span>, we want to minimize
+<span class="math display">\[
+f(w_k;\ k\in S)=\sum_{k\in S}d_k G(w_k/d_k) x_k,
+\]</span>
+subject to
+<span class="math display">\[
+\sum_{k\in S}w_k x_k=t_x.
+\]</span>
+We can derive that
+<span class="math display">\[
+w_k = d_k\frac{t_x}{\sum_{k \in S}d_k x_k}=d_k\frac{t_x}{\hat{t}_{x,\ \pi}}.
+\]</span>
+In this case, the calibrated total estimator is
+<span class="math display">\[
+\hat{t}_{y,\ C}=\frac{\hat{t}_{y,\ \pi}}{\hat{t}_{x,\pi }}t_x,
+\]</span>
+which is the so-called <em>ratio estimator</em>.</p>
+<p><strong>Example 3</strong> Let <span class="math inline">\(N_M\)</span> and <span class="math inline">\(N_F\)</span> denote the numbers of males and females, respectively, in the population. Assume that <span class="math inline">\(N_M\)</span> and <span class="math inline">\(N_F\)</span> are known. Divide <span class="math inline">\(S\)</span> into <span class="math inline">\(M\)</span> and <span class="math inline">\(F\)</span>, where <span class="math inline">\(M\)</span> is the set of males and <span class="math inline">\(F\)</span> is the set of females. We want to minimize
+<span class="math display">\[
+f(w_k; k\in S) = \sum_{k \in M}d_k G(w_k/d_k)q_M + \sum_{k \in F}d_k G(w_k/d_k)q_F,
+\]</span>
+subject to
+<span class="math display">\[
+\sum_{k \in M}w_k= N_M\ \hbox{and}\ \sum_{k \in F}w_k=N_F.
+\]</span>
+It’s easy to show that
+<span class="math display">\[
+w_k = \left\{
+\begin{array}{cl}
+d_k\frac{N_M}{\sum_{k \in M}d_k}, &amp; \hbox{if}\ k\in M\\
+d_k\frac{N_F}{\sum_{k \in F}d_k}, &amp; \hbox{if}\ k\in F.
+\end{array}
+\right.
+\]</span>
+In this case, the calibrated total estimator is
+<span class="math display">\[
+\hat{t}_{y,\ c}=\frac{N_M}{\hat{N}_{M,\ \pi}}\hat{t}_{My,\ \pi} + \frac{N_F}{\hat{N}_{F,\ \pi}}\hat{t}_{Fy,\ \pi},
+\]</span>
+where
+<span class="math display">\[\begin{align}
+\hat{N}_{M,\ \pi}&amp;=\sum_{k\in M} d_k,\\
+\hat{N}_{F,\ \pi}&amp;=\sum_{k\in F} d_k,\\
+\hat{t}_{My,\ \pi}&amp;=\sum_{k \in M}d_k y_k,\\
+\hat{t}_{Fy,\ \pi}&amp;=\sum_{k \in F}d_k y_k.
+\end{align}\]</span>
+Notice that here we are talking about the so-called <em>post-stratified estimator</em>.</p>
+<p><strong>Commonly used distance functions</strong></p>
+<!-- The output files for weighting system should comprise the following -->
+<!-- - **weighting_system_main,** which is a table that contains -->
+<!-- columns `unit_ID`, `selection_wgt`, `adj_wgt_4_nonresponse` (optional), `final_wgt` and `jk_rep_wgt_1`, ..., `jk_rep_wgt_100`. -->
+<!-- - **benchmark tables**  -->
+<!-- ## Selection weight -->
+<!-- Selection weights are provided at the sampling design stage. The formula is: For unit $i$, its -->
+<!-- $$ -->
+<!-- \text{SelectionWgt}=\frac{1}{\text{inclusion probability of unit}\ i}. -->
+<!-- $$ -->
+<!-- ## Reweighting (or weighting adjustment) -->
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="sampling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estimation-with-survey-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

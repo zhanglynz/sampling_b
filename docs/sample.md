@@ -2,7 +2,7 @@
 
 ## What is a sample?
 
-The question in the title is easy to answer: **A sample is a subset of a population.** Now, what is a population? Well, a population is defined in the planning stage of a study and is determined by study objectives.We can visualize a population using the following table:
+The question in the section title is easy to answer: **A sample is a subset of a population.** Now, what is a population? Well, a population is defined in the planning stage of a study and is determined by study objectives.We can visualize a population using the following table:
 
 Member/Item ID | Var$_1$ | Var$_2$ | $\cdots$ | Var$_m$
 :---------|:-------|:-------|:----------|:-------
@@ -11,7 +11,7 @@ Member/Item ID | Var$_1$ | Var$_2$ | $\cdots$ | Var$_m$
  $\vdots$ |        |        |           |
  $N$      |        |        |           |
 
-So essentially **a population is a list of members/items with associated characteristic variables that are of interest to the study.** However, when it comes to the fine details in the population concept, things are kind of complicated. Following Lohr (2019), we distinguish three populations, namely, *target population*, *sampling frame population* and *sampled population*; see Figure 1.
+So essentially **a population is a list of members/items with associated characteristic variables that are of interest to the study.** However, when it comes to the fine details in the population concept, things are kind of complicated. Following Lohr (2022), we distinguish three populations, namely, *target population*, *sampling frame population* and *sampled population*; see Figure 1.
 
 ![Figure 1: Three-population diagram. (Created by using R with some code borrowed from Peter Ellis, http://freerangestats.info/blog/2015/08/30/starting-in-datascience)](./figs/population_diagram.png) 
 
@@ -26,7 +26,7 @@ Let's have an example.
 
 ## What is a good sample?
 
-According to Lohr (2019), "A good sample will be representative in the sense that characteristics of interest in the population can be estimated from the sample with a known degree of accuracy." So a good sample should meet the following requirements:
+According to Lohr (2010), "A good sample will be representative in the sense that characteristics of interest in the population can be estimated from the sample with a known degree of accuracy." So a good sample should meet the following requirements:
 
 1. No serious over and under *coverage issues*, that is, the sampled population should be sufficiently close to the target population.
 1. No serious *selection bias issue*.
@@ -34,7 +34,7 @@ According to Lohr (2019), "A good sample will be representative in the sense tha
 
 If the "soup" (a metaphor for the population) is not well mixed before we take a sample from it, then the sample cannot be good. Even if the "soup" is well mixed, selection bias may still happen because of e.g. *biased sampling frame* or *biased response*. By a biased sampling frame, we mean for whatever reasons the sampling frame excludes a subset of the population, resulting discrepancy between it and the target population. That's why we are concerned about coverage issues---under coverage may cause serious selection bias. By *biased response*, we mean the responding sample is not representative. At survey operational level, we monitor *response rate*. If response rate is low, we worry that we may get biased response. If response rate is very low, say 20% or even lower, then the sample is quite likely suffering response bias.
 
-We omit details about measurement/processing errors here and refer readers to Lohr (2019), but we want to emphasize a point: Sampling survey is a very practical thing.
+We omit details about measurement/processing errors here and refer readers to Lohr (2010), but we want to emphasize a point: Sampling survey is a very practical thing.
 
 
 ## On sampling error
