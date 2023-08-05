@@ -83,7 +83,7 @@ $$
 $$ 
 
 - **Poisson sampling:** 
-The setting is the same as Bernoulli sampling except that the
+The setting is the same as that in Bernoulli sampling except that the
 selection probabilities for units are not all equal. The distribution of the sample size is
 called *Poisson binomial distribution*.
 - **Conditional Poisson sampling:** 
@@ -123,9 +123,9 @@ As mentioned before, population and sample sizes are $N$ and $n$, respectively.
 The ideas in systematic sampling can be described as follows.
 
 1. The units in the population are put in some order, say, units $1,\ 2,\ \ldots,\ N$.
-1. Randomly choose a unit as the *start*, e.g. start is unit $s$, where $1\le s\le N$.
+1. Randomly choose a unit as the *start*, e.g. start is unit $a$, where $1\le a\le N$.
 1. The *jump number* is $k$, which is the integer that is the closest to $N/n$. Then the $n$ units
-$$s;\ (s+k)\ \hbox{mod}\ N;\ \ldots;\  (s+(n-1)k)\ \hbox{mod}\ N$$
+$$a;\ (a+k)\ \hbox{mod}\ N;\ \ldots;\  (a+(n-1)k)\ \hbox{mod}\ N$$
 are chosen as the sample. NB: If the result of the mod operation is 0, then unit N is chosen into sample.
 
 **R program:**
