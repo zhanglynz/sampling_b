@@ -21,5 +21,7 @@ general-ideas-about-weighting
 the-three-stages-in-producing-final-weights
 calibration
 estimation-with-survey-data
+estimating-the-total
+estimating-the-mean
 estimating-quantiles
 sampling-errors

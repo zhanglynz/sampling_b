@@ -10,6 +10,20 @@ $$
 W=(w_1, w_2, \ldots, w_n)^T.
 $$
 
+## Estimating the total
+
+This is the so-called HT (Horvitz and Thompson) estimator
+$$
+\hat{T}= \sum_{i=1}^n w_i y_i.
+$$
+
+## Estimating the mean
+
+The H`r knitr::asis_output("\u00E1")`jek estimator
+$$
+\hat{\mu}= \frac{\sum_{i=1}^n w_i y_i}{\sum_{i=1}^n w_i}.
+$$
+
 ## Estimating quantiles
 
 Suppose we want to estimate the $10th$, $50th$ and $90th$ percentiles. One idea is as follows:

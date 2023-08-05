@@ -166,7 +166,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="estimation-with-survey-data.html"><a href="estimation-with-survey-data.html"><i class="fa fa-check"></i><b>4</b> Estimation With Survey Data</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="estimation-with-survey-data.html"><a href="estimation-with-survey-data.html#estimating-quantiles"><i class="fa fa-check"></i><b>4.1</b> Estimating quantiles</a></li>
+<li class="chapter" data-level="4.1" data-path="estimation-with-survey-data.html"><a href="estimation-with-survey-data.html#estimating-the-total"><i class="fa fa-check"></i><b>4.1</b> Estimating the total</a></li>
+<li class="chapter" data-level="4.2" data-path="estimation-with-survey-data.html"><a href="estimation-with-survey-data.html#estimating-the-mean"><i class="fa fa-check"></i><b>4.2</b> Estimating the mean</a></li>
+<li class="chapter" data-level="4.3" data-path="estimation-with-survey-data.html"><a href="estimation-with-survey-data.html#estimating-quantiles"><i class="fa fa-check"></i><b>4.3</b> Estimating quantiles</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="sampling-errors.html"><a href="sampling-errors.html"><i class="fa fa-check"></i><b>5</b> Sampling Errors</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -198,8 +200,22 @@ and
 <span class="math display">\[
 W=(w_1, w_2, \ldots, w_n)^T.
 \]</span></p>
-<div id="estimating-quantiles" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Estimating quantiles<a href="estimation-with-survey-data.html#estimating-quantiles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="estimating-the-total" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Estimating the total<a href="estimation-with-survey-data.html#estimating-the-total" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This is the so-called HT (Horvitz and Thompson) estimator
+<span class="math display">\[
+\hat{T}= \sum_{i=1}^n w_i y_i.
+\]</span></p>
+</div>
+<div id="estimating-the-mean" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Estimating the mean<a href="estimation-with-survey-data.html#estimating-the-mean" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Hájek estimator
+<span class="math display">\[
+\hat{\mu}= \frac{\sum_{i=1}^n w_i y_i}{\sum_{i=1}^n w_i}.
+\]</span></p>
+</div>
+<div id="estimating-quantiles" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Estimating quantiles<a href="estimation-with-survey-data.html#estimating-quantiles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Suppose we want to estimate the <span class="math inline">\(10th\)</span>, <span class="math inline">\(50th\)</span> and <span class="math inline">\(90th\)</span> percentiles. One idea is as follows:</p>
 <ol style="list-style-type: decimal">
 <li>Turn <span class="math inline">\((Y, W)\)</span> as a discrete distribution by normalizing the weights, that is,

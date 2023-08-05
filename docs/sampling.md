@@ -361,38 +361,38 @@ kable(the_re_4_sys)
 <tbody>
   <tr>
    <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1438 </td>
-   <td style="text-align:right;"> 0.1438 </td>
+   <td style="text-align:right;"> 1389 </td>
+   <td style="text-align:right;"> 0.1389 </td>
    <td style="text-align:right;"> 0.1428571 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 2903 </td>
-   <td style="text-align:right;"> 0.2903 </td>
+   <td style="text-align:right;"> 2881 </td>
+   <td style="text-align:right;"> 0.2881 </td>
    <td style="text-align:right;"> 0.2857143 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 4220 </td>
-   <td style="text-align:right;"> 0.4220 </td>
+   <td style="text-align:right;"> 4295 </td>
+   <td style="text-align:right;"> 0.4295 </td>
    <td style="text-align:right;"> 0.4285714 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 5780 </td>
-   <td style="text-align:right;"> 0.5780 </td>
+   <td style="text-align:right;"> 5705 </td>
+   <td style="text-align:right;"> 0.5705 </td>
    <td style="text-align:right;"> 0.5714286 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 7097 </td>
-   <td style="text-align:right;"> 0.7097 </td>
+   <td style="text-align:right;"> 7119 </td>
+   <td style="text-align:right;"> 0.7119 </td>
    <td style="text-align:right;"> 0.7142857 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 8562 </td>
-   <td style="text-align:right;"> 0.8562 </td>
+   <td style="text-align:right;"> 8611 </td>
+   <td style="text-align:right;"> 0.8611 </td>
    <td style="text-align:right;"> 0.8571429 </td>
   </tr>
 </tbody>
@@ -416,38 +416,38 @@ kable(the_re_4_UPmaxentropy)
 <tbody>
   <tr>
    <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1445 </td>
-   <td style="text-align:right;"> 0.1445 </td>
+   <td style="text-align:right;"> 1438 </td>
+   <td style="text-align:right;"> 0.1438 </td>
    <td style="text-align:right;"> 0.1428571 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 2866 </td>
-   <td style="text-align:right;"> 0.2866 </td>
+   <td style="text-align:right;"> 2851 </td>
+   <td style="text-align:right;"> 0.2851 </td>
    <td style="text-align:right;"> 0.2857143 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 4280 </td>
-   <td style="text-align:right;"> 0.4280 </td>
+   <td style="text-align:right;"> 4336 </td>
+   <td style="text-align:right;"> 0.4336 </td>
    <td style="text-align:right;"> 0.4285714 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 5659 </td>
-   <td style="text-align:right;"> 0.5659 </td>
+   <td style="text-align:right;"> 5766 </td>
+   <td style="text-align:right;"> 0.5766 </td>
    <td style="text-align:right;"> 0.5714286 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 7132 </td>
-   <td style="text-align:right;"> 0.7132 </td>
+   <td style="text-align:right;"> 7055 </td>
+   <td style="text-align:right;"> 0.7055 </td>
    <td style="text-align:right;"> 0.7142857 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 8618 </td>
-   <td style="text-align:right;"> 0.8618 </td>
+   <td style="text-align:right;"> 8554 </td>
+   <td style="text-align:right;"> 0.8554 </td>
    <td style="text-align:right;"> 0.8571429 </td>
   </tr>
 </tbody>
