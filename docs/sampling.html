@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2023-07-16" />
+<meta name="date" content="2023-08-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -270,7 +270,7 @@ Binomial<span class="math inline">\((N, p)\)</span>. The mean of the sample size
 \]</span></p>
 <ul>
 <li><strong>Poisson sampling:</strong>
-The setting is the same as Bernoulli sampling except that the
+The setting is the same as that in Bernoulli sampling except that the
 selection probabilities for units are not all equal. The distribution of the sample size is
 called <em>Poisson binomial distribution</em>.</li>
 <li><strong>Conditional Poisson sampling:</strong>
@@ -309,10 +309,10 @@ large.</p>
 The ideas in systematic sampling can be described as follows.</p>
 <ol style="list-style-type: decimal">
 <li>The units in the population are put in some order, say, units <span class="math inline">\(1,\ 2,\ \ldots,\ N\)</span>.</li>
-<li>Randomly choose a unit as the <em>start</em>, e.g. start is unit <span class="math inline">\(s\)</span>, where <span class="math inline">\(1\le s\le N\)</span>.</li>
+<li>Randomly choose a unit as the <em>start</em>, e.g. start is unit <span class="math inline">\(a\)</span>, where <span class="math inline">\(1\le a\le N\)</span>.</li>
 <li>The <em>jump number</em> is <span class="math inline">\(k\)</span>, which is the integer that is the closest to <span class="math inline">\(N/n\)</span>. Then the <span class="math inline">\(n\)</span> units
-<span class="math display">\[s;\ (s+k)\ \hbox{mod}\ N;\ \ldots;\  (s+(n-1)k)\ \hbox{mod}\ N\]</span>
-are chosen as the sample. NB: If the result of the mod operation is 0, then unit N is chosen into sample.</li>
+<span class="math display">\[a;\ (a+k)\ \hbox{mod}\ N;\ \ldots;\  (a+(n-1)k)\ \hbox{mod}\ N\]</span>
+are chosen as the sample. NB: If the result of the mod operation is 0, then unit <span class="math inline">\(N\)</span> is chosen into sample.</li>
 </ol>
 <p><strong>R program:</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="sampling.html#cb1-1" aria-hidden="true" tabindex="-1"></a>sys_sampling <span class="ot">&lt;-</span> <span class="cf">function</span>(N, n, <span class="at">start =</span> <span class="cn">NULL</span>, <span class="at">indi_output =</span> <span class="cn">FALSE</span>)</span>
@@ -517,7 +517,7 @@ where <span class="math inline">\(n\)</span> and <span class="math inline">\(N\)
 <span id="cb3-14"><a href="sampling.html#cb3-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><strong>Remarks:</strong></p>
 <ol style="list-style-type: decimal">
-<li><p>If some of <span class="math inline">\(\pi_i\)</span> resulted from <a href="sampling.html#eq:pi">(2.1)</a> are greater than 1, then we set them as 1, and recalculate the rest <span class="math inline">\(\pi_i\)</span>’s. The iteration process finishes until no <span class="math inline">\(\pi\)</span>’s are greater than 1. See <em>PPS action R program</em> in the Appendix part.</p></li>
+<li><p>If some of <span class="math inline">\(\pi_i\)</span> resulted from <a href="sampling.html#eq:pi">(2.1)</a> are greater than 1, then we set them as 1, and recalculate the rest <span class="math inline">\(\pi_i\)</span>’s. The iteration process finishes until no <span class="math inline">\(\pi\)</span>’s are greater than 1.</p></li>
 <li><p>It is easy to see from <a href="sampling.html#eq:pi">(2.1)</a> that
 <span class="math display" id="eq:pisum">\[\begin{equation}
 \sum_{i=1}^N \pi_i = n.
@@ -610,10 +610,10 @@ the_pi
 1
 </td>
 <td style="text-align:right;">
-1352
+1438
 </td>
 <td style="text-align:right;">
-0.1352
+0.1438
 </td>
 <td style="text-align:right;">
 0.1428571
@@ -624,10 +624,10 @@ the_pi
 2
 </td>
 <td style="text-align:right;">
-2885
+2903
 </td>
 <td style="text-align:right;">
-0.2885
+0.2903
 </td>
 <td style="text-align:right;">
 0.2857143
@@ -638,10 +638,10 @@ the_pi
 3
 </td>
 <td style="text-align:right;">
-4338
+4220
 </td>
 <td style="text-align:right;">
-0.4338
+0.4220
 </td>
 <td style="text-align:right;">
 0.4285714
@@ -652,10 +652,10 @@ the_pi
 4
 </td>
 <td style="text-align:right;">
-5662
+5780
 </td>
 <td style="text-align:right;">
-0.5662
+0.5780
 </td>
 <td style="text-align:right;">
 0.5714286
@@ -666,10 +666,10 @@ the_pi
 5
 </td>
 <td style="text-align:right;">
-7115
+7097
 </td>
 <td style="text-align:right;">
-0.7115
+0.7097
 </td>
 <td style="text-align:right;">
 0.7142857
@@ -680,10 +680,10 @@ the_pi
 6
 </td>
 <td style="text-align:right;">
-8648
+8562
 </td>
 <td style="text-align:right;">
-0.8648
+0.8562
 </td>
 <td style="text-align:right;">
 0.8571429
@@ -717,10 +717,10 @@ the_pi
 1
 </td>
 <td style="text-align:right;">
-1502
+1445
 </td>
 <td style="text-align:right;">
-0.1502
+0.1445
 </td>
 <td style="text-align:right;">
 0.1428571
@@ -731,10 +731,10 @@ the_pi
 2
 </td>
 <td style="text-align:right;">
-2888
+2866
 </td>
 <td style="text-align:right;">
-0.2888
+0.2866
 </td>
 <td style="text-align:right;">
 0.2857143
@@ -745,10 +745,10 @@ the_pi
 3
 </td>
 <td style="text-align:right;">
-4220
+4280
 </td>
 <td style="text-align:right;">
-0.4220
+0.4280
 </td>
 <td style="text-align:right;">
 0.4285714
@@ -759,10 +759,10 @@ the_pi
 4
 </td>
 <td style="text-align:right;">
-5754
+5659
 </td>
 <td style="text-align:right;">
-0.5754
+0.5659
 </td>
 <td style="text-align:right;">
 0.5714286
@@ -773,10 +773,10 @@ the_pi
 5
 </td>
 <td style="text-align:right;">
-7074
+7132
 </td>
 <td style="text-align:right;">
-0.7074
+0.7132
 </td>
 <td style="text-align:right;">
 0.7142857
@@ -787,10 +787,10 @@ the_pi
 6
 </td>
 <td style="text-align:right;">
-8562
+8618
 </td>
 <td style="text-align:right;">
-0.8562
+0.8618
 </td>
 <td style="text-align:right;">
 0.8571429
@@ -822,7 +822,7 @@ possible samples.</p>
 </div>
 <div id="an-algorithm-for-drawing-an-srs" class="section level3 hasAnchor" number="2.4.3">
 <h3><span class="header-section-number">2.4.3</span> An algorithm for drawing an SRS<a href="sampling.html#an-algorithm-for-drawing-an-srs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In Lohr (2010, 2021), one algorithm for drawing an SRS (Simple Random Sample without replacement) is as follows.</p>
+<p>In Lohr (2010, 2022), one algorithm for drawing an SRS (Simple Random Sample without replacement) is as follows.</p>
 <ol style="list-style-type: decimal">
 <li>Produce <span class="math inline">\(N\)</span> random numbers from the Uniform(0, 1) distribution, and attach them to the <span class="math inline">\(N\)</span> units in the sampling frame.</li>
 <li>Order the <span class="math inline">\(N\)</span> units by the generated random numbers from the smallest to largest.</li>

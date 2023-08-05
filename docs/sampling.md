@@ -83,7 +83,7 @@ $$
 $$ 
 
 - **Poisson sampling:** 
-The setting is the same as Bernoulli sampling except that the
+The setting is the same as that in Bernoulli sampling except that the
 selection probabilities for units are not all equal. The distribution of the sample size is
 called *Poisson binomial distribution*.
 - **Conditional Poisson sampling:** 
@@ -123,10 +123,10 @@ As mentioned before, population and sample sizes are $N$ and $n$, respectively.
 The ideas in systematic sampling can be described as follows.
 
 1. The units in the population are put in some order, say, units $1,\ 2,\ \ldots,\ N$.
-1. Randomly choose a unit as the *start*, e.g. start is unit $s$, where $1\le s\le N$.
+1. Randomly choose a unit as the *start*, e.g. start is unit $a$, where $1\le a\le N$.
 1. The *jump number* is $k$, which is the integer that is the closest to $N/n$. Then the $n$ units
-$$s;\ (s+k)\ \hbox{mod}\ N;\ \ldots;\  (s+(n-1)k)\ \hbox{mod}\ N$$
-are chosen as the sample. NB: If the result of the mod operation is 0, then unit N is chosen into sample.
+$$a;\ (a+k)\ \hbox{mod}\ N;\ \ldots;\  (a+(n-1)k)\ \hbox{mod}\ N$$
+are chosen as the sample. NB: If the result of the mod operation is 0, then unit $N$ is chosen into sample.
 
 **R program:**
 
@@ -269,7 +269,7 @@ pps_action <- function(size_vec, the_n)
 
 **Remarks:**
 
-1. If some of $\pi_i$ resulted from \@ref(eq:pi) are greater than 1, then we set them as 1, and recalculate the rest $\pi_i$'s. The iteration process finishes until no $\pi$'s are greater than 1. See *PPS action R program* in the Appendix part. 
+1. If some of $\pi_i$ resulted from \@ref(eq:pi) are greater than 1, then we set them as 1, and recalculate the rest $\pi_i$'s. The iteration process finishes until no $\pi$'s are greater than 1.  
 
 2. It is easy to see from \@ref(eq:pi) that
 \begin{equation}
@@ -361,38 +361,38 @@ kable(the_re_4_sys)
 <tbody>
   <tr>
    <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1352 </td>
-   <td style="text-align:right;"> 0.1352 </td>
+   <td style="text-align:right;"> 1438 </td>
+   <td style="text-align:right;"> 0.1438 </td>
    <td style="text-align:right;"> 0.1428571 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 2885 </td>
-   <td style="text-align:right;"> 0.2885 </td>
+   <td style="text-align:right;"> 2903 </td>
+   <td style="text-align:right;"> 0.2903 </td>
    <td style="text-align:right;"> 0.2857143 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 4338 </td>
-   <td style="text-align:right;"> 0.4338 </td>
+   <td style="text-align:right;"> 4220 </td>
+   <td style="text-align:right;"> 0.4220 </td>
    <td style="text-align:right;"> 0.4285714 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 5662 </td>
-   <td style="text-align:right;"> 0.5662 </td>
+   <td style="text-align:right;"> 5780 </td>
+   <td style="text-align:right;"> 0.5780 </td>
    <td style="text-align:right;"> 0.5714286 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 7115 </td>
-   <td style="text-align:right;"> 0.7115 </td>
+   <td style="text-align:right;"> 7097 </td>
+   <td style="text-align:right;"> 0.7097 </td>
    <td style="text-align:right;"> 0.7142857 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 8648 </td>
-   <td style="text-align:right;"> 0.8648 </td>
+   <td style="text-align:right;"> 8562 </td>
+   <td style="text-align:right;"> 0.8562 </td>
    <td style="text-align:right;"> 0.8571429 </td>
   </tr>
 </tbody>
@@ -416,38 +416,38 @@ kable(the_re_4_UPmaxentropy)
 <tbody>
   <tr>
    <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1502 </td>
-   <td style="text-align:right;"> 0.1502 </td>
+   <td style="text-align:right;"> 1445 </td>
+   <td style="text-align:right;"> 0.1445 </td>
    <td style="text-align:right;"> 0.1428571 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 2888 </td>
-   <td style="text-align:right;"> 0.2888 </td>
+   <td style="text-align:right;"> 2866 </td>
+   <td style="text-align:right;"> 0.2866 </td>
    <td style="text-align:right;"> 0.2857143 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 4220 </td>
-   <td style="text-align:right;"> 0.4220 </td>
+   <td style="text-align:right;"> 4280 </td>
+   <td style="text-align:right;"> 0.4280 </td>
    <td style="text-align:right;"> 0.4285714 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 5754 </td>
-   <td style="text-align:right;"> 0.5754 </td>
+   <td style="text-align:right;"> 5659 </td>
+   <td style="text-align:right;"> 0.5659 </td>
    <td style="text-align:right;"> 0.5714286 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 7074 </td>
-   <td style="text-align:right;"> 0.7074 </td>
+   <td style="text-align:right;"> 7132 </td>
+   <td style="text-align:right;"> 0.7132 </td>
    <td style="text-align:right;"> 0.7142857 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 8562 </td>
-   <td style="text-align:right;"> 0.8562 </td>
+   <td style="text-align:right;"> 8618 </td>
+   <td style="text-align:right;"> 0.8618 </td>
    <td style="text-align:right;"> 0.8571429 </td>
   </tr>
 </tbody>
@@ -481,7 +481,7 @@ possible samples.
 
 ### An algorithm for drawing an SRS 
 
-In Lohr (2010, 2021), one algorithm for drawing an SRS (Simple Random Sample without replacement) is as follows.
+In Lohr (2010, 2022), one algorithm for drawing an SRS (Simple Random Sample without replacement) is as follows.
 
 1. Produce $N$ random numbers from the Uniform(0, 1) distribution, and attach them to the $N$ units in the sampling frame.
 1. Order the $N$ units by the generated random numbers from the smallest to largest.
