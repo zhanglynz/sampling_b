@@ -126,7 +126,7 @@ The ideas in systematic sampling can be described as follows.
 1. Randomly choose a unit as the *start*, e.g. start is unit $a$, where $1\le a\le N$.
 1. The *jump number* is $k$, which is the integer that is the closest to $N/n$. Then the $n$ units
 $$a;\ (a+k)\ \hbox{mod}\ N;\ \ldots;\  (a+(n-1)k)\ \hbox{mod}\ N$$
-are chosen as the sample. NB: If the result of the mod operation is 0, then unit N is chosen into sample.
+are chosen as the sample. NB: If the result of the mod operation is 0, then unit $N$ is chosen into sample.
 
 **R program:**
 ```{r}
