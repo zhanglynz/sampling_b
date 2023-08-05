@@ -211,7 +211,7 @@ pps_action <- function(size_vec, the_n)
 
 **Remarks:**
 
-1. If some of $\pi_i$ resulted from \@ref(eq:pi) are greater than 1, then we set them as 1, and recalculate the rest $\pi_i$'s. The iteration process finishes until no $\pi$'s are greater than 1. See *PPS action R program* in the Appendix part. 
+1. If some of $\pi_i$ resulted from \@ref(eq:pi) are greater than 1, then we set them as 1, and recalculate the rest $\pi_i$'s. The iteration process finishes until no $\pi$'s are greater than 1.  
 
 2. It is easy to see from \@ref(eq:pi) that
 \begin{equation}
@@ -320,7 +320,7 @@ possible samples.
 
 ### An algorithm for drawing an SRS 
 
-In Lohr (2010, 2021), one algorithm for drawing an SRS (Simple Random Sample without replacement) is as follows.
+In Lohr (2010, 2022), one algorithm for drawing an SRS (Simple Random Sample without replacement) is as follows.
 
 1. Produce $N$ random numbers from the Uniform(0, 1) distribution, and attach them to the $N$ units in the sampling frame.
 1. Order the $N$ units by the generated random numbers from the smallest to largest.
