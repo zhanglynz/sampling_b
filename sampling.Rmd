@@ -177,7 +177,7 @@ $$
 \pi = \frac{n}{N}=\frac{3}{10}.
 $$
 
-In our example, while simple random sampling results in 120 possible samples of size 3, systematic sample can result in only 10 possible samples of size. Judged by **Randomization principle**, systematic sampling is worse than simple random sampling. However, systematic sampling is often used by practitioners because of its simplicity.
+In our example, while simple random sampling results in 120 possible samples of size 3, systematic sample can result in only 10 possible samples of size 3. Judged by **Randomization principle**, systematic sampling is worse than simple random sampling. However, systematic sampling is often used by practitioners because of its simplicity.
 
 ### Probability proportional to size 
 
@@ -248,7 +248,7 @@ do we do systematic sampling? According to Antoine (2015) and Till`r knitr::asis
 1. Generate a random number from Uniform(0, 1), say it is $u$.
 1. Each unit in the population owns an interval,  i.e. unit 1 owns interval $(0,\ \pi_1)$; unit 2 owns interval $(\pi_1,\ \sum_{i=1}^2 \pi_i)$; $\cdots$; unit $N$ owns interval $(\sum_{i=1}^{N-1}\pi_i,\ n)$. Then, we find the intervals that contain $u$, or $u+1$, $\cdots$, or $u+(n-1)$, and the $n$ units that own these intervals are selected as a sample.
 
-The following is an R that implement the algorithm.
+The following is an R program that implements the algorithm.
 ```{r}
 sys_smpling <- function(sel_prob)
 {u <- runif(1, 0, 1)

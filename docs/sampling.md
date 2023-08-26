@@ -234,7 +234,7 @@ $$
 \pi = \frac{n}{N}=\frac{3}{10}.
 $$
 
-In our example, while simple random sampling results in 120 possible samples of size 3, systematic sample can result in only 10 possible samples of size. Judged by **Randomization principle**, systematic sampling is worse than simple random sampling. However, systematic sampling is often used by practitioners because of its simplicity.
+In our example, while simple random sampling results in 120 possible samples of size 3, systematic sample can result in only 10 possible samples of size 3. Judged by **Randomization principle**, systematic sampling is worse than simple random sampling. However, systematic sampling is often used by practitioners because of its simplicity.
 
 ### Probability proportional to size 
 
@@ -306,7 +306,7 @@ do we do systematic sampling? According to Antoine (2015) and Tillé (2010), an 
 1. Generate a random number from Uniform(0, 1), say it is $u$.
 1. Each unit in the population owns an interval,  i.e. unit 1 owns interval $(0,\ \pi_1)$; unit 2 owns interval $(\pi_1,\ \sum_{i=1}^2 \pi_i)$; $\cdots$; unit $N$ owns interval $(\sum_{i=1}^{N-1}\pi_i,\ n)$. Then, we find the intervals that contain $u$, or $u+1$, $\cdots$, or $u+(n-1)$, and the $n$ units that own these intervals are selected as a sample.
 
-The following is an R that implement the algorithm.
+The following is an R program that implements the algorithm.
 
 ```r
 sys_smpling <- function(sel_prob)
@@ -361,38 +361,38 @@ kable(the_re_4_sys)
 <tbody>
   <tr>
    <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1389 </td>
-   <td style="text-align:right;"> 0.1389 </td>
+   <td style="text-align:right;"> 1382 </td>
+   <td style="text-align:right;"> 0.1382 </td>
    <td style="text-align:right;"> 0.1428571 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 2881 </td>
-   <td style="text-align:right;"> 0.2881 </td>
+   <td style="text-align:right;"> 2875 </td>
+   <td style="text-align:right;"> 0.2875 </td>
    <td style="text-align:right;"> 0.2857143 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 4295 </td>
-   <td style="text-align:right;"> 0.4295 </td>
+   <td style="text-align:right;"> 4335 </td>
+   <td style="text-align:right;"> 0.4335 </td>
    <td style="text-align:right;"> 0.4285714 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 5705 </td>
-   <td style="text-align:right;"> 0.5705 </td>
+   <td style="text-align:right;"> 5665 </td>
+   <td style="text-align:right;"> 0.5665 </td>
    <td style="text-align:right;"> 0.5714286 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 7119 </td>
-   <td style="text-align:right;"> 0.7119 </td>
+   <td style="text-align:right;"> 7125 </td>
+   <td style="text-align:right;"> 0.7125 </td>
    <td style="text-align:right;"> 0.7142857 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 8611 </td>
-   <td style="text-align:right;"> 0.8611 </td>
+   <td style="text-align:right;"> 8618 </td>
+   <td style="text-align:right;"> 0.8618 </td>
    <td style="text-align:right;"> 0.8571429 </td>
   </tr>
 </tbody>
@@ -416,38 +416,38 @@ kable(the_re_4_UPmaxentropy)
 <tbody>
   <tr>
    <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1438 </td>
-   <td style="text-align:right;"> 0.1438 </td>
+   <td style="text-align:right;"> 1480 </td>
+   <td style="text-align:right;"> 0.1480 </td>
    <td style="text-align:right;"> 0.1428571 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 2851 </td>
-   <td style="text-align:right;"> 0.2851 </td>
+   <td style="text-align:right;"> 2938 </td>
+   <td style="text-align:right;"> 0.2938 </td>
    <td style="text-align:right;"> 0.2857143 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 4336 </td>
-   <td style="text-align:right;"> 0.4336 </td>
+   <td style="text-align:right;"> 4254 </td>
+   <td style="text-align:right;"> 0.4254 </td>
    <td style="text-align:right;"> 0.4285714 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 5766 </td>
-   <td style="text-align:right;"> 0.5766 </td>
+   <td style="text-align:right;"> 5681 </td>
+   <td style="text-align:right;"> 0.5681 </td>
    <td style="text-align:right;"> 0.5714286 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 7055 </td>
-   <td style="text-align:right;"> 0.7055 </td>
+   <td style="text-align:right;"> 7079 </td>
+   <td style="text-align:right;"> 0.7079 </td>
    <td style="text-align:right;"> 0.7142857 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 8554 </td>
-   <td style="text-align:right;"> 0.8554 </td>
+   <td style="text-align:right;"> 8568 </td>
+   <td style="text-align:right;"> 0.8568 </td>
    <td style="text-align:right;"> 0.8571429 </td>
   </tr>
 </tbody>

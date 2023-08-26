@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2023-08-05" />
+<meta name="date" content="2023-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -491,7 +491,7 @@ s_10
 <span class="math display">\[
 \pi = \frac{n}{N}=\frac{3}{10}.
 \]</span></p>
-<p>In our example, while simple random sampling results in 120 possible samples of size 3, systematic sample can result in only 10 possible samples of size. Judged by <strong>Randomization principle</strong>, systematic sampling is worse than simple random sampling. However, systematic sampling is often used by practitioners because of its simplicity.</p>
+<p>In our example, while simple random sampling results in 120 possible samples of size 3, systematic sample can result in only 10 possible samples of size 3. Judged by <strong>Randomization principle</strong>, systematic sampling is worse than simple random sampling. However, systematic sampling is often used by practitioners because of its simplicity.</p>
 </div>
 <div id="probability-proportional-to-size" class="section level3 hasAnchor" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Probability proportional to size<a href="sampling.html#probability-proportional-to-size" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -554,7 +554,7 @@ do we do systematic sampling? According to Antoine (2015) and Tillé (2010), an 
 <li>Generate a random number from Uniform(0, 1), say it is <span class="math inline">\(u\)</span>.</li>
 <li>Each unit in the population owns an interval, i.e. unit 1 owns interval <span class="math inline">\((0,\ \pi_1)\)</span>; unit 2 owns interval <span class="math inline">\((\pi_1,\ \sum_{i=1}^2 \pi_i)\)</span>; <span class="math inline">\(\cdots\)</span>; unit <span class="math inline">\(N\)</span> owns interval <span class="math inline">\((\sum_{i=1}^{N-1}\pi_i,\ n)\)</span>. Then, we find the intervals that contain <span class="math inline">\(u\)</span>, or <span class="math inline">\(u+1\)</span>, <span class="math inline">\(\cdots\)</span>, or <span class="math inline">\(u+(n-1)\)</span>, and the <span class="math inline">\(n\)</span> units that own these intervals are selected as a sample.</li>
 </ol>
-<p>The following is an R that implement the algorithm.</p>
+<p>The following is an R program that implements the algorithm.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="sampling.html#cb4-1" aria-hidden="true" tabindex="-1"></a>sys_smpling <span class="ot">&lt;-</span> <span class="cf">function</span>(sel_prob)</span>
 <span id="cb4-2"><a href="sampling.html#cb4-2" aria-hidden="true" tabindex="-1"></a>{u <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
 <span id="cb4-3"><a href="sampling.html#cb4-3" aria-hidden="true" tabindex="-1"></a> cum_sel_prob <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sel_prob)</span>
@@ -612,10 +612,10 @@ the_pi
 1
 </td>
 <td style="text-align:right;">
-1389
+1382
 </td>
 <td style="text-align:right;">
-0.1389
+0.1382
 </td>
 <td style="text-align:right;">
 0.1428571
@@ -626,10 +626,10 @@ the_pi
 2
 </td>
 <td style="text-align:right;">
-2881
+2875
 </td>
 <td style="text-align:right;">
-0.2881
+0.2875
 </td>
 <td style="text-align:right;">
 0.2857143
@@ -640,10 +640,10 @@ the_pi
 3
 </td>
 <td style="text-align:right;">
-4295
+4335
 </td>
 <td style="text-align:right;">
-0.4295
+0.4335
 </td>
 <td style="text-align:right;">
 0.4285714
@@ -654,10 +654,10 @@ the_pi
 4
 </td>
 <td style="text-align:right;">
-5705
+5665
 </td>
 <td style="text-align:right;">
-0.5705
+0.5665
 </td>
 <td style="text-align:right;">
 0.5714286
@@ -668,10 +668,10 @@ the_pi
 5
 </td>
 <td style="text-align:right;">
-7119
+7125
 </td>
 <td style="text-align:right;">
-0.7119
+0.7125
 </td>
 <td style="text-align:right;">
 0.7142857
@@ -682,10 +682,10 @@ the_pi
 6
 </td>
 <td style="text-align:right;">
-8611
+8618
 </td>
 <td style="text-align:right;">
-0.8611
+0.8618
 </td>
 <td style="text-align:right;">
 0.8571429
@@ -719,10 +719,10 @@ the_pi
 1
 </td>
 <td style="text-align:right;">
-1438
+1480
 </td>
 <td style="text-align:right;">
-0.1438
+0.1480
 </td>
 <td style="text-align:right;">
 0.1428571
@@ -733,10 +733,10 @@ the_pi
 2
 </td>
 <td style="text-align:right;">
-2851
+2938
 </td>
 <td style="text-align:right;">
-0.2851
+0.2938
 </td>
 <td style="text-align:right;">
 0.2857143
@@ -747,10 +747,10 @@ the_pi
 3
 </td>
 <td style="text-align:right;">
-4336
+4254
 </td>
 <td style="text-align:right;">
-0.4336
+0.4254
 </td>
 <td style="text-align:right;">
 0.4285714
@@ -761,10 +761,10 @@ the_pi
 4
 </td>
 <td style="text-align:right;">
-5766
+5681
 </td>
 <td style="text-align:right;">
-0.5766
+0.5681
 </td>
 <td style="text-align:right;">
 0.5714286
@@ -775,10 +775,10 @@ the_pi
 5
 </td>
 <td style="text-align:right;">
-7055
+7079
 </td>
 <td style="text-align:right;">
-0.7055
+0.7079
 </td>
 <td style="text-align:right;">
 0.7142857
@@ -789,10 +789,10 @@ the_pi
 6
 </td>
 <td style="text-align:right;">
-8554
+8568
 </td>
 <td style="text-align:right;">
-0.8554
+0.8568
 </td>
 <td style="text-align:right;">
 0.8571429
