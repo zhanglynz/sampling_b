@@ -185,10 +185,10 @@ In a sampling design, an important part is to determine *selection probabilities
 
 With PPS, the selection probability of unit $i$ is defined as
 \begin{equation}
-\pi_i = n \frac{Z_i}{\sum_{i=1}^N Z_i},\ \text{for}\ i=1, \ldots, N,
+\pi_i = n \frac{U_i}{\sum_{i=1}^N U_i},\ \text{for}\ i=1, \ldots, N,
 (\#eq:pi)
 \end{equation}
-where $n$ and $N$ are the sample size and population size, respectively, $Z_i$ is the *size/importance* of unit $i$.
+where $n$ and $N$ are the sample size and population size, respectively, $U_i$ is the *size/importance* of unit $i$.
 
 **R program:**
 ```{r}
@@ -218,7 +218,7 @@ pps_action <- function(size_vec, the_n)
 \sum_{i=1}^N \pi_i = n.
 (\#eq:pisum)
 \end{equation}
-Actually, \@ref(eq:pisum) is always hold if the sample size is fixed as $n$---see a proof in ???.
+Actually, \@ref(eq:pisum) always holds true if the sample size is fixed as $n$---see a proof in ???.
 <!-- below is a quick proof: -->
 <!-- \begin{align} -->
 <!-- \sum_{i=1}^N \pi_i &= \sum_{i=1}^N\sum_{i\in s}p(s) \notag\\ -->
