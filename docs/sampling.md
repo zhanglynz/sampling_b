@@ -242,10 +242,10 @@ In a sampling design, an important part is to determine *selection probabilities
 
 With PPS, the selection probability of unit $i$ is defined as
 \begin{equation}
-\pi_i = n \frac{Z_i}{\sum_{i=1}^N Z_i},\ \text{for}\ i=1, \ldots, N,
+\pi_i = n \frac{U_i}{\sum_{i=1}^N U_i},\ \text{for}\ i=1, \ldots, N,
 (\#eq:pi)
 \end{equation}
-where $n$ and $N$ are the sample size and population size, respectively, $Z_i$ is the *size/importance* of unit $i$.
+where $n$ and $N$ are the sample size and population size, respectively, $U_i$ is the *size/importance* of unit $i$.
 
 **R program:**
 
@@ -361,38 +361,38 @@ kable(the_re_4_sys)
 <tbody>
   <tr>
    <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1398 </td>
-   <td style="text-align:right;"> 0.1398 </td>
+   <td style="text-align:right;"> 1408 </td>
+   <td style="text-align:right;"> 0.1408 </td>
    <td style="text-align:right;"> 0.1428571 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 2851 </td>
-   <td style="text-align:right;"> 0.2851 </td>
+   <td style="text-align:right;"> 2930 </td>
+   <td style="text-align:right;"> 0.2930 </td>
    <td style="text-align:right;"> 0.2857143 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 4279 </td>
-   <td style="text-align:right;"> 0.4279 </td>
+   <td style="text-align:right;"> 4227 </td>
+   <td style="text-align:right;"> 0.4227 </td>
    <td style="text-align:right;"> 0.4285714 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 5721 </td>
-   <td style="text-align:right;"> 0.5721 </td>
+   <td style="text-align:right;"> 5773 </td>
+   <td style="text-align:right;"> 0.5773 </td>
    <td style="text-align:right;"> 0.5714286 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 7149 </td>
-   <td style="text-align:right;"> 0.7149 </td>
+   <td style="text-align:right;"> 7070 </td>
+   <td style="text-align:right;"> 0.7070 </td>
    <td style="text-align:right;"> 0.7142857 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 8602 </td>
-   <td style="text-align:right;"> 0.8602 </td>
+   <td style="text-align:right;"> 8592 </td>
+   <td style="text-align:right;"> 0.8592 </td>
    <td style="text-align:right;"> 0.8571429 </td>
   </tr>
 </tbody>
@@ -416,38 +416,38 @@ kable(the_re_4_UPmaxentropy)
 <tbody>
   <tr>
    <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1425 </td>
-   <td style="text-align:right;"> 0.1425 </td>
+   <td style="text-align:right;"> 1420 </td>
+   <td style="text-align:right;"> 0.1420 </td>
    <td style="text-align:right;"> 0.1428571 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 2787 </td>
-   <td style="text-align:right;"> 0.2787 </td>
+   <td style="text-align:right;"> 2838 </td>
+   <td style="text-align:right;"> 0.2838 </td>
    <td style="text-align:right;"> 0.2857143 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 4265 </td>
-   <td style="text-align:right;"> 0.4265 </td>
+   <td style="text-align:right;"> 4248 </td>
+   <td style="text-align:right;"> 0.4248 </td>
    <td style="text-align:right;"> 0.4285714 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 5694 </td>
-   <td style="text-align:right;"> 0.5694 </td>
+   <td style="text-align:right;"> 5777 </td>
+   <td style="text-align:right;"> 0.5777 </td>
    <td style="text-align:right;"> 0.5714286 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 7198 </td>
-   <td style="text-align:right;"> 0.7198 </td>
+   <td style="text-align:right;"> 7116 </td>
+   <td style="text-align:right;"> 0.7116 </td>
    <td style="text-align:right;"> 0.7142857 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 8631 </td>
-   <td style="text-align:right;"> 0.8631 </td>
+   <td style="text-align:right;"> 8601 </td>
+   <td style="text-align:right;"> 0.8601 </td>
    <td style="text-align:right;"> 0.8571429 </td>
   </tr>
 </tbody>

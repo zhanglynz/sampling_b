@@ -498,10 +498,10 @@ s_10
 <p>In a sampling design, an important part is to determine <em>selection probabilities</em>, which accompany the units in the population. In terms of selection probabilities, we can distinguish two cases. Case 1: all the selection probabilities are equal. Case 2: the selection probabilities are not equal. Simple random sampling is an example of Case 1; probability proportional to size (PPS) is a method for creating unequal selection probabilities, i.e. it’s Case 2.</p>
 <p>With PPS, the selection probability of unit <span class="math inline">\(i\)</span> is defined as
 <span class="math display" id="eq:pi">\[\begin{equation}
-\pi_i = n \frac{Z_i}{\sum_{i=1}^N Z_i},\ \text{for}\ i=1, \ldots, N,
+\pi_i = n \frac{U_i}{\sum_{i=1}^N U_i},\ \text{for}\ i=1, \ldots, N,
 \tag{2.1}
 \end{equation}\]</span>
-where <span class="math inline">\(n\)</span> and <span class="math inline">\(N\)</span> are the sample size and population size, respectively, <span class="math inline">\(Z_i\)</span> is the <em>size/importance</em> of unit <span class="math inline">\(i\)</span>.</p>
+where <span class="math inline">\(n\)</span> and <span class="math inline">\(N\)</span> are the sample size and population size, respectively, <span class="math inline">\(U_i\)</span> is the <em>size/importance</em> of unit <span class="math inline">\(i\)</span>.</p>
 <p><strong>R program:</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="sampling.html#cb3-1" aria-hidden="true" tabindex="-1"></a>pps_action <span class="ot">&lt;-</span> <span class="cf">function</span>(size_vec, the_n)</span>
 <span id="cb3-2"><a href="sampling.html#cb3-2" aria-hidden="true" tabindex="-1"></a>{the_re <span class="ot">&lt;-</span> the_n <span class="sc">*</span> (size_vec <span class="sc">/</span> <span class="fu">sum</span>(size_vec))</span>
@@ -612,10 +612,10 @@ the_pi
 1
 </td>
 <td style="text-align:right;">
-1398
+1408
 </td>
 <td style="text-align:right;">
-0.1398
+0.1408
 </td>
 <td style="text-align:right;">
 0.1428571
@@ -626,10 +626,10 @@ the_pi
 2
 </td>
 <td style="text-align:right;">
-2851
+2930
 </td>
 <td style="text-align:right;">
-0.2851
+0.2930
 </td>
 <td style="text-align:right;">
 0.2857143
@@ -640,10 +640,10 @@ the_pi
 3
 </td>
 <td style="text-align:right;">
-4279
+4227
 </td>
 <td style="text-align:right;">
-0.4279
+0.4227
 </td>
 <td style="text-align:right;">
 0.4285714
@@ -654,10 +654,10 @@ the_pi
 4
 </td>
 <td style="text-align:right;">
-5721
+5773
 </td>
 <td style="text-align:right;">
-0.5721
+0.5773
 </td>
 <td style="text-align:right;">
 0.5714286
@@ -668,10 +668,10 @@ the_pi
 5
 </td>
 <td style="text-align:right;">
-7149
+7070
 </td>
 <td style="text-align:right;">
-0.7149
+0.7070
 </td>
 <td style="text-align:right;">
 0.7142857
@@ -682,10 +682,10 @@ the_pi
 6
 </td>
 <td style="text-align:right;">
-8602
+8592
 </td>
 <td style="text-align:right;">
-0.8602
+0.8592
 </td>
 <td style="text-align:right;">
 0.8571429
@@ -719,10 +719,10 @@ the_pi
 1
 </td>
 <td style="text-align:right;">
-1425
+1420
 </td>
 <td style="text-align:right;">
-0.1425
+0.1420
 </td>
 <td style="text-align:right;">
 0.1428571
@@ -733,10 +733,10 @@ the_pi
 2
 </td>
 <td style="text-align:right;">
-2787
+2838
 </td>
 <td style="text-align:right;">
-0.2787
+0.2838
 </td>
 <td style="text-align:right;">
 0.2857143
@@ -747,10 +747,10 @@ the_pi
 3
 </td>
 <td style="text-align:right;">
-4265
+4248
 </td>
 <td style="text-align:right;">
-0.4265
+0.4248
 </td>
 <td style="text-align:right;">
 0.4285714
@@ -761,10 +761,10 @@ the_pi
 4
 </td>
 <td style="text-align:right;">
-5694
+5777
 </td>
 <td style="text-align:right;">
-0.5694
+0.5777
 </td>
 <td style="text-align:right;">
 0.5714286
@@ -775,10 +775,10 @@ the_pi
 5
 </td>
 <td style="text-align:right;">
-7198
+7116
 </td>
 <td style="text-align:right;">
-0.7198
+0.7116
 </td>
 <td style="text-align:right;">
 0.7142857
@@ -789,10 +789,10 @@ the_pi
 6
 </td>
 <td style="text-align:right;">
-8631
+8601
 </td>
 <td style="text-align:right;">
-0.8631
+0.8601
 </td>
 <td style="text-align:right;">
 0.8571429
