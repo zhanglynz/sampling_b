@@ -124,24 +124,15 @@ The ideas in systematic sampling can be described as follows.
 
 1. The units in the population are put in some order, say, units $1,\ 2,\ \ldots,\ N$.
 1. Randomly choose a unit as the *start*, e.g. start is unit $a$, where $1\le a\le N$.
-1. The *jump number* is $k$, which is the integer that is the closest to $N/n$. Then the $n$ units
+1. The *jump number* is $k$, which is the greatest integer less than or equal to $N/n$, i.e. $k = \hbox{floor}(N/n)$. Then the $n$ units
 $$a;\ (a+k)\ \hbox{mod}\ N;\ \ldots;\  (a+(n-1)k)\ \hbox{mod}\ N$$
 are chosen as the sample. NB: If the result of the mod operation is 0, then unit $N$ is chosen into sample.
 
 **R program:**
 ```{r}
 sys_sampling <- function(N, n, start = NULL, indi_output = FALSE)
-{# a helper function
- round_helper <- function(a)
- {L <- floor(a)
-  U <- ceiling(a)
-  d <- c(a - L, U - a)
-  if(d[1] < d[2]) return(L)
-  return(U)
- }  
- # interval
- k <- N / n
- k <- round_helper(k)
+{# interval
+ k <- floor(N / n)
  # start
  if(is.null(start)) start <- ceiling(runif(1, 0, 1) * N)
  if(!start %in% 1L:N) stop("'start' must be integer between 1 and N!")
@@ -250,7 +241,7 @@ do we do systematic sampling? According to Antoine (2015) and Till`r knitr::asis
 
 The following is an R program that implements the algorithm.
 ```{r}
-sys_smpling <- function(sel_prob)
+sys_smpling_with_sel_prob <- function(sel_prob)
 {u <- runif(1, 0, 1)
  cum_sel_prob <- cumsum(sel_prob)
  m <- length(sel_prob)
@@ -264,7 +255,7 @@ sys_smpling <- function(sel_prob)
 ```
 
 The R function `UPsystematic()` in **`sampling`** package can do systematic sampling with 
-unequal probabilities. Below, we show an example to test `sys_smpling()` and `sampling::UPsystematic()`.
+unequal probabilities. Below, we show an example to test `sys_smpling_with_sel_prob()` and `sampling::UPsystematic()`.
 ```{r, warning = FALSE, message = FALSE}
 library(sampling)
 library(dplyr)
@@ -285,7 +276,7 @@ selc_prob <- 3 * (1:N)/sum(1:N)
 
 # Simple example - sample selection 
 the_re_4_sys <- eval_sampling(selec_prob = selc_prob, 
-                              the_func = sys_smpling)
+                              the_func = sys_smpling_with_sel_prob)
 kable(the_re_4_sys)
 the_re_4_UPmaxentropy <- eval_sampling(selec_prob = selc_prob, 
                                        the_func = UPmaxentropy)

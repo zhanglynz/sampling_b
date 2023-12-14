@@ -124,7 +124,7 @@ The ideas in systematic sampling can be described as follows.
 
 1. The units in the population are put in some order, say, units $1,\ 2,\ \ldots,\ N$.
 1. Randomly choose a unit as the *start*, e.g. start is unit $a$, where $1\le a\le N$.
-1. The *jump number* is $k$, which is the integer that is the closest to $N/n$. Then the $n$ units
+1. The *jump number* is $k$, which is the greatest integer less than or equal to $N/n$, i.e. $k = \hbox{floor}(N/n)$. Then the $n$ units
 $$a;\ (a+k)\ \hbox{mod}\ N;\ \ldots;\  (a+(n-1)k)\ \hbox{mod}\ N$$
 are chosen as the sample. NB: If the result of the mod operation is 0, then unit $N$ is chosen into sample.
 
@@ -132,17 +132,8 @@ are chosen as the sample. NB: If the result of the mod operation is 0, then unit
 
 ```r
 sys_sampling <- function(N, n, start = NULL, indi_output = FALSE)
-{# a helper function
- round_helper <- function(a)
- {L <- floor(a)
-  U <- ceiling(a)
-  d <- c(a - L, U - a)
-  if(d[1] < d[2]) return(L)
-  return(U)
- }  
- # interval
- k <- N / n
- k <- round_helper(k)
+{# interval
+ k <- floor(N / n)
  # start
  if(is.null(start)) start <- ceiling(runif(1, 0, 1) * N)
  if(!start %in% 1L:N) stop("'start' must be integer between 1 and N!")
@@ -309,7 +300,7 @@ do we do systematic sampling? According to Antoine (2015) and Tillé (2010), an 
 The following is an R program that implements the algorithm.
 
 ```r
-sys_smpling <- function(sel_prob)
+sys_smpling_with_sel_prob <- function(sel_prob)
 {u <- runif(1, 0, 1)
  cum_sel_prob <- cumsum(sel_prob)
  m <- length(sel_prob)
@@ -323,7 +314,7 @@ sys_smpling <- function(sel_prob)
 ```
 
 The R function `UPsystematic()` in **`sampling`** package can do systematic sampling with 
-unequal probabilities. Below, we show an example to test `sys_smpling()` and `sampling::UPsystematic()`.
+unequal probabilities. Below, we show an example to test `sys_smpling_with_sel_prob()` and `sampling::UPsystematic()`.
 
 ```r
 library(sampling)
@@ -345,7 +336,7 @@ selc_prob <- 3 * (1:N)/sum(1:N)
 
 # Simple example - sample selection 
 the_re_4_sys <- eval_sampling(selec_prob = selc_prob, 
-                              the_func = sys_smpling)
+                              the_func = sys_smpling_with_sel_prob)
 kable(the_re_4_sys)
 ```
 
@@ -361,38 +352,38 @@ kable(the_re_4_sys)
 <tbody>
   <tr>
    <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1408 </td>
-   <td style="text-align:right;"> 0.1408 </td>
+   <td style="text-align:right;"> 1442 </td>
+   <td style="text-align:right;"> 0.1442 </td>
    <td style="text-align:right;"> 0.1428571 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 2930 </td>
-   <td style="text-align:right;"> 0.2930 </td>
+   <td style="text-align:right;"> 2821 </td>
+   <td style="text-align:right;"> 0.2821 </td>
    <td style="text-align:right;"> 0.2857143 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 4227 </td>
-   <td style="text-align:right;"> 0.4227 </td>
+   <td style="text-align:right;"> 4260 </td>
+   <td style="text-align:right;"> 0.4260 </td>
    <td style="text-align:right;"> 0.4285714 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 5773 </td>
-   <td style="text-align:right;"> 0.5773 </td>
+   <td style="text-align:right;"> 5740 </td>
+   <td style="text-align:right;"> 0.5740 </td>
    <td style="text-align:right;"> 0.5714286 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 7070 </td>
-   <td style="text-align:right;"> 0.7070 </td>
+   <td style="text-align:right;"> 7179 </td>
+   <td style="text-align:right;"> 0.7179 </td>
    <td style="text-align:right;"> 0.7142857 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 8592 </td>
-   <td style="text-align:right;"> 0.8592 </td>
+   <td style="text-align:right;"> 8558 </td>
+   <td style="text-align:right;"> 0.8558 </td>
    <td style="text-align:right;"> 0.8571429 </td>
   </tr>
 </tbody>
@@ -416,38 +407,38 @@ kable(the_re_4_UPmaxentropy)
 <tbody>
   <tr>
    <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1420 </td>
-   <td style="text-align:right;"> 0.1420 </td>
+   <td style="text-align:right;"> 1390 </td>
+   <td style="text-align:right;"> 0.1390 </td>
    <td style="text-align:right;"> 0.1428571 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 2838 </td>
-   <td style="text-align:right;"> 0.2838 </td>
+   <td style="text-align:right;"> 2872 </td>
+   <td style="text-align:right;"> 0.2872 </td>
    <td style="text-align:right;"> 0.2857143 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 4248 </td>
-   <td style="text-align:right;"> 0.4248 </td>
+   <td style="text-align:right;"> 4353 </td>
+   <td style="text-align:right;"> 0.4353 </td>
    <td style="text-align:right;"> 0.4285714 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 5777 </td>
-   <td style="text-align:right;"> 0.5777 </td>
+   <td style="text-align:right;"> 5709 </td>
+   <td style="text-align:right;"> 0.5709 </td>
    <td style="text-align:right;"> 0.5714286 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 7116 </td>
-   <td style="text-align:right;"> 0.7116 </td>
+   <td style="text-align:right;"> 7058 </td>
+   <td style="text-align:right;"> 0.7058 </td>
    <td style="text-align:right;"> 0.7142857 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 8601 </td>
-   <td style="text-align:right;"> 0.8601 </td>
+   <td style="text-align:right;"> 8618 </td>
+   <td style="text-align:right;"> 0.8618 </td>
    <td style="text-align:right;"> 0.8571429 </td>
   </tr>
 </tbody>

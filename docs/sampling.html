@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2023-12-13" />
+<meta name="date" content="2023-12-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -312,37 +312,28 @@ The ideas in systematic sampling can be described as follows.</p>
 <ol style="list-style-type: decimal">
 <li>The units in the population are put in some order, say, units <span class="math inline">\(1,\ 2,\ \ldots,\ N\)</span>.</li>
 <li>Randomly choose a unit as the <em>start</em>, e.g. start is unit <span class="math inline">\(a\)</span>, where <span class="math inline">\(1\le a\le N\)</span>.</li>
-<li>The <em>jump number</em> is <span class="math inline">\(k\)</span>, which is the integer that is the closest to <span class="math inline">\(N/n\)</span>. Then the <span class="math inline">\(n\)</span> units
+<li>The <em>jump number</em> is <span class="math inline">\(k\)</span>, which is the greatest integer less than or equal to <span class="math inline">\(N/n\)</span>, i.e. <span class="math inline">\(k = \hbox{floor}(N/n)\)</span>. Then the <span class="math inline">\(n\)</span> units
 <span class="math display">\[a;\ (a+k)\ \hbox{mod}\ N;\ \ldots;\  (a+(n-1)k)\ \hbox{mod}\ N\]</span>
 are chosen as the sample. NB: If the result of the mod operation is 0, then unit <span class="math inline">\(N\)</span> is chosen into sample.</li>
 </ol>
 <p><strong>R program:</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="sampling.html#cb1-1" aria-hidden="true" tabindex="-1"></a>sys_sampling <span class="ot">&lt;-</span> <span class="cf">function</span>(N, n, <span class="at">start =</span> <span class="cn">NULL</span>, <span class="at">indi_output =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1-2"><a href="sampling.html#cb1-2" aria-hidden="true" tabindex="-1"></a>{<span class="co"># a helper function</span></span>
-<span id="cb1-3"><a href="sampling.html#cb1-3" aria-hidden="true" tabindex="-1"></a> round_helper <span class="ot">&lt;-</span> <span class="cf">function</span>(a)</span>
-<span id="cb1-4"><a href="sampling.html#cb1-4" aria-hidden="true" tabindex="-1"></a> {L <span class="ot">&lt;-</span> <span class="fu">floor</span>(a)</span>
-<span id="cb1-5"><a href="sampling.html#cb1-5" aria-hidden="true" tabindex="-1"></a>  U <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(a)</span>
-<span id="cb1-6"><a href="sampling.html#cb1-6" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">c</span>(a <span class="sc">-</span> L, U <span class="sc">-</span> a)</span>
-<span id="cb1-7"><a href="sampling.html#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(d[<span class="dv">1</span>] <span class="sc">&lt;</span> d[<span class="dv">2</span>]) <span class="fu">return</span>(L)</span>
-<span id="cb1-8"><a href="sampling.html#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(U)</span>
-<span id="cb1-9"><a href="sampling.html#cb1-9" aria-hidden="true" tabindex="-1"></a> }  </span>
-<span id="cb1-10"><a href="sampling.html#cb1-10" aria-hidden="true" tabindex="-1"></a> <span class="co"># interval</span></span>
-<span id="cb1-11"><a href="sampling.html#cb1-11" aria-hidden="true" tabindex="-1"></a> k <span class="ot">&lt;-</span> N <span class="sc">/</span> n</span>
-<span id="cb1-12"><a href="sampling.html#cb1-12" aria-hidden="true" tabindex="-1"></a> k <span class="ot">&lt;-</span> <span class="fu">round_helper</span>(k)</span>
-<span id="cb1-13"><a href="sampling.html#cb1-13" aria-hidden="true" tabindex="-1"></a> <span class="co"># start</span></span>
-<span id="cb1-14"><a href="sampling.html#cb1-14" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span>(<span class="fu">is.null</span>(start)) start <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">*</span> N)</span>
-<span id="cb1-15"><a href="sampling.html#cb1-15" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span>(<span class="sc">!</span>start <span class="sc">%in%</span> 1L<span class="sc">:</span>N) <span class="fu">stop</span>(<span class="st">&quot;&#39;start&#39; must be integer between 1 and N!&quot;</span>)</span>
-<span id="cb1-16"><a href="sampling.html#cb1-16" aria-hidden="true" tabindex="-1"></a> <span class="co"># sample</span></span>
-<span id="cb1-17"><a href="sampling.html#cb1-17" aria-hidden="true" tabindex="-1"></a> the_sample <span class="ot">&lt;-</span> (start <span class="sc">+</span> (<span class="dv">0</span><span class="sc">:</span>(n <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">*</span> k) <span class="sc">%%</span> N </span>
-<span id="cb1-18"><a href="sampling.html#cb1-18" aria-hidden="true" tabindex="-1"></a> the_sample <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(the_sample <span class="sc">==</span> 0L, N, the_sample)</span>
-<span id="cb1-19"><a href="sampling.html#cb1-19" aria-hidden="true" tabindex="-1"></a> the_sample <span class="ot">&lt;-</span> <span class="fu">sort</span>(the_sample)</span>
-<span id="cb1-20"><a href="sampling.html#cb1-20" aria-hidden="true" tabindex="-1"></a> <span class="co"># output</span></span>
-<span id="cb1-21"><a href="sampling.html#cb1-21" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span>(indi_output) {</span>
-<span id="cb1-22"><a href="sampling.html#cb1-22" aria-hidden="true" tabindex="-1"></a> temp <span class="ot">&lt;-</span> 1L<span class="sc">:</span>N</span>
-<span id="cb1-23"><a href="sampling.html#cb1-23" aria-hidden="true" tabindex="-1"></a> output <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(temp <span class="sc">%in%</span> the_sample)</span>
-<span id="cb1-24"><a href="sampling.html#cb1-24" aria-hidden="true" tabindex="-1"></a> <span class="fu">return</span>(output) }</span>
-<span id="cb1-25"><a href="sampling.html#cb1-25" aria-hidden="true" tabindex="-1"></a> <span class="fu">return</span>(the_sample)</span>
-<span id="cb1-26"><a href="sampling.html#cb1-26" aria-hidden="true" tabindex="-1"></a>}  </span></code></pre></div>
+<span id="cb1-2"><a href="sampling.html#cb1-2" aria-hidden="true" tabindex="-1"></a>{<span class="co"># interval</span></span>
+<span id="cb1-3"><a href="sampling.html#cb1-3" aria-hidden="true" tabindex="-1"></a> k <span class="ot">&lt;-</span> <span class="fu">floor</span>(N <span class="sc">/</span> n)</span>
+<span id="cb1-4"><a href="sampling.html#cb1-4" aria-hidden="true" tabindex="-1"></a> <span class="co"># start</span></span>
+<span id="cb1-5"><a href="sampling.html#cb1-5" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span>(<span class="fu">is.null</span>(start)) start <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">*</span> N)</span>
+<span id="cb1-6"><a href="sampling.html#cb1-6" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span>(<span class="sc">!</span>start <span class="sc">%in%</span> 1L<span class="sc">:</span>N) <span class="fu">stop</span>(<span class="st">&quot;&#39;start&#39; must be integer between 1 and N!&quot;</span>)</span>
+<span id="cb1-7"><a href="sampling.html#cb1-7" aria-hidden="true" tabindex="-1"></a> <span class="co"># sample</span></span>
+<span id="cb1-8"><a href="sampling.html#cb1-8" aria-hidden="true" tabindex="-1"></a> the_sample <span class="ot">&lt;-</span> (start <span class="sc">+</span> (<span class="dv">0</span><span class="sc">:</span>(n <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">*</span> k) <span class="sc">%%</span> N </span>
+<span id="cb1-9"><a href="sampling.html#cb1-9" aria-hidden="true" tabindex="-1"></a> the_sample <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(the_sample <span class="sc">==</span> 0L, N, the_sample)</span>
+<span id="cb1-10"><a href="sampling.html#cb1-10" aria-hidden="true" tabindex="-1"></a> the_sample <span class="ot">&lt;-</span> <span class="fu">sort</span>(the_sample)</span>
+<span id="cb1-11"><a href="sampling.html#cb1-11" aria-hidden="true" tabindex="-1"></a> <span class="co"># output</span></span>
+<span id="cb1-12"><a href="sampling.html#cb1-12" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span>(indi_output) {</span>
+<span id="cb1-13"><a href="sampling.html#cb1-13" aria-hidden="true" tabindex="-1"></a> temp <span class="ot">&lt;-</span> 1L<span class="sc">:</span>N</span>
+<span id="cb1-14"><a href="sampling.html#cb1-14" aria-hidden="true" tabindex="-1"></a> output <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(temp <span class="sc">%in%</span> the_sample)</span>
+<span id="cb1-15"><a href="sampling.html#cb1-15" aria-hidden="true" tabindex="-1"></a> <span class="fu">return</span>(output) }</span>
+<span id="cb1-16"><a href="sampling.html#cb1-16" aria-hidden="true" tabindex="-1"></a> <span class="fu">return</span>(the_sample)</span>
+<span id="cb1-17"><a href="sampling.html#cb1-17" aria-hidden="true" tabindex="-1"></a>}  </span></code></pre></div>
 <p><strong>Example:</strong> Suppose <span class="math inline">\(N=10\)</span> and <span class="math inline">\(n=3\)</span>. We can show all the possible samples resulted from systematic sampling.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="sampling.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb2-2"><a href="sampling.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
@@ -555,7 +546,7 @@ do we do systematic sampling? According to Antoine (2015) and Tillé (2010), an 
 <li>Each unit in the population owns an interval, i.e. unit 1 owns interval <span class="math inline">\((0,\ \pi_1)\)</span>; unit 2 owns interval <span class="math inline">\((\pi_1,\ \sum_{i=1}^2 \pi_i)\)</span>; <span class="math inline">\(\cdots\)</span>; unit <span class="math inline">\(N\)</span> owns interval <span class="math inline">\((\sum_{i=1}^{N-1}\pi_i,\ n)\)</span>. Then, we find the intervals that contain <span class="math inline">\(u\)</span>, or <span class="math inline">\(u+1\)</span>, <span class="math inline">\(\cdots\)</span>, or <span class="math inline">\(u+(n-1)\)</span>, and the <span class="math inline">\(n\)</span> units that own these intervals are selected as a sample.</li>
 </ol>
 <p>The following is an R program that implements the algorithm.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="sampling.html#cb4-1" aria-hidden="true" tabindex="-1"></a>sys_smpling <span class="ot">&lt;-</span> <span class="cf">function</span>(sel_prob)</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="sampling.html#cb4-1" aria-hidden="true" tabindex="-1"></a>sys_smpling_with_sel_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(sel_prob)</span>
 <span id="cb4-2"><a href="sampling.html#cb4-2" aria-hidden="true" tabindex="-1"></a>{u <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
 <span id="cb4-3"><a href="sampling.html#cb4-3" aria-hidden="true" tabindex="-1"></a> cum_sel_prob <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sel_prob)</span>
 <span id="cb4-4"><a href="sampling.html#cb4-4" aria-hidden="true" tabindex="-1"></a> m <span class="ot">&lt;-</span> <span class="fu">length</span>(sel_prob)</span>
@@ -567,7 +558,7 @@ do we do systematic sampling? According to Antoine (2015) and Tillé (2010), an 
 <span id="cb4-10"><a href="sampling.html#cb4-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">return</span>(s)</span>
 <span id="cb4-11"><a href="sampling.html#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>The R function <code>UPsystematic()</code> in <strong><code>sampling</code></strong> package can do systematic sampling with
-unequal probabilities. Below, we show an example to test <code>sys_smpling()</code> and <code>sampling::UPsystematic()</code>.</p>
+unequal probabilities. Below, we show an example to test <code>sys_smpling_with_sel_prob()</code> and <code>sampling::UPsystematic()</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="sampling.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sampling)</span>
 <span id="cb5-2"><a href="sampling.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb5-3"><a href="sampling.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
@@ -587,7 +578,7 @@ unequal probabilities. Below, we show an example to test <code>sys_smpling()</co
 <span id="cb5-17"><a href="sampling.html#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-18"><a href="sampling.html#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple example - sample selection </span></span>
 <span id="cb5-19"><a href="sampling.html#cb5-19" aria-hidden="true" tabindex="-1"></a>the_re_4_sys <span class="ot">&lt;-</span> <span class="fu">eval_sampling</span>(<span class="at">selec_prob =</span> selc_prob, </span>
-<span id="cb5-20"><a href="sampling.html#cb5-20" aria-hidden="true" tabindex="-1"></a>                              <span class="at">the_func =</span> sys_smpling)</span>
+<span id="cb5-20"><a href="sampling.html#cb5-20" aria-hidden="true" tabindex="-1"></a>                              <span class="at">the_func =</span> sys_smpling_with_sel_prob)</span>
 <span id="cb5-21"><a href="sampling.html#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(the_re_4_sys)</span></code></pre></div>
 <table>
 <thead>
@@ -612,10 +603,10 @@ the_pi
 1
 </td>
 <td style="text-align:right;">
-1408
+1442
 </td>
 <td style="text-align:right;">
-0.1408
+0.1442
 </td>
 <td style="text-align:right;">
 0.1428571
@@ -626,10 +617,10 @@ the_pi
 2
 </td>
 <td style="text-align:right;">
-2930
+2821
 </td>
 <td style="text-align:right;">
-0.2930
+0.2821
 </td>
 <td style="text-align:right;">
 0.2857143
@@ -640,10 +631,10 @@ the_pi
 3
 </td>
 <td style="text-align:right;">
-4227
+4260
 </td>
 <td style="text-align:right;">
-0.4227
+0.4260
 </td>
 <td style="text-align:right;">
 0.4285714
@@ -654,10 +645,10 @@ the_pi
 4
 </td>
 <td style="text-align:right;">
-5773
+5740
 </td>
 <td style="text-align:right;">
-0.5773
+0.5740
 </td>
 <td style="text-align:right;">
 0.5714286
@@ -668,10 +659,10 @@ the_pi
 5
 </td>
 <td style="text-align:right;">
-7070
+7179
 </td>
 <td style="text-align:right;">
-0.7070
+0.7179
 </td>
 <td style="text-align:right;">
 0.7142857
@@ -682,10 +673,10 @@ the_pi
 6
 </td>
 <td style="text-align:right;">
-8592
+8558
 </td>
 <td style="text-align:right;">
-0.8592
+0.8558
 </td>
 <td style="text-align:right;">
 0.8571429
@@ -719,10 +710,10 @@ the_pi
 1
 </td>
 <td style="text-align:right;">
-1420
+1390
 </td>
 <td style="text-align:right;">
-0.1420
+0.1390
 </td>
 <td style="text-align:right;">
 0.1428571
@@ -733,10 +724,10 @@ the_pi
 2
 </td>
 <td style="text-align:right;">
-2838
+2872
 </td>
 <td style="text-align:right;">
-0.2838
+0.2872
 </td>
 <td style="text-align:right;">
 0.2857143
@@ -747,10 +738,10 @@ the_pi
 3
 </td>
 <td style="text-align:right;">
-4248
+4353
 </td>
 <td style="text-align:right;">
-0.4248
+0.4353
 </td>
 <td style="text-align:right;">
 0.4285714
@@ -761,10 +752,10 @@ the_pi
 4
 </td>
 <td style="text-align:right;">
-5777
+5709
 </td>
 <td style="text-align:right;">
-0.5777
+0.5709
 </td>
 <td style="text-align:right;">
 0.5714286
@@ -775,10 +766,10 @@ the_pi
 5
 </td>
 <td style="text-align:right;">
-7116
+7058
 </td>
 <td style="text-align:right;">
-0.7116
+0.7058
 </td>
 <td style="text-align:right;">
 0.7142857
@@ -789,10 +780,10 @@ the_pi
 6
 </td>
 <td style="text-align:right;">
-8601
+8618
 </td>
 <td style="text-align:right;">
-0.8601
+0.8618
 </td>
 <td style="text-align:right;">
 0.8571429
