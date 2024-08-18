@@ -41,7 +41,7 @@ where $S_n= \{s\in \Omega|\#s = n\}$ and $n$ is the sample size. For this sampli
 $$
 \pi_i = \frac{n}{N}\ \hbox{and}\ \pi_{ij}= \frac{n(n-1)}{N(N-1)}.
 $$
-The essential in simple random sampling is that **all possible subsets having $n$ units are equally likely to be chosen.**
+The essential in the simple random sampling is that **all possible subsets having $n$ units are equally likely to be chosen.**
 - **Stratified sampling:**
 $$
 p(s)=\left\{
@@ -69,9 +69,9 @@ $$
 \pi_i = p,\ \hbox{where}\ 0 < p < 1,\ \hbox{for}\ i=1, \ldots, N;
 $$ 
 sample $s$ has units that are 
-**independently** selected. Note that for Bernoulli sampling, *sample size* is a random variable and it follows
-Binomial$(N, p)$. The mean of the sample size is equal to $Np$. Obviously, 
-$$\pi_{i, j}=p^2\ \hbox{for}\ i\neq j.$$ All the possible samples in $\Omega$ can be classified into
+**independently** selected. Note that for Bernoulli sampling, *sample size* is a random variable and it follows the
+Binomial$(N, p)$ distribution. The mean of the sample size is equal to $Np$. Obviously, 
+$$\pi_{ij}=p^2\ \hbox{for}\ i\neq j.$$ All the possible samples in $\Omega$ can be classified into
 $N+1$ classes using their *cardinality* (number of elements in a set), and we can check that 
 
 $$

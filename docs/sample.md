@@ -29,7 +29,7 @@ Let's have an example.
 According to Lohr (2010, p. 3), "a good sample will be representative in the sense that characteristics of interest in the population can be estimated from the sample with a known degree of accuracy." According to Lohr (2022, p. 3), "a sample is representative if it can be used to 'reconstruct' what the population looks like---and if we can provide an accurate assessment of how good that reconstruction is."
 So a good sample should meet the following requirements:
 
-1. No serious over and under *coverage issues*, that is, the sampled population should be sufficiently close to the target population.
+1. No serious over and under *coverage issues*, that is, the sampling frame population should be sufficiently close to the target population.
 1. No serious *selection bias issue*.
 1. *Measurement and processing errors* are negligible. 
 

@@ -41,7 +41,7 @@ where $S_n= \{s\in \Omega|\#s = n\}$ and $n$ is the sample size. For this sampli
 $$
 \pi_i = \frac{n}{N}\ \hbox{and}\ \pi_{ij}= \frac{n(n-1)}{N(N-1)}.
 $$
-The essential in simple random sampling is that **all possible subsets having $n$ units are equally likely to be chosen.**
+The essential in the simple random sampling is that **all possible subsets having $n$ units are equally likely to be chosen.**
 - **Stratified sampling:**
 $$
 p(s)=\left\{
@@ -69,9 +69,9 @@ $$
 \pi_i = p,\ \hbox{where}\ 0 < p < 1,\ \hbox{for}\ i=1, \ldots, N;
 $$ 
 sample $s$ has units that are 
-**independently** selected. Note that for Bernoulli sampling, *sample size* is a random variable and it follows
-Binomial$(N, p)$. The mean of the sample size is equal to $Np$. Obviously, 
-$$\pi_{i, j}=p^2\ \hbox{for}\ i\neq j.$$ All the possible samples in $\Omega$ can be classified into
+**independently** selected. Note that for Bernoulli sampling, *sample size* is a random variable and it follows the
+Binomial$(N, p)$ distribution. The mean of the sample size is equal to $Np$. Obviously, 
+$$\pi_{ij}=p^2\ \hbox{for}\ i\neq j.$$ All the possible samples in $\Omega$ can be classified into
 $N+1$ classes using their *cardinality* (number of elements in a set), and we can check that 
 
 $$
@@ -352,38 +352,38 @@ kable(the_re_4_sys)
 <tbody>
   <tr>
    <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1442 </td>
-   <td style="text-align:right;"> 0.1442 </td>
+   <td style="text-align:right;"> 1427 </td>
+   <td style="text-align:right;"> 0.1427 </td>
    <td style="text-align:right;"> 0.1428571 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 2821 </td>
-   <td style="text-align:right;"> 0.2821 </td>
+   <td style="text-align:right;"> 2875 </td>
+   <td style="text-align:right;"> 0.2875 </td>
    <td style="text-align:right;"> 0.2857143 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 4260 </td>
-   <td style="text-align:right;"> 0.4260 </td>
+   <td style="text-align:right;"> 4298 </td>
+   <td style="text-align:right;"> 0.4298 </td>
    <td style="text-align:right;"> 0.4285714 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 5740 </td>
-   <td style="text-align:right;"> 0.5740 </td>
+   <td style="text-align:right;"> 5702 </td>
+   <td style="text-align:right;"> 0.5702 </td>
    <td style="text-align:right;"> 0.5714286 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 7179 </td>
-   <td style="text-align:right;"> 0.7179 </td>
+   <td style="text-align:right;"> 7125 </td>
+   <td style="text-align:right;"> 0.7125 </td>
    <td style="text-align:right;"> 0.7142857 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 8558 </td>
-   <td style="text-align:right;"> 0.8558 </td>
+   <td style="text-align:right;"> 8573 </td>
+   <td style="text-align:right;"> 0.8573 </td>
    <td style="text-align:right;"> 0.8571429 </td>
   </tr>
 </tbody>
@@ -407,38 +407,38 @@ kable(the_re_4_UPmaxentropy)
 <tbody>
   <tr>
    <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1390 </td>
-   <td style="text-align:right;"> 0.1390 </td>
+   <td style="text-align:right;"> 1425 </td>
+   <td style="text-align:right;"> 0.1425 </td>
    <td style="text-align:right;"> 0.1428571 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 2872 </td>
-   <td style="text-align:right;"> 0.2872 </td>
+   <td style="text-align:right;"> 2848 </td>
+   <td style="text-align:right;"> 0.2848 </td>
    <td style="text-align:right;"> 0.2857143 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 4353 </td>
-   <td style="text-align:right;"> 0.4353 </td>
+   <td style="text-align:right;"> 4356 </td>
+   <td style="text-align:right;"> 0.4356 </td>
    <td style="text-align:right;"> 0.4285714 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 5709 </td>
-   <td style="text-align:right;"> 0.5709 </td>
+   <td style="text-align:right;"> 5622 </td>
+   <td style="text-align:right;"> 0.5622 </td>
    <td style="text-align:right;"> 0.5714286 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 7058 </td>
-   <td style="text-align:right;"> 0.7058 </td>
+   <td style="text-align:right;"> 7158 </td>
+   <td style="text-align:right;"> 0.7158 </td>
    <td style="text-align:right;"> 0.7142857 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 8618 </td>
-   <td style="text-align:right;"> 0.8618 </td>
+   <td style="text-align:right;"> 8591 </td>
+   <td style="text-align:right;"> 0.8591 </td>
    <td style="text-align:right;"> 0.8571429 </td>
   </tr>
 </tbody>
