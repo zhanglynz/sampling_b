@@ -130,7 +130,7 @@ are chosen as the sample. NB: If the result of the mod operation is 0, then unit
 
 **R program:**
 
-```r
+``` r
 sys_sampling <- function(N, n, start = NULL, indi_output = FALSE)
 {# interval
  k <- floor(N / n)
@@ -153,7 +153,7 @@ sys_sampling <- function(N, n, start = NULL, indi_output = FALSE)
 
 **Example:** Suppose $N=10$ and $n=3$. We can show all the possible samples resulted from systematic sampling.
 
-```r
+``` r
 library(dplyr)
 library(knitr)
 library(kableExtra)
@@ -165,7 +165,7 @@ kable(a_tbl, "html", align = rep('c', 10)) %>%
   kable_styling(full_width = F)
 ```
 
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:center;"> s_1 </th>
@@ -240,7 +240,7 @@ where $n$ and $N$ are the sample size and population size, respectively, $U_i$ i
 
 **R program:**
 
-```r
+``` r
 pps_action <- function(size_vec, the_n)
 {the_re <- the_n * (size_vec / sum(size_vec))
  the_n_fixed <- the_n
@@ -299,7 +299,7 @@ do we do systematic sampling? According to Antoine (2015) and Tillé (2010), an 
 
 The following is an R program that implements the algorithm.
 
-```r
+``` r
 sys_smpling_with_sel_prob <- function(sel_prob)
 {u <- runif(1, 0, 1)
  cum_sel_prob <- cumsum(sel_prob)
@@ -316,7 +316,7 @@ sys_smpling_with_sel_prob <- function(sel_prob)
 The R function `UPsystematic()` in **`sampling`** package can do systematic sampling with 
 unequal probabilities. Below, we show an example to test `sys_smpling_with_sel_prob()` and `sampling::UPsystematic()`.
 
-```r
+``` r
 library(sampling)
 library(dplyr)
 library(knitr)
@@ -340,109 +340,33 @@ the_re_4_sys <- eval_sampling(selec_prob = selc_prob,
 kable(the_re_4_sys)
 ```
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> the_vec </th>
-   <th style="text-align:right;"> Freq </th>
-   <th style="text-align:right;"> relative_freq </th>
-   <th style="text-align:right;"> the_pi </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1427 </td>
-   <td style="text-align:right;"> 0.1427 </td>
-   <td style="text-align:right;"> 0.1428571 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 2875 </td>
-   <td style="text-align:right;"> 0.2875 </td>
-   <td style="text-align:right;"> 0.2857143 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 4298 </td>
-   <td style="text-align:right;"> 0.4298 </td>
-   <td style="text-align:right;"> 0.4285714 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 5702 </td>
-   <td style="text-align:right;"> 0.5702 </td>
-   <td style="text-align:right;"> 0.5714286 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 7125 </td>
-   <td style="text-align:right;"> 0.7125 </td>
-   <td style="text-align:right;"> 0.7142857 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 8573 </td>
-   <td style="text-align:right;"> 0.8573 </td>
-   <td style="text-align:right;"> 0.8571429 </td>
-  </tr>
-</tbody>
-</table>
 
-```r
+
+|the_vec | Freq| relative_freq|    the_pi|
+|:-------|----:|-------------:|---------:|
+|1       | 1456|        0.1456| 0.1428571|
+|2       | 2916|        0.2916| 0.2857143|
+|3       | 4196|        0.4196| 0.4285714|
+|4       | 5804|        0.5804| 0.5714286|
+|5       | 7084|        0.7084| 0.7142857|
+|6       | 8544|        0.8544| 0.8571429|
+
+``` r
 the_re_4_UPmaxentropy <- eval_sampling(selec_prob = selc_prob, 
                                        the_func = UPmaxentropy)
 kable(the_re_4_UPmaxentropy)
 ```
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> the_vec </th>
-   <th style="text-align:right;"> Freq </th>
-   <th style="text-align:right;"> relative_freq </th>
-   <th style="text-align:right;"> the_pi </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1425 </td>
-   <td style="text-align:right;"> 0.1425 </td>
-   <td style="text-align:right;"> 0.1428571 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 2848 </td>
-   <td style="text-align:right;"> 0.2848 </td>
-   <td style="text-align:right;"> 0.2857143 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:right;"> 4356 </td>
-   <td style="text-align:right;"> 0.4356 </td>
-   <td style="text-align:right;"> 0.4285714 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 5622 </td>
-   <td style="text-align:right;"> 0.5622 </td>
-   <td style="text-align:right;"> 0.5714286 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 5 </td>
-   <td style="text-align:right;"> 7158 </td>
-   <td style="text-align:right;"> 0.7158 </td>
-   <td style="text-align:right;"> 0.7142857 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:right;"> 8591 </td>
-   <td style="text-align:right;"> 0.8591 </td>
-   <td style="text-align:right;"> 0.8571429 </td>
-  </tr>
-</tbody>
-</table>
+
+
+|the_vec | Freq| relative_freq|    the_pi|
+|:-------|----:|-------------:|---------:|
+|1       | 1462|        0.1462| 0.1428571|
+|2       | 2854|        0.2854| 0.2857143|
+|3       | 4207|        0.4207| 0.4285714|
+|4       | 5736|        0.5736| 0.5714286|
+|5       | 7219|        0.7219| 0.7142857|
+|6       | 8522|        0.8522| 0.8571429|
 
 
 

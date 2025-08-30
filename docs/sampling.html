@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Understanding Sampling | Uderstanding Survey Sampling</title>
   <meta name="description" content="2 Understanding Sampling | Uderstanding Survey Sampling" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Understanding Sampling | Uderstanding Survey Sampling" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2024-08-18" />
+<meta name="date" content="2025-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -68,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -121,6 +121,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -317,34 +321,34 @@ The ideas in systematic sampling can be described as follows.</p>
 are chosen as the sample. NB: If the result of the mod operation is 0, then unit <span class="math inline">\(N\)</span> is chosen into sample.</li>
 </ol>
 <p><strong>R program:</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="sampling.html#cb1-1" aria-hidden="true" tabindex="-1"></a>sys_sampling <span class="ot">&lt;-</span> <span class="cf">function</span>(N, n, <span class="at">start =</span> <span class="cn">NULL</span>, <span class="at">indi_output =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1-2"><a href="sampling.html#cb1-2" aria-hidden="true" tabindex="-1"></a>{<span class="co"># interval</span></span>
-<span id="cb1-3"><a href="sampling.html#cb1-3" aria-hidden="true" tabindex="-1"></a> k <span class="ot">&lt;-</span> <span class="fu">floor</span>(N <span class="sc">/</span> n)</span>
-<span id="cb1-4"><a href="sampling.html#cb1-4" aria-hidden="true" tabindex="-1"></a> <span class="co"># start</span></span>
-<span id="cb1-5"><a href="sampling.html#cb1-5" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span>(<span class="fu">is.null</span>(start)) start <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">*</span> N)</span>
-<span id="cb1-6"><a href="sampling.html#cb1-6" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span>(<span class="sc">!</span>start <span class="sc">%in%</span> 1L<span class="sc">:</span>N) <span class="fu">stop</span>(<span class="st">&quot;&#39;start&#39; must be integer between 1 and N!&quot;</span>)</span>
-<span id="cb1-7"><a href="sampling.html#cb1-7" aria-hidden="true" tabindex="-1"></a> <span class="co"># sample</span></span>
-<span id="cb1-8"><a href="sampling.html#cb1-8" aria-hidden="true" tabindex="-1"></a> the_sample <span class="ot">&lt;-</span> (start <span class="sc">+</span> (<span class="dv">0</span><span class="sc">:</span>(n <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">*</span> k) <span class="sc">%%</span> N </span>
-<span id="cb1-9"><a href="sampling.html#cb1-9" aria-hidden="true" tabindex="-1"></a> the_sample <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(the_sample <span class="sc">==</span> 0L, N, the_sample)</span>
-<span id="cb1-10"><a href="sampling.html#cb1-10" aria-hidden="true" tabindex="-1"></a> the_sample <span class="ot">&lt;-</span> <span class="fu">sort</span>(the_sample)</span>
-<span id="cb1-11"><a href="sampling.html#cb1-11" aria-hidden="true" tabindex="-1"></a> <span class="co"># output</span></span>
-<span id="cb1-12"><a href="sampling.html#cb1-12" aria-hidden="true" tabindex="-1"></a> <span class="cf">if</span>(indi_output) {</span>
-<span id="cb1-13"><a href="sampling.html#cb1-13" aria-hidden="true" tabindex="-1"></a> temp <span class="ot">&lt;-</span> 1L<span class="sc">:</span>N</span>
-<span id="cb1-14"><a href="sampling.html#cb1-14" aria-hidden="true" tabindex="-1"></a> output <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(temp <span class="sc">%in%</span> the_sample)</span>
-<span id="cb1-15"><a href="sampling.html#cb1-15" aria-hidden="true" tabindex="-1"></a> <span class="fu">return</span>(output) }</span>
-<span id="cb1-16"><a href="sampling.html#cb1-16" aria-hidden="true" tabindex="-1"></a> <span class="fu">return</span>(the_sample)</span>
-<span id="cb1-17"><a href="sampling.html#cb1-17" aria-hidden="true" tabindex="-1"></a>}  </span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="sampling.html#cb1-1" tabindex="-1"></a>sys_sampling <span class="ot">&lt;-</span> <span class="cf">function</span>(N, n, <span class="at">start =</span> <span class="cn">NULL</span>, <span class="at">indi_output =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-2"><a href="sampling.html#cb1-2" tabindex="-1"></a>{<span class="co"># interval</span></span>
+<span id="cb1-3"><a href="sampling.html#cb1-3" tabindex="-1"></a> k <span class="ot">&lt;-</span> <span class="fu">floor</span>(N <span class="sc">/</span> n)</span>
+<span id="cb1-4"><a href="sampling.html#cb1-4" tabindex="-1"></a> <span class="co"># start</span></span>
+<span id="cb1-5"><a href="sampling.html#cb1-5" tabindex="-1"></a> <span class="cf">if</span>(<span class="fu">is.null</span>(start)) start <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">*</span> N)</span>
+<span id="cb1-6"><a href="sampling.html#cb1-6" tabindex="-1"></a> <span class="cf">if</span>(<span class="sc">!</span>start <span class="sc">%in%</span> <span class="dv">1</span><span class="dt">L</span><span class="sc">:</span>N) <span class="fu">stop</span>(<span class="st">&quot;&#39;start&#39; must be integer between 1 and N!&quot;</span>)</span>
+<span id="cb1-7"><a href="sampling.html#cb1-7" tabindex="-1"></a> <span class="co"># sample</span></span>
+<span id="cb1-8"><a href="sampling.html#cb1-8" tabindex="-1"></a> the_sample <span class="ot">&lt;-</span> (start <span class="sc">+</span> (<span class="dv">0</span><span class="sc">:</span>(n <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">*</span> k) <span class="sc">%%</span> N </span>
+<span id="cb1-9"><a href="sampling.html#cb1-9" tabindex="-1"></a> the_sample <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(the_sample <span class="sc">==</span> <span class="dv">0</span><span class="dt">L</span>, N, the_sample)</span>
+<span id="cb1-10"><a href="sampling.html#cb1-10" tabindex="-1"></a> the_sample <span class="ot">&lt;-</span> <span class="fu">sort</span>(the_sample)</span>
+<span id="cb1-11"><a href="sampling.html#cb1-11" tabindex="-1"></a> <span class="co"># output</span></span>
+<span id="cb1-12"><a href="sampling.html#cb1-12" tabindex="-1"></a> <span class="cf">if</span>(indi_output) {</span>
+<span id="cb1-13"><a href="sampling.html#cb1-13" tabindex="-1"></a> temp <span class="ot">&lt;-</span> <span class="dv">1</span><span class="dt">L</span><span class="sc">:</span>N</span>
+<span id="cb1-14"><a href="sampling.html#cb1-14" tabindex="-1"></a> output <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(temp <span class="sc">%in%</span> the_sample)</span>
+<span id="cb1-15"><a href="sampling.html#cb1-15" tabindex="-1"></a> <span class="fu">return</span>(output) }</span>
+<span id="cb1-16"><a href="sampling.html#cb1-16" tabindex="-1"></a> <span class="fu">return</span>(the_sample)</span>
+<span id="cb1-17"><a href="sampling.html#cb1-17" tabindex="-1"></a>}  </span></code></pre></div>
 <p><strong>Example:</strong> Suppose <span class="math inline">\(N=10\)</span> and <span class="math inline">\(n=3\)</span>. We can show all the possible samples resulted from systematic sampling.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="sampling.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-2"><a href="sampling.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb2-3"><a href="sampling.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb2-4"><a href="sampling.html#cb2-4" aria-hidden="true" tabindex="-1"></a>a_tbl <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(<span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, </span>
-<span id="cb2-5"><a href="sampling.html#cb2-5" aria-hidden="true" tabindex="-1"></a>                          <span class="cf">function</span>(s) <span class="fu">sys_sampling</span>(<span class="at">N =</span> <span class="dv">10</span>, <span class="at">n =</span> <span class="dv">3</span>, <span class="at">start =</span> s))) </span>
-<span id="cb2-6"><a href="sampling.html#cb2-6" aria-hidden="true" tabindex="-1"></a>col_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;s_&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb2-7"><a href="sampling.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(a_tbl) <span class="ot">&lt;-</span> col_names</span>
-<span id="cb2-8"><a href="sampling.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(a_tbl, <span class="st">&quot;html&quot;</span>, <span class="at">align =</span> <span class="fu">rep</span>(<span class="st">&#39;c&#39;</span>, <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-9"><a href="sampling.html#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> F)</span></code></pre></div>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="sampling.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-2"><a href="sampling.html#cb2-2" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-3"><a href="sampling.html#cb2-3" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-4"><a href="sampling.html#cb2-4" tabindex="-1"></a>a_tbl <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(<span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, </span>
+<span id="cb2-5"><a href="sampling.html#cb2-5" tabindex="-1"></a>                          <span class="cf">function</span>(s) <span class="fu">sys_sampling</span>(<span class="at">N =</span> <span class="dv">10</span>, <span class="at">n =</span> <span class="dv">3</span>, <span class="at">start =</span> s))) </span>
+<span id="cb2-6"><a href="sampling.html#cb2-6" tabindex="-1"></a>col_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;s_&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb2-7"><a href="sampling.html#cb2-7" tabindex="-1"></a><span class="fu">names</span>(a_tbl) <span class="ot">&lt;-</span> col_names</span>
+<span id="cb2-8"><a href="sampling.html#cb2-8" tabindex="-1"></a><span class="fu">kable</span>(a_tbl, <span class="st">&quot;html&quot;</span>, <span class="at">align =</span> <span class="fu">rep</span>(<span class="st">&#39;c&#39;</span>, <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-9"><a href="sampling.html#cb2-9" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> F)</span></code></pre></div>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:center;">
@@ -494,20 +498,20 @@ s_10
 \end{equation}\]</span>
 where <span class="math inline">\(n\)</span> and <span class="math inline">\(N\)</span> are the sample size and population size, respectively, <span class="math inline">\(U_i\)</span> is the <em>size/importance</em> of unit <span class="math inline">\(i\)</span>.</p>
 <p><strong>R program:</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="sampling.html#cb3-1" aria-hidden="true" tabindex="-1"></a>pps_action <span class="ot">&lt;-</span> <span class="cf">function</span>(size_vec, the_n)</span>
-<span id="cb3-2"><a href="sampling.html#cb3-2" aria-hidden="true" tabindex="-1"></a>{the_re <span class="ot">&lt;-</span> the_n <span class="sc">*</span> (size_vec <span class="sc">/</span> <span class="fu">sum</span>(size_vec))</span>
-<span id="cb3-3"><a href="sampling.html#cb3-3" aria-hidden="true" tabindex="-1"></a> the_n_fixed <span class="ot">&lt;-</span> the_n</span>
-<span id="cb3-4"><a href="sampling.html#cb3-4" aria-hidden="true" tabindex="-1"></a> <span class="cf">while</span>(<span class="dv">1</span>) {</span>
-<span id="cb3-5"><a href="sampling.html#cb3-5" aria-hidden="true" tabindex="-1"></a>   bad_ones_index <span class="ot">&lt;-</span> <span class="fu">which</span>(the_re <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
-<span id="cb3-6"><a href="sampling.html#cb3-6" aria-hidden="true" tabindex="-1"></a>   good_ones_index <span class="ot">&lt;-</span> <span class="fu">which</span>(the_re <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
-<span id="cb3-7"><a href="sampling.html#cb3-7" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span>(<span class="sc">!</span><span class="fu">length</span>(bad_ones_index)) <span class="fu">return</span>(the_re)</span>
-<span id="cb3-8"><a href="sampling.html#cb3-8" aria-hidden="true" tabindex="-1"></a>   the_re[bad_ones_index] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb3-9"><a href="sampling.html#cb3-9" aria-hidden="true" tabindex="-1"></a>   m <span class="ot">&lt;-</span> <span class="fu">sum</span>(the_re <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb3-10"><a href="sampling.html#cb3-10" aria-hidden="true" tabindex="-1"></a>   the_n <span class="ot">&lt;-</span> the_n_fixed <span class="sc">-</span> m</span>
-<span id="cb3-11"><a href="sampling.html#cb3-11" aria-hidden="true" tabindex="-1"></a>   the_re[good_ones_index] <span class="ot">&lt;-</span></span>
-<span id="cb3-12"><a href="sampling.html#cb3-12" aria-hidden="true" tabindex="-1"></a>     the_n <span class="sc">*</span> (size_vec[good_ones_index] <span class="sc">/</span> <span class="fu">sum</span>(size_vec[good_ones_index]))</span>
-<span id="cb3-13"><a href="sampling.html#cb3-13" aria-hidden="true" tabindex="-1"></a> }</span>
-<span id="cb3-14"><a href="sampling.html#cb3-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="sampling.html#cb3-1" tabindex="-1"></a>pps_action <span class="ot">&lt;-</span> <span class="cf">function</span>(size_vec, the_n)</span>
+<span id="cb3-2"><a href="sampling.html#cb3-2" tabindex="-1"></a>{the_re <span class="ot">&lt;-</span> the_n <span class="sc">*</span> (size_vec <span class="sc">/</span> <span class="fu">sum</span>(size_vec))</span>
+<span id="cb3-3"><a href="sampling.html#cb3-3" tabindex="-1"></a> the_n_fixed <span class="ot">&lt;-</span> the_n</span>
+<span id="cb3-4"><a href="sampling.html#cb3-4" tabindex="-1"></a> <span class="cf">while</span>(<span class="dv">1</span>) {</span>
+<span id="cb3-5"><a href="sampling.html#cb3-5" tabindex="-1"></a>   bad_ones_index <span class="ot">&lt;-</span> <span class="fu">which</span>(the_re <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb3-6"><a href="sampling.html#cb3-6" tabindex="-1"></a>   good_ones_index <span class="ot">&lt;-</span> <span class="fu">which</span>(the_re <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
+<span id="cb3-7"><a href="sampling.html#cb3-7" tabindex="-1"></a>   <span class="cf">if</span>(<span class="sc">!</span><span class="fu">length</span>(bad_ones_index)) <span class="fu">return</span>(the_re)</span>
+<span id="cb3-8"><a href="sampling.html#cb3-8" tabindex="-1"></a>   the_re[bad_ones_index] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb3-9"><a href="sampling.html#cb3-9" tabindex="-1"></a>   m <span class="ot">&lt;-</span> <span class="fu">sum</span>(the_re <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb3-10"><a href="sampling.html#cb3-10" tabindex="-1"></a>   the_n <span class="ot">&lt;-</span> the_n_fixed <span class="sc">-</span> m</span>
+<span id="cb3-11"><a href="sampling.html#cb3-11" tabindex="-1"></a>   the_re[good_ones_index] <span class="ot">&lt;-</span></span>
+<span id="cb3-12"><a href="sampling.html#cb3-12" tabindex="-1"></a>     the_n <span class="sc">*</span> (size_vec[good_ones_index] <span class="sc">/</span> <span class="fu">sum</span>(size_vec[good_ones_index]))</span>
+<span id="cb3-13"><a href="sampling.html#cb3-13" tabindex="-1"></a> }</span>
+<span id="cb3-14"><a href="sampling.html#cb3-14" tabindex="-1"></a>}</span></code></pre></div>
 <p><strong>Remarks:</strong></p>
 <ol style="list-style-type: decimal">
 <li><p>If some of <span class="math inline">\(\pi_i\)</span> resulted from <a href="sampling.html#eq:pi">(2.1)</a> are greater than 1, then we set them as 1, and recalculate the rest <span class="math inline">\(\pi_i\)</span>’s. The iteration process finishes until no <span class="math inline">\(\pi\)</span>’s are greater than 1.</p></li>
@@ -546,248 +550,136 @@ do we do systematic sampling? According to Antoine (2015) and Tillé (2010), an 
 <li>Each unit in the population owns an interval, i.e. unit 1 owns interval <span class="math inline">\((0,\ \pi_1)\)</span>; unit 2 owns interval <span class="math inline">\((\pi_1,\ \sum_{i=1}^2 \pi_i)\)</span>; <span class="math inline">\(\cdots\)</span>; unit <span class="math inline">\(N\)</span> owns interval <span class="math inline">\((\sum_{i=1}^{N-1}\pi_i,\ n)\)</span>. Then, we find the intervals that contain <span class="math inline">\(u\)</span>, or <span class="math inline">\(u+1\)</span>, <span class="math inline">\(\cdots\)</span>, or <span class="math inline">\(u+(n-1)\)</span>, and the <span class="math inline">\(n\)</span> units that own these intervals are selected as a sample.</li>
 </ol>
 <p>The following is an R program that implements the algorithm.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="sampling.html#cb4-1" aria-hidden="true" tabindex="-1"></a>sys_smpling_with_sel_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(sel_prob)</span>
-<span id="cb4-2"><a href="sampling.html#cb4-2" aria-hidden="true" tabindex="-1"></a>{u <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb4-3"><a href="sampling.html#cb4-3" aria-hidden="true" tabindex="-1"></a> cum_sel_prob <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sel_prob)</span>
-<span id="cb4-4"><a href="sampling.html#cb4-4" aria-hidden="true" tabindex="-1"></a> m <span class="ot">&lt;-</span> <span class="fu">length</span>(sel_prob)</span>
-<span id="cb4-5"><a href="sampling.html#cb4-5" aria-hidden="true" tabindex="-1"></a> s <span class="ot">&lt;-</span> <span class="fu">rep</span>(0L, m)</span>
-<span id="cb4-6"><a href="sampling.html#cb4-6" aria-hidden="true" tabindex="-1"></a> <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>m)</span>
-<span id="cb4-7"><a href="sampling.html#cb4-7" aria-hidden="true" tabindex="-1"></a> {s[i] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(u <span class="sc">&lt;=</span> cum_sel_prob[i])</span>
-<span id="cb4-8"><a href="sampling.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(s[i] <span class="sc">==</span> 1L) u <span class="ot">&lt;-</span> u <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb4-9"><a href="sampling.html#cb4-9" aria-hidden="true" tabindex="-1"></a> }</span>
-<span id="cb4-10"><a href="sampling.html#cb4-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">return</span>(s)</span>
-<span id="cb4-11"><a href="sampling.html#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="sampling.html#cb4-1" tabindex="-1"></a>sys_smpling_with_sel_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(sel_prob)</span>
+<span id="cb4-2"><a href="sampling.html#cb4-2" tabindex="-1"></a>{u <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="sampling.html#cb4-3" tabindex="-1"></a> cum_sel_prob <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sel_prob)</span>
+<span id="cb4-4"><a href="sampling.html#cb4-4" tabindex="-1"></a> m <span class="ot">&lt;-</span> <span class="fu">length</span>(sel_prob)</span>
+<span id="cb4-5"><a href="sampling.html#cb4-5" tabindex="-1"></a> s <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span><span class="dt">L</span>, m)</span>
+<span id="cb4-6"><a href="sampling.html#cb4-6" tabindex="-1"></a> <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>m)</span>
+<span id="cb4-7"><a href="sampling.html#cb4-7" tabindex="-1"></a> {s[i] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(u <span class="sc">&lt;=</span> cum_sel_prob[i])</span>
+<span id="cb4-8"><a href="sampling.html#cb4-8" tabindex="-1"></a>  <span class="cf">if</span>(s[i] <span class="sc">==</span> <span class="dv">1</span><span class="dt">L</span>) u <span class="ot">&lt;-</span> u <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb4-9"><a href="sampling.html#cb4-9" tabindex="-1"></a> }</span>
+<span id="cb4-10"><a href="sampling.html#cb4-10" tabindex="-1"></a> <span class="fu">return</span>(s)</span>
+<span id="cb4-11"><a href="sampling.html#cb4-11" tabindex="-1"></a>}</span></code></pre></div>
 <p>The R function <code>UPsystematic()</code> in <strong><code>sampling</code></strong> package can do systematic sampling with
 unequal probabilities. Below, we show an example to test <code>sys_smpling_with_sel_prob()</code> and <code>sampling::UPsystematic()</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="sampling.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sampling)</span>
-<span id="cb5-2"><a href="sampling.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb5-3"><a href="sampling.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb5-4"><a href="sampling.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="sampling.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># for evaluation</span></span>
-<span id="cb5-6"><a href="sampling.html#cb5-6" aria-hidden="true" tabindex="-1"></a>eval_sampling <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">it_nbr =</span> <span class="dv">10000</span>, selec_prob, the_func)</span>
-<span id="cb5-7"><a href="sampling.html#cb5-7" aria-hidden="true" tabindex="-1"></a>{the_vec <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>it_nbr, </span>
-<span id="cb5-8"><a href="sampling.html#cb5-8" aria-hidden="true" tabindex="-1"></a>                          <span class="cf">function</span>(x) <span class="fu">which</span>(<span class="fu">the_func</span>(selec_prob) <span class="sc">==</span> <span class="dv">1</span>)))</span>
-<span id="cb5-9"><a href="sampling.html#cb5-9" aria-hidden="true" tabindex="-1"></a> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(the_vec)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-10"><a href="sampling.html#cb5-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">relative_freq =</span> Freq <span class="sc">/</span> it_nbr) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-11"><a href="sampling.html#cb5-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">the_pi =</span> selec_prob)</span>
-<span id="cb5-12"><a href="sampling.html#cb5-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-13"><a href="sampling.html#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="sampling.html#cb5-14" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span>  <span class="dv">6</span></span>
-<span id="cb5-15"><a href="sampling.html#cb5-15" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span>  <span class="dv">3</span></span>
-<span id="cb5-16"><a href="sampling.html#cb5-16" aria-hidden="true" tabindex="-1"></a>selc_prob <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>N)<span class="sc">/</span><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span>N) </span>
-<span id="cb5-17"><a href="sampling.html#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="sampling.html#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple example - sample selection </span></span>
-<span id="cb5-19"><a href="sampling.html#cb5-19" aria-hidden="true" tabindex="-1"></a>the_re_4_sys <span class="ot">&lt;-</span> <span class="fu">eval_sampling</span>(<span class="at">selec_prob =</span> selc_prob, </span>
-<span id="cb5-20"><a href="sampling.html#cb5-20" aria-hidden="true" tabindex="-1"></a>                              <span class="at">the_func =</span> sys_smpling_with_sel_prob)</span>
-<span id="cb5-21"><a href="sampling.html#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(the_re_4_sys)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="sampling.html#cb5-1" tabindex="-1"></a><span class="fu">library</span>(sampling)</span>
+<span id="cb5-2"><a href="sampling.html#cb5-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-3"><a href="sampling.html#cb5-3" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb5-4"><a href="sampling.html#cb5-4" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="sampling.html#cb5-5" tabindex="-1"></a><span class="co"># for evaluation</span></span>
+<span id="cb5-6"><a href="sampling.html#cb5-6" tabindex="-1"></a>eval_sampling <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">it_nbr =</span> <span class="dv">10000</span>, selec_prob, the_func)</span>
+<span id="cb5-7"><a href="sampling.html#cb5-7" tabindex="-1"></a>{the_vec <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span>it_nbr, </span>
+<span id="cb5-8"><a href="sampling.html#cb5-8" tabindex="-1"></a>                          <span class="cf">function</span>(x) <span class="fu">which</span>(<span class="fu">the_func</span>(selec_prob) <span class="sc">==</span> <span class="dv">1</span>)))</span>
+<span id="cb5-9"><a href="sampling.html#cb5-9" tabindex="-1"></a> <span class="fu">as.data.frame</span>(<span class="fu">table</span>(the_vec)) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-10"><a href="sampling.html#cb5-10" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">relative_freq =</span> Freq <span class="sc">/</span> it_nbr) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-11"><a href="sampling.html#cb5-11" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">the_pi =</span> selec_prob)</span>
+<span id="cb5-12"><a href="sampling.html#cb5-12" tabindex="-1"></a>}</span>
+<span id="cb5-13"><a href="sampling.html#cb5-13" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="sampling.html#cb5-14" tabindex="-1"></a>N <span class="ot">&lt;-</span>  <span class="dv">6</span></span>
+<span id="cb5-15"><a href="sampling.html#cb5-15" tabindex="-1"></a>n <span class="ot">&lt;-</span>  <span class="dv">3</span></span>
+<span id="cb5-16"><a href="sampling.html#cb5-16" tabindex="-1"></a>selc_prob <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">:</span>N)<span class="sc">/</span><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span>N) </span>
+<span id="cb5-17"><a href="sampling.html#cb5-17" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="sampling.html#cb5-18" tabindex="-1"></a><span class="co"># Simple example - sample selection </span></span>
+<span id="cb5-19"><a href="sampling.html#cb5-19" tabindex="-1"></a>the_re_4_sys <span class="ot">&lt;-</span> <span class="fu">eval_sampling</span>(<span class="at">selec_prob =</span> selc_prob, </span>
+<span id="cb5-20"><a href="sampling.html#cb5-20" tabindex="-1"></a>                              <span class="at">the_func =</span> sys_smpling_with_sel_prob)</span>
+<span id="cb5-21"><a href="sampling.html#cb5-21" tabindex="-1"></a><span class="fu">kable</span>(the_re_4_sys)</span></code></pre></div>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-the_vec
-</th>
-<th style="text-align:right;">
-Freq
-</th>
-<th style="text-align:right;">
-relative_freq
-</th>
-<th style="text-align:right;">
-the_pi
-</th>
+<tr class="header">
+<th align="left">the_vec</th>
+<th align="right">Freq</th>
+<th align="right">relative_freq</th>
+<th align="right">the_pi</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:right;">
-1427
-</td>
-<td style="text-align:right;">
-0.1427
-</td>
-<td style="text-align:right;">
-0.1428571
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="right">1456</td>
+<td align="right">0.1456</td>
+<td align="right">0.1428571</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:right;">
-2875
-</td>
-<td style="text-align:right;">
-0.2875
-</td>
-<td style="text-align:right;">
-0.2857143
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="right">2916</td>
+<td align="right">0.2916</td>
+<td align="right">0.2857143</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:right;">
-4298
-</td>
-<td style="text-align:right;">
-0.4298
-</td>
-<td style="text-align:right;">
-0.4285714
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="right">4196</td>
+<td align="right">0.4196</td>
+<td align="right">0.4285714</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:right;">
-5702
-</td>
-<td style="text-align:right;">
-0.5702
-</td>
-<td style="text-align:right;">
-0.5714286
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="right">5804</td>
+<td align="right">0.5804</td>
+<td align="right">0.5714286</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:right;">
-7125
-</td>
-<td style="text-align:right;">
-0.7125
-</td>
-<td style="text-align:right;">
-0.7142857
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="right">7084</td>
+<td align="right">0.7084</td>
+<td align="right">0.7142857</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:right;">
-8573
-</td>
-<td style="text-align:right;">
-0.8573
-</td>
-<td style="text-align:right;">
-0.8571429
-</td>
+<tr class="even">
+<td align="left">6</td>
+<td align="right">8544</td>
+<td align="right">0.8544</td>
+<td align="right">0.8571429</td>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="sampling.html#cb6-1" aria-hidden="true" tabindex="-1"></a>the_re_4_UPmaxentropy <span class="ot">&lt;-</span> <span class="fu">eval_sampling</span>(<span class="at">selec_prob =</span> selc_prob, </span>
-<span id="cb6-2"><a href="sampling.html#cb6-2" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">the_func =</span> UPmaxentropy)</span>
-<span id="cb6-3"><a href="sampling.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(the_re_4_UPmaxentropy)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="sampling.html#cb6-1" tabindex="-1"></a>the_re_4_UPmaxentropy <span class="ot">&lt;-</span> <span class="fu">eval_sampling</span>(<span class="at">selec_prob =</span> selc_prob, </span>
+<span id="cb6-2"><a href="sampling.html#cb6-2" tabindex="-1"></a>                                       <span class="at">the_func =</span> UPmaxentropy)</span>
+<span id="cb6-3"><a href="sampling.html#cb6-3" tabindex="-1"></a><span class="fu">kable</span>(the_re_4_UPmaxentropy)</span></code></pre></div>
 <table>
 <thead>
-<tr>
-<th style="text-align:left;">
-the_vec
-</th>
-<th style="text-align:right;">
-Freq
-</th>
-<th style="text-align:right;">
-relative_freq
-</th>
-<th style="text-align:right;">
-the_pi
-</th>
+<tr class="header">
+<th align="left">the_vec</th>
+<th align="right">Freq</th>
+<th align="right">relative_freq</th>
+<th align="right">the_pi</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-1
-</td>
-<td style="text-align:right;">
-1425
-</td>
-<td style="text-align:right;">
-0.1425
-</td>
-<td style="text-align:right;">
-0.1428571
-</td>
+<tr class="odd">
+<td align="left">1</td>
+<td align="right">1462</td>
+<td align="right">0.1462</td>
+<td align="right">0.1428571</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:right;">
-2848
-</td>
-<td style="text-align:right;">
-0.2848
-</td>
-<td style="text-align:right;">
-0.2857143
-</td>
+<tr class="even">
+<td align="left">2</td>
+<td align="right">2854</td>
+<td align="right">0.2854</td>
+<td align="right">0.2857143</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:right;">
-4356
-</td>
-<td style="text-align:right;">
-0.4356
-</td>
-<td style="text-align:right;">
-0.4285714
-</td>
+<tr class="odd">
+<td align="left">3</td>
+<td align="right">4207</td>
+<td align="right">0.4207</td>
+<td align="right">0.4285714</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-4
-</td>
-<td style="text-align:right;">
-5622
-</td>
-<td style="text-align:right;">
-0.5622
-</td>
-<td style="text-align:right;">
-0.5714286
-</td>
+<tr class="even">
+<td align="left">4</td>
+<td align="right">5736</td>
+<td align="right">0.5736</td>
+<td align="right">0.5714286</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-5
-</td>
-<td style="text-align:right;">
-7158
-</td>
-<td style="text-align:right;">
-0.7158
-</td>
-<td style="text-align:right;">
-0.7142857
-</td>
+<tr class="odd">
+<td align="left">5</td>
+<td align="right">7219</td>
+<td align="right">0.7219</td>
+<td align="right">0.7142857</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-6
-</td>
-<td style="text-align:right;">
-8591
-</td>
-<td style="text-align:right;">
-0.8591
-</td>
-<td style="text-align:right;">
-0.8571429
-</td>
+<tr class="even">
+<td align="left">6</td>
+<td align="right">8522</td>
+<td align="right">0.8522</td>
+<td align="right">0.8571429</td>
 </tr>
 </tbody>
 </table>
@@ -851,42 +743,42 @@ which is <span class="math inline">\(1/{N \choose n}\)</span>, of being selected
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1 Understanding Sample | Uderstanding Survey Sampling</title>
   <meta name="description" content="1 Understanding Sample | Uderstanding Survey Sampling" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1 Understanding Sample | Uderstanding Survey Sampling" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2024-08-18" />
+<meta name="date" content="2025-08-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,7 +58,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -68,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -121,6 +121,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 </head>
 
@@ -235,18 +239,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>So essentially <strong>a population is a list of members/items with associated characteristic variables that are of interest to the study.</strong> However, when it comes to the fine details in the population concept, things are kind of complicated. Following Lohr (2022), we distinguish three populations, namely, <em>target population</em>, <em>sampling frame population</em> and <em>sampled population</em>; see Figure 1.</p>
-<div class="figure">
-<img src="figs/population_diagram.png" alt="" />
-<p class="caption">Figure 1: Three-population diagram. (Created by using R with some code borrowed from Peter Ellis, <a href="http://freerangestats.info/blog/2015/08/30/starting-in-datascience" class="uri">http://freerangestats.info/blog/2015/08/30/starting-in-datascience</a>)</p>
+<p>So essentially <strong>a population is a list of members/items with associated characteristic variables that are of interest to the study.</strong> However, when it comes to the fine details in the population concept, things are kind of complicated. Following Lohr (2022), we distinguish three populations, namely, <strong><em>target population</em></strong>, <strong><em>sampling frame population</em></strong> and <strong><em>sampled population</em></strong>. We <strong>define</strong> target population; we <strong>create</strong> a sampling frame, thus we have the sampling frame population; we can <strong><em>study/analyze</em></strong> sampled population, but we never sure about what the sampled population is.</p>
+<p>In Figure 1, we draw a Venn diagram to show sampling frame population and target population.</p>
+<div class="float">
+<img src="figs/two_population_diagram.png" alt="Figure 1: Two-population diagram. (Created by using R with some code borrowed from Peter Ellis, http://freerangestats.info/blog/2015/08/30/starting-in-datascience)" />
+<div class="figcaption">Figure 1: Two-population diagram. (Created by using R with some code borrowed from Peter Ellis, <a href="http://freerangestats.info/blog/2015/08/30/starting-in-datascience" class="uri">http://freerangestats.info/blog/2015/08/30/starting-in-datascience</a>)</div>
 </div>
 <p>Let’s have an example.</p>
 <ul>
 <li>Target population: all private dwellings in New Zealand.</li>
 <li>Sampling frame population: address list purchased from New Zealand Post.</li>
 <li>Not eligible for survey: some non-private dwellings, e.g. a prison.</li>
-<li>Not included in sampling frame: some new private dwellings not included in NZ Post system.</li>
-<li>Not reachable: e.g. some private dwellings in certain islands are too costly to be visited.</li>
+<li>Not included in sampling frame: some new private dwellings not included in NZ Post system.
+<!-- - Not reachable: e.g. some private dwellings in certain islands are too costly to be visited. --></li>
 </ul>
 </div>
 <div id="what-is-a-good-sample" class="section level2 hasAnchor" number="1.2">
@@ -363,9 +368,9 @@ where <span class="math inline">\(N=5\)</span>, to estimate <span class="math in
 (\hat{\mu} - 3\times \hat{\sigma},\  \hat{\mu} + 3\times \hat{\sigma});
 \]</span>
 we can find that nine out of the ten resulted confidence intervals do contain the truth <span class="math inline">\(27/5\)</span>.</p>
-<table class="table" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-2">Table 1.1: </span>Toy example: 10 possible samples and confidence intervals.
+<span id="tab:unnamed-chunk-2">Table 1.1: </span><span id="tab:unnamed-chunk-2">Table 1.2: </span>Toy example: 10 possible samples and confidence intervals.
 </caption>
 <thead>
 <tr>
@@ -629,42 +634,42 @@ where <span class="math inline">\(t_2\)</span> is a random variable having <span
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

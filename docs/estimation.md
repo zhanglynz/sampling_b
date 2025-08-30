@@ -46,7 +46,7 @@ $$
 **R program:**
 
 
-```r
+``` r
 estimate_percentile <- function(y_vec, weight_vec, N = 100000, the_p = 50)
 {if(the_p < 1e-6 || the_p > 100) stop("the_p should be between 0 and 100!")
  # a helper function

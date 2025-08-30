@@ -25,19 +25,19 @@ draw_diagram <- function(){
                      alpha = 0.2,
                      lwd = linewidth))
   
-  grid.lines(x = unit(c(0.7731099-0.105, 0.2268901+0.1), "npc"),
-             y = unit(c(0.7, 0.7), "npc"))
+  # grid.lines(x = unit(c(0.7731099-0.105, 0.2268901+0.1), "npc"),
+  #            y = unit(c(0.7, 0.7), "npc"))
   
   
-  grid.text("Not reachable", 0.5, 0.76, 
-            gp = gpar(fontfamily = "myfont",
-                      fontsize = fs * 1.1,
-                      fontface = "bold"))
+  # grid.text("Not reachable", 0.5, 0.76, 
+  #           gp = gpar(fontfamily = "myfont",
+  #                     fontsize = fs * 1.1,
+  #                     fontface = "bold"))
   
-  grid.text("Sampled population", 0.5, 0.45, 
-            gp = gpar(fontfamily = "myfont",
-                      fontsize = fs * 1.2,
-                      fontface = "bold"))
+  # grid.text("Sampled population", 0.5, 0.45, 
+  #           gp = gpar(fontfamily = "myfont",
+  #                     fontsize = fs * 1.2,
+  #                     fontface = "bold"))
   
   grid.text("Not eligible\nfor survey", 0.25, 0.6, rot = 45,
             gp = gpar(fontfamily = "myfont",

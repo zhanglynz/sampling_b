@@ -11,9 +11,11 @@ Member/Item/Unit ID | Var$_1$ | Var$_2$ | $\cdots$ | Var$_m$
  $\vdots$ |        |        |           |
  $N$      |        |        |           |
 
-So essentially **a population is a list of members/items with associated characteristic variables that are of interest to the study.** However, when it comes to the fine details in the population concept, things are kind of complicated. Following Lohr (2022), we distinguish three populations, namely, *target population*, *sampling frame population* and *sampled population*; see Figure 1.
+So essentially **a population is a list of members/items with associated characteristic variables that are of interest to the study.** However, when it comes to the fine details in the population concept, things are kind of complicated. Following Lohr (2022), we distinguish three populations, namely, ***target population***, ***sampling frame population*** and ***sampled population***. We **define** target population; we **create** a sampling frame, thus we have the sampling frame population; we can ***study/analyze*** sampled population, but we never sure about what the sampled population is.  
 
-![Figure 1: Three-population diagram. (Created by using R with some code borrowed from Peter Ellis, http://freerangestats.info/blog/2015/08/30/starting-in-datascience)](./figs/population_diagram.png) 
+In Figure 1, we draw a Venn diagram to show sampling frame population and target population.
+
+![Figure 1: Two-population diagram. (Created by using R with some code borrowed from Peter Ellis, http://freerangestats.info/blog/2015/08/30/starting-in-datascience)](./figs/two_population_diagram.png) 
 
 Let's have an example.
 
@@ -21,7 +23,7 @@ Let's have an example.
 - Sampling frame population: address list purchased from New Zealand Post.
 - Not eligible for survey: some non-private dwellings, e.g. a prison.
 - Not included in sampling frame: some new private dwellings not included in NZ Post system.
-- Not reachable: e.g. some private dwellings in certain islands are too costly to be visited.
+<!-- - Not reachable: e.g. some private dwellings in certain islands are too costly to be visited. -->
 
 
 ## What is a good sample?
