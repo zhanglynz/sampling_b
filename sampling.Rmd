@@ -6,7 +6,7 @@ Throughout this chapter, *sampling* means *probability sampling*. Following (but
 
 - The *population* is ${\cal P}=\{1, 2, \ldots, i, \ldots, N\}$.
 - A *sample* $s$ is a subset of ${\cal P}$. Note that $s$ can be empty.
-- There are $2^N$ possible samples. Denote the set of all possible samples by $\Omega$.
+- There are $2^N$ possible samples; denote the set of all possible samples by $\Omega$.
 
 A *sampling design* specifies a probability distribution $p(\cdot)$ over $\Omega$ such that
 $$
@@ -19,7 +19,7 @@ $$
 $$
 and for $i\neq j$
 $$
-\pi_{ij} = \hbox{the probability that both units}\ i\ \hbox{and}\ j\ \hbox{are selected in the sample.}
+\pi_{ij} = \hbox{the probability that both units}\ i\ \hbox{and}\ j\ \hbox{are selected in a sample.}
 $$
 Then,
 $$
@@ -37,7 +37,7 @@ p(s)=\left\{
 \end{array}
 \right.
 $$
-where $S_n= \{s\in \Omega|\#s = n\}$ and $n$ is the sample size. For this sampling design, 
+where $S_n= \{s\in \Omega | s\ \hbox{contains}\ n\ \hbox{units}\}$ and $n$ is the sample size. For this sampling design, 
 $$
 \pi_i = \frac{n}{N}\ \hbox{and}\ \pi_{ij}= \frac{n(n-1)}{N(N-1)}.
 $$
@@ -51,7 +51,7 @@ p(s)=\left\{
 \end{array}
 \right.
 $$
-where the population ${\cal P}$ is partitioned into $H$ strata and $\# {\cal P}_h= N_h$ for $h=1, \ldots, H$; $n_h$ is the sample size for stratum ${\cal P}_h$. For this sampling design,
+where the population ${\cal P}$ is partitioned into $H$ strata (the $i$th one is denoted by ${\cal P}_i$) and $\# {\cal P}_h$---the *cardinality* of ${\cal P}_h$---is equal to $N_h$, for $h=1, \ldots, H$; $n_h$ is the sample size for stratum ${\cal P}_h$. For this sampling design,
 $$
 \pi_i = \frac{n_h}{N_h},\ \hbox{if}\ i\in {\cal P}_h,
 $$

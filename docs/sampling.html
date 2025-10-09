@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2025-10-09" />
+<meta name="date" content="2025-10-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -201,7 +201,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>The <em>population</em> is <span class="math inline">\({\cal P}=\{1, 2, \ldots, i, \ldots, N\}\)</span>.</li>
 <li>A <em>sample</em> <span class="math inline">\(s\)</span> is a subset of <span class="math inline">\({\cal P}\)</span>. Note that <span class="math inline">\(s\)</span> can be empty.</li>
-<li>There are <span class="math inline">\(2^N\)</span> possible samples. Denote the set of all possible samples by <span class="math inline">\(\Omega\)</span>.</li>
+<li>There are <span class="math inline">\(2^N\)</span> possible samples; denote the set of all possible samples by <span class="math inline">\(\Omega\)</span>.</li>
 </ul>
 <p>A <em>sampling design</em> specifies a probability distribution <span class="math inline">\(p(\cdot)\)</span> over <span class="math inline">\(\Omega\)</span> such that
 <span class="math display">\[
@@ -213,7 +213,7 @@ p(s)\ge 0\ \hbox{and}\ \sum_{s\in \Omega} p(s)=1.
 \]</span>
 and for <span class="math inline">\(i\neq j\)</span>
 <span class="math display">\[
-\pi_{ij} = \hbox{the probability that both units}\ i\ \hbox{and}\ j\ \hbox{are selected in the sample.}
+\pi_{ij} = \hbox{the probability that both units}\ i\ \hbox{and}\ j\ \hbox{are selected in a sample.}
 \]</span>
 Then,
 <span class="math display">\[
@@ -230,7 +230,7 @@ p(s)=\left\{
 \end{array}
 \right.
 \]</span>
-where <span class="math inline">\(S_n= \{s\in \Omega|\#s = n\}\)</span> and <span class="math inline">\(n\)</span> is the sample size. For this sampling design,
+where <span class="math inline">\(S_n= \{s\in \Omega | s\ \hbox{contains}\ n\ \hbox{units}\}\)</span> and <span class="math inline">\(n\)</span> is the sample size. For this sampling design,
 <span class="math display">\[
 \pi_i = \frac{n}{N}\ \hbox{and}\ \pi_{ij}= \frac{n(n-1)}{N(N-1)}.
 \]</span>
@@ -244,7 +244,7 @@ p(s)=\left\{
 \end{array}
 \right.
 \]</span>
-where the population <span class="math inline">\({\cal P}\)</span> is partitioned into <span class="math inline">\(H\)</span> strata and <span class="math inline">\(\# {\cal P}_h= N_h\)</span> for <span class="math inline">\(h=1, \ldots, H\)</span>; <span class="math inline">\(n_h\)</span> is the sample size for stratum <span class="math inline">\({\cal P}_h\)</span>. For this sampling design,
+where the population <span class="math inline">\({\cal P}\)</span> is partitioned into <span class="math inline">\(H\)</span> strata (the <span class="math inline">\(i\)</span>th one is denoted by <span class="math inline">\({\cal P}_i\)</span>) and <span class="math inline">\(\# {\cal P}_h\)</span>—the <em>cardinality</em> of <span class="math inline">\({\cal P}_h\)</span>—is equal to <span class="math inline">\(N_h\)</span>, for <span class="math inline">\(h=1, \ldots, H\)</span>; <span class="math inline">\(n_h\)</span> is the sample size for stratum <span class="math inline">\({\cal P}_h\)</span>. For this sampling design,
 <span class="math display">\[
 \pi_i = \frac{n_h}{N_h},\ \hbox{if}\ i\in {\cal P}_h,
 \]</span>
@@ -596,38 +596,38 @@ unequal probabilities. Below, we show an example to test <code>sys_smpling_with_
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="right">1452</td>
-<td align="right">0.1452</td>
+<td align="right">1468</td>
+<td align="right">0.1468</td>
 <td align="right">0.1428571</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
-<td align="right">2890</td>
-<td align="right">0.2890</td>
+<td align="right">2797</td>
+<td align="right">0.2797</td>
 <td align="right">0.2857143</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
-<td align="right">4269</td>
-<td align="right">0.4269</td>
+<td align="right">4300</td>
+<td align="right">0.4300</td>
 <td align="right">0.4285714</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
-<td align="right">5731</td>
-<td align="right">0.5731</td>
+<td align="right">5700</td>
+<td align="right">0.5700</td>
 <td align="right">0.5714286</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
-<td align="right">7110</td>
-<td align="right">0.7110</td>
+<td align="right">7203</td>
+<td align="right">0.7203</td>
 <td align="right">0.7142857</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
-<td align="right">8548</td>
-<td align="right">0.8548</td>
+<td align="right">8532</td>
+<td align="right">0.8532</td>
 <td align="right">0.8571429</td>
 </tr>
 </tbody>
@@ -647,38 +647,38 @@ unequal probabilities. Below, we show an example to test <code>sys_smpling_with_
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="right">1405</td>
-<td align="right">0.1405</td>
+<td align="right">1471</td>
+<td align="right">0.1471</td>
 <td align="right">0.1428571</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
-<td align="right">2799</td>
-<td align="right">0.2799</td>
+<td align="right">2891</td>
+<td align="right">0.2891</td>
 <td align="right">0.2857143</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
-<td align="right">4319</td>
-<td align="right">0.4319</td>
+<td align="right">4301</td>
+<td align="right">0.4301</td>
 <td align="right">0.4285714</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
-<td align="right">5736</td>
-<td align="right">0.5736</td>
+<td align="right">5660</td>
+<td align="right">0.5660</td>
 <td align="right">0.5714286</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
-<td align="right">7214</td>
-<td align="right">0.7214</td>
+<td align="right">7066</td>
+<td align="right">0.7066</td>
 <td align="right">0.7142857</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
-<td align="right">8527</td>
-<td align="right">0.8527</td>
+<td align="right">8611</td>
+<td align="right">0.8611</td>
 <td align="right">0.8571429</td>
 </tr>
 </tbody>

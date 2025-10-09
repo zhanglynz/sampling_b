@@ -6,7 +6,7 @@ Throughout this chapter, *sampling* means *probability sampling*. Following (but
 
 - The *population* is ${\cal P}=\{1, 2, \ldots, i, \ldots, N\}$.
 - A *sample* $s$ is a subset of ${\cal P}$. Note that $s$ can be empty.
-- There are $2^N$ possible samples. Denote the set of all possible samples by $\Omega$.
+- There are $2^N$ possible samples; denote the set of all possible samples by $\Omega$.
 
 A *sampling design* specifies a probability distribution $p(\cdot)$ over $\Omega$ such that
 $$
@@ -19,7 +19,7 @@ $$
 $$
 and for $i\neq j$
 $$
-\pi_{ij} = \hbox{the probability that both units}\ i\ \hbox{and}\ j\ \hbox{are selected in the sample.}
+\pi_{ij} = \hbox{the probability that both units}\ i\ \hbox{and}\ j\ \hbox{are selected in a sample.}
 $$
 Then,
 $$
@@ -37,7 +37,7 @@ p(s)=\left\{
 \end{array}
 \right.
 $$
-where $S_n= \{s\in \Omega|\#s = n\}$ and $n$ is the sample size. For this sampling design, 
+where $S_n= \{s\in \Omega | s\ \hbox{contains}\ n\ \hbox{units}\}$ and $n$ is the sample size. For this sampling design, 
 $$
 \pi_i = \frac{n}{N}\ \hbox{and}\ \pi_{ij}= \frac{n(n-1)}{N(N-1)}.
 $$
@@ -51,7 +51,7 @@ p(s)=\left\{
 \end{array}
 \right.
 $$
-where the population ${\cal P}$ is partitioned into $H$ strata and $\# {\cal P}_h= N_h$ for $h=1, \ldots, H$; $n_h$ is the sample size for stratum ${\cal P}_h$. For this sampling design,
+where the population ${\cal P}$ is partitioned into $H$ strata (the $i$th one is denoted by ${\cal P}_i$) and $\# {\cal P}_h$---the *cardinality* of ${\cal P}_h$---is equal to $N_h$, for $h=1, \ldots, H$; $n_h$ is the sample size for stratum ${\cal P}_h$. For this sampling design,
 $$
 \pi_i = \frac{n_h}{N_h},\ \hbox{if}\ i\in {\cal P}_h,
 $$
@@ -344,12 +344,12 @@ kable(the_re_4_sys)
 
 |the_vec | Freq| relative_freq|    the_pi|
 |:-------|----:|-------------:|---------:|
-|1       | 1452|        0.1452| 0.1428571|
-|2       | 2890|        0.2890| 0.2857143|
-|3       | 4269|        0.4269| 0.4285714|
-|4       | 5731|        0.5731| 0.5714286|
-|5       | 7110|        0.7110| 0.7142857|
-|6       | 8548|        0.8548| 0.8571429|
+|1       | 1468|        0.1468| 0.1428571|
+|2       | 2797|        0.2797| 0.2857143|
+|3       | 4300|        0.4300| 0.4285714|
+|4       | 5700|        0.5700| 0.5714286|
+|5       | 7203|        0.7203| 0.7142857|
+|6       | 8532|        0.8532| 0.8571429|
 
 ``` r
 the_re_4_UPmaxentropy <- eval_sampling(selec_prob = selc_prob, 
@@ -361,12 +361,12 @@ kable(the_re_4_UPmaxentropy)
 
 |the_vec | Freq| relative_freq|    the_pi|
 |:-------|----:|-------------:|---------:|
-|1       | 1405|        0.1405| 0.1428571|
-|2       | 2799|        0.2799| 0.2857143|
-|3       | 4319|        0.4319| 0.4285714|
-|4       | 5736|        0.5736| 0.5714286|
-|5       | 7214|        0.7214| 0.7142857|
-|6       | 8527|        0.8527| 0.8571429|
+|1       | 1471|        0.1471| 0.1428571|
+|2       | 2891|        0.2891| 0.2857143|
+|3       | 4301|        0.4301| 0.4285714|
+|4       | 5660|        0.5660| 0.5714286|
+|5       | 7066|        0.7066| 0.7142857|
+|6       | 8611|        0.8611| 0.8571429|
 
 
 
