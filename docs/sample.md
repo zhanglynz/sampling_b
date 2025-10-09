@@ -11,7 +11,8 @@ Member/Item/Unit ID | Var$_1$ | Var$_2$ | $\cdots$ | Var$_m$
  $\vdots$ |        |        |           |
  $N$      |        |        |           |
 
-So essentially **a population is a list of members/items with associated characteristic variables that are of interest to the study.** However, when it comes to the fine details in the population concept, things are kind of complicated. Following Lohr (2022), we distinguish three populations, namely, ***target population***, ***sampling frame population*** and ***sampled population***. We **define** target population; we **create** a sampling frame, thus we have the sampling frame population; we can ***study/analyze*** sampled population, but we never sure about what exactly the sampled population is.  
+So essentially **a population is a list of members/items with associated characteristic variables that are of interest to the study.** 
+However, when it comes to the finer details of the population concept, things become more complicated. Following Lohr (2022), we distinguish three populations, namely, ***target population***, ***sampling frame population*** and ***sampled population***. We **define** target population; if we can **create** a sampling frame---this is often the case---then we **have** the sampling frame population; we can ***study/analyze*** sampled population, but we never sure about what exactly the sampled population is.  
 
 In Figure 1, we draw a Venn diagram to show sampling frame population and target population.
 
@@ -37,7 +38,7 @@ So a good sample should meet the following requirements:
 
 If the "soup" (a metaphor for the population) is not well mixed before we take a sample from it, then the sample cannot be good. Even if the "soup" is well mixed, selection bias may still happen because of e.g. *biased sampling frame* or *biased response*. By a biased sampling frame, we mean for whatever reasons the sampling frame excludes a subset of the population, resulting in discrepancy between it and the target population. That's why we are concerned about coverage issues---under coverage may cause serious selection bias. By *biased response*, we mean the responding sample is not representative. At survey operational level, we monitor *response rate*. If response rate is low, we worry that we may get biased response. If response rate is very low, say 20% or even lower, then we suspect that the sample is suffering response bias.
 
-We omit details about measurement/processing errors here and refer readers to Lohr (2010), but we want to emphasize a point: Sampling survey is a very practical thing.
+We omit details about measurement/processing errors here and refer readers to Lohr (2010), but we want to emphasize a point: **There are many practical factors to consider in any sample survey.**
 
 
 ## On sampling error
@@ -129,101 +130,21 @@ we can find that nine out of the ten resulted confidence intervals do contain th
 
 
 
-<table class="table" style="color: black; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:unnamed-chunk-2)(\#tab:unnamed-chunk-2)Toy example: 10 possible samples and confidence intervals.</caption>
- <thead>
-  <tr>
-   <th style="text-align:center;"> y_bar </th>
-   <th style="text-align:center;"> s2 </th>
-   <th style="text-align:center;"> sigma </th>
-   <th style="text-align:center;"> lower_limit </th>
-   <th style="text-align:center;"> upper_limit </th>
-   <th style="text-align:center;"> indi </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:center;"> 4.000000 </td>
-   <td style="text-align:center;"> 7.000000 </td>
-   <td style="text-align:center;"> 0.9660918 </td>
-   <td style="text-align:center;"> 1.1017247 </td>
-   <td style="text-align:center;"> 6.898275 </td>
-   <td style="text-align:center;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 4.333333 </td>
-   <td style="text-align:center;"> 9.333333 </td>
-   <td style="text-align:center;"> 1.1155467 </td>
-   <td style="text-align:center;"> 0.9866932 </td>
-   <td style="text-align:center;"> 7.679973 </td>
-   <td style="text-align:center;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 4.666667 </td>
-   <td style="text-align:center;"> 12.333333 </td>
-   <td style="text-align:center;"> 1.2823589 </td>
-   <td style="text-align:center;"> 0.8195899 </td>
-   <td style="text-align:center;"> 8.513744 </td>
-   <td style="text-align:center;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 4.666667 </td>
-   <td style="text-align:center;"> 10.333333 </td>
-   <td style="text-align:center;"> 1.1737878 </td>
-   <td style="text-align:center;"> 1.1453033 </td>
-   <td style="text-align:center;"> 8.188030 </td>
-   <td style="text-align:center;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 5.000000 </td>
-   <td style="text-align:center;"> 13.000000 </td>
-   <td style="text-align:center;"> 1.3165612 </td>
-   <td style="text-align:center;"> 1.0503165 </td>
-   <td style="text-align:center;"> 8.949684 </td>
-   <td style="text-align:center;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 5.333333 </td>
-   <td style="text-align:center;"> 14.333333 </td>
-   <td style="text-align:center;"> 1.3824294 </td>
-   <td style="text-align:center;"> 1.1860451 </td>
-   <td style="text-align:center;"> 9.480622 </td>
-   <td style="text-align:center;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 6.000000 </td>
-   <td style="text-align:center;"> 1.000000 </td>
-   <td style="text-align:center;"> 0.3651484 </td>
-   <td style="text-align:center;"> 4.9045549 </td>
-   <td style="text-align:center;"> 7.095445 </td>
-   <td style="text-align:center;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 6.333333 </td>
-   <td style="text-align:center;"> 2.333333 </td>
-   <td style="text-align:center;"> 0.5577734 </td>
-   <td style="text-align:center;"> 4.6600133 </td>
-   <td style="text-align:center;"> 8.006653 </td>
-   <td style="text-align:center;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 6.666667 </td>
-   <td style="text-align:center;"> 2.333333 </td>
-   <td style="text-align:center;"> 0.5577734 </td>
-   <td style="text-align:center;"> 4.9933466 </td>
-   <td style="text-align:center;"> 8.339987 </td>
-   <td style="text-align:center;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 7.000000 </td>
-   <td style="text-align:center;"> 1.000000 </td>
-   <td style="text-align:center;"> 0.3651484 </td>
-   <td style="text-align:center;"> 5.9045549 </td>
-   <td style="text-align:center;"> 8.095445 </td>
-   <td style="text-align:center;"> 0 </td>
-  </tr>
-</tbody>
-</table>
+
+Table: (\#tab:unnamed-chunk-2)Toy example -- 10 possible samples and confidence intervals.
+
+|  y_bar   |    s2     |   sigma   | lower_limit | upper_limit | indi |
+|:--------:|:---------:|:---------:|:-----------:|:-----------:|:----:|
+| 4.000000 | 7.000000  | 0.9660918 |  1.1017247  |  6.898275   |  1   |
+| 4.333333 | 9.333333  | 1.1155467 |  0.9866932  |  7.679973   |  1   |
+| 4.666667 | 12.333333 | 1.2823589 |  0.8195899  |  8.513744   |  1   |
+| 4.666667 | 10.333333 | 1.1737878 |  1.1453033  |  8.188030   |  1   |
+| 5.000000 | 13.000000 | 1.3165612 |  1.0503165  |  8.949684   |  1   |
+| 5.333333 | 14.333333 | 1.3824294 |  1.1860451  |  9.480622   |  1   |
+| 6.000000 | 1.000000  | 0.3651484 |  4.9045549  |  7.095445   |  1   |
+| 6.333333 | 2.333333  | 0.5577734 |  4.6600133  |  8.006653   |  1   |
+| 6.666667 | 2.333333  | 0.5577734 |  4.9933466  |  8.339987   |  1   |
+| 7.000000 | 1.000000  | 0.3651484 |  5.9045549  |  8.095445   |  0   |
 
 NB: Here is a quick explanation about "nine out of the ten resulted confidence intervals do contain the truth".
 

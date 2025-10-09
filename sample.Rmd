@@ -11,7 +11,8 @@ Member/Item/Unit ID | Var$_1$ | Var$_2$ | $\cdots$ | Var$_m$
  $\vdots$ |        |        |           |
  $N$      |        |        |           |
 
-So essentially **a population is a list of members/items with associated characteristic variables that are of interest to the study.** However, when it comes to the fine details in the population concept, things are kind of complicated. Following Lohr (2022), we distinguish three populations, namely, ***target population***, ***sampling frame population*** and ***sampled population***. We **define** target population; we **create** a sampling frame, thus we have the sampling frame population; we can ***study/analyze*** sampled population, but we never sure about what exactly the sampled population is.  
+So essentially **a population is a list of members/items with associated characteristic variables that are of interest to the study.** 
+However, when it comes to the finer details of the population concept, things become more complicated. Following Lohr (2022), we distinguish three populations, namely, ***target population***, ***sampling frame population*** and ***sampled population***. We **define** target population; if we can **create** a sampling frame---this is often the case---then we **have** the sampling frame population; we can ***study/analyze*** sampled population, but we never sure about what exactly the sampled population is.  
 
 In Figure 1, we draw a Venn diagram to show sampling frame population and target population.
 
@@ -37,7 +38,7 @@ So a good sample should meet the following requirements:
 
 If the "soup" (a metaphor for the population) is not well mixed before we take a sample from it, then the sample cannot be good. Even if the "soup" is well mixed, selection bias may still happen because of e.g. *biased sampling frame* or *biased response*. By a biased sampling frame, we mean for whatever reasons the sampling frame excludes a subset of the population, resulting in discrepancy between it and the target population. That's why we are concerned about coverage issues---under coverage may cause serious selection bias. By *biased response*, we mean the responding sample is not representative. At survey operational level, we monitor *response rate*. If response rate is low, we worry that we may get biased response. If response rate is very low, say 20% or even lower, then we suspect that the sample is suffering response bias.
 
-We omit details about measurement/processing errors here and refer readers to Lohr (2010), but we want to emphasize a point: Sampling survey is a very practical thing.
+We omit details about measurement/processing errors here and refer readers to Lohr (2010), but we want to emphasize a point: **There are many practical factors to consider in any sample survey.**
 
 
 ## On sampling error
@@ -131,9 +132,11 @@ we can find that nine out of the ten resulted confidence intervals do contain th
 ```
 
 ```{r, warning=FALSE, message=FALSE, echo=FALSE, cache=FALSE}
-kable(the_re, caption = "Toy example: 10 possible samples and confidence intervals.",
-      align = 'c', booktabs = TRUE) %>%
-  kable_styling(full_width = TRUE)  
+kable(the_re, 
+      caption = "Toy example -- 10 possible samples and confidence intervals.",
+      align = 'c', booktabs = TRUE) 
+#%>%
+#  kable_styling(full_width = TRUE)  
 
 ```
 

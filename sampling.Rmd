@@ -6,7 +6,7 @@ Throughout this chapter, *sampling* means *probability sampling*. Following (but
 
 - The *population* is ${\cal P}=\{1, 2, \ldots, i, \ldots, N\}$.
 - A *sample* $s$ is a subset of ${\cal P}$. Note that $s$ can be empty.
-- There are $2^N$ possible samples. Let the set of all the possible samples be denoted by $\Omega$.
+- There are $2^N$ possible samples. Denote the set of all possible samples by $\Omega$.
 
 A *sampling design* specifies a probability distribution $p(\cdot)$ over $\Omega$ such that
 $$

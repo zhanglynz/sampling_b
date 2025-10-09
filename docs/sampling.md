@@ -6,7 +6,7 @@ Throughout this chapter, *sampling* means *probability sampling*. Following (but
 
 - The *population* is ${\cal P}=\{1, 2, \ldots, i, \ldots, N\}$.
 - A *sample* $s$ is a subset of ${\cal P}$. Note that $s$ can be empty.
-- There are $2^N$ possible samples. Let the set of all the possible samples be denoted by $\Omega$.
+- There are $2^N$ possible samples. Denote the set of all possible samples by $\Omega$.
 
 A *sampling design* specifies a probability distribution $p(\cdot)$ over $\Omega$ such that
 $$
@@ -344,12 +344,12 @@ kable(the_re_4_sys)
 
 |the_vec | Freq| relative_freq|    the_pi|
 |:-------|----:|-------------:|---------:|
-|1       | 1392|        0.1392| 0.1428571|
-|2       | 2906|        0.2906| 0.2857143|
-|3       | 4273|        0.4273| 0.4285714|
-|4       | 5727|        0.5727| 0.5714286|
-|5       | 7094|        0.7094| 0.7142857|
-|6       | 8608|        0.8608| 0.8571429|
+|1       | 1457|        0.1457| 0.1428571|
+|2       | 2850|        0.2850| 0.2857143|
+|3       | 4205|        0.4205| 0.4285714|
+|4       | 5795|        0.5795| 0.5714286|
+|5       | 7150|        0.7150| 0.7142857|
+|6       | 8543|        0.8543| 0.8571429|
 
 ``` r
 the_re_4_UPmaxentropy <- eval_sampling(selec_prob = selc_prob, 
@@ -361,12 +361,12 @@ kable(the_re_4_UPmaxentropy)
 
 |the_vec | Freq| relative_freq|    the_pi|
 |:-------|----:|-------------:|---------:|
-|1       | 1354|        0.1354| 0.1428571|
-|2       | 2970|        0.2970| 0.2857143|
-|3       | 4319|        0.4319| 0.4285714|
-|4       | 5698|        0.5698| 0.5714286|
-|5       | 7147|        0.7147| 0.7142857|
-|6       | 8512|        0.8512| 0.8571429|
+|1       | 1384|        0.1384| 0.1428571|
+|2       | 2824|        0.2824| 0.2857143|
+|3       | 4334|        0.4334| 0.4285714|
+|4       | 5719|        0.5719| 0.5714286|
+|5       | 7182|        0.7182| 0.7142857|
+|6       | 8557|        0.8557| 0.8571429|
 
 
 
