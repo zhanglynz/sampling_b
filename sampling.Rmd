@@ -240,22 +240,40 @@ do we do systematic sampling? According to Antoine (2015) and Till`r knitr::asis
 1. Each unit in the population owns an interval,  i.e. unit 1 owns interval $(0,\ \pi_1)$; unit 2 owns interval $(\pi_1,\ \sum_{i=1}^2 \pi_i)$; $\cdots$; unit $N$ owns interval $(\sum_{i=1}^{N-1}\pi_i,\ n)$. Then, we find the intervals that contain $u$, or $u+1$, $\cdots$, or $u+(n-1)$, and the $n$ units that own these intervals are selected as a sample.
 
 The following is an R program that implements the algorithm.
+
+
+<!-- ```{r} -->
+<!-- sys_smpling_with_sel_prob <- function(sel_prob) -->
+<!-- {u <- runif(1, 0, 1) -->
+<!--  cum_sel_prob <- cumsum(sel_prob) -->
+<!--  m <- length(sel_prob) -->
+<!--  s <- rep(0L, m) -->
+<!--  for(i in 1:m) -->
+<!--  {s[i] <- as.integer(u <= cum_sel_prob[i]) -->
+<!--   if(s[i] == 1L) u <- u + 1 -->
+<!--  } -->
+<!--  return(s) -->
+<!-- } -->
+<!-- ``` -->
+
+
 ```{r}
-sys_smpling_with_sel_prob <- function(sel_prob)
-{u <- runif(1, 0, 1)
- cum_sel_prob <- cumsum(sel_prob)
- m <- length(sel_prob)
- s <- rep(0L, m)
- for(i in 1:m)
- {s[i] <- as.integer(u <= cum_sel_prob[i])
-  if(s[i] == 1L) u <- u + 1
- }
- return(s)
+sys_sampling_with_sel_prob <- function(sel_prob) {
+  u <- runif(1)
+  cum_sel_prob <- cumsum(sel_prob)
+  n <- floor(sum(sel_prob))
+  thresholds <- u + 0:(n - 1)
+  thresholds <- thresholds[thresholds <= max(cum_sel_prob)]
+  idx <- findInterval(thresholds, cum_sel_prob) + 1
+  s <- integer(length(sel_prob))
+  s[idx] <- 1L
+  return(s)
 }
 ```
 
+
 The R function `UPsystematic()` in **`sampling`** package can do systematic sampling with 
-unequal probabilities. Below, we show an example to test `sys_smpling_with_sel_prob()` and `sampling::UPsystematic()`.
+unequal probabilities. Below, we show an example to test `sys_sampling_with_sel_prob()` and `sampling::UPsystematic()`.
 ```{r, warning = FALSE, message = FALSE}
 library(sampling)
 library(dplyr)
@@ -276,7 +294,7 @@ selc_prob <- 3 * (1:N)/sum(1:N)
 
 # Simple example - sample selection 
 the_re_4_sys <- eval_sampling(selec_prob = selc_prob, 
-                              the_func = sys_smpling_with_sel_prob)
+                              the_func = sys_sampling_with_sel_prob)
 kable(the_re_4_sys)
 the_re_4_UPmaxentropy <- eval_sampling(selec_prob = selc_prob, 
                                        the_func = UPmaxentropy)

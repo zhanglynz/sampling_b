@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2025-10-10" />
+<meta name="date" content="2025-10-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -550,19 +550,32 @@ do we do systematic sampling? According to Antoine (2015) and Tillé (2010), an 
 <li>Each unit in the population owns an interval, i.e. unit 1 owns interval <span class="math inline">\((0,\ \pi_1)\)</span>; unit 2 owns interval <span class="math inline">\((\pi_1,\ \sum_{i=1}^2 \pi_i)\)</span>; <span class="math inline">\(\cdots\)</span>; unit <span class="math inline">\(N\)</span> owns interval <span class="math inline">\((\sum_{i=1}^{N-1}\pi_i,\ n)\)</span>. Then, we find the intervals that contain <span class="math inline">\(u\)</span>, or <span class="math inline">\(u+1\)</span>, <span class="math inline">\(\cdots\)</span>, or <span class="math inline">\(u+(n-1)\)</span>, and the <span class="math inline">\(n\)</span> units that own these intervals are selected as a sample.</li>
 </ol>
 <p>The following is an R program that implements the algorithm.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="sampling.html#cb4-1" tabindex="-1"></a>sys_smpling_with_sel_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(sel_prob)</span>
-<span id="cb4-2"><a href="sampling.html#cb4-2" tabindex="-1"></a>{u <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb4-3"><a href="sampling.html#cb4-3" tabindex="-1"></a> cum_sel_prob <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sel_prob)</span>
-<span id="cb4-4"><a href="sampling.html#cb4-4" tabindex="-1"></a> m <span class="ot">&lt;-</span> <span class="fu">length</span>(sel_prob)</span>
-<span id="cb4-5"><a href="sampling.html#cb4-5" tabindex="-1"></a> s <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span><span class="dt">L</span>, m)</span>
-<span id="cb4-6"><a href="sampling.html#cb4-6" tabindex="-1"></a> <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>m)</span>
-<span id="cb4-7"><a href="sampling.html#cb4-7" tabindex="-1"></a> {s[i] <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(u <span class="sc">&lt;=</span> cum_sel_prob[i])</span>
-<span id="cb4-8"><a href="sampling.html#cb4-8" tabindex="-1"></a>  <span class="cf">if</span>(s[i] <span class="sc">==</span> <span class="dv">1</span><span class="dt">L</span>) u <span class="ot">&lt;-</span> u <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb4-9"><a href="sampling.html#cb4-9" tabindex="-1"></a> }</span>
-<span id="cb4-10"><a href="sampling.html#cb4-10" tabindex="-1"></a> <span class="fu">return</span>(s)</span>
+<!-- ```{r} -->
+<!-- sys_smpling_with_sel_prob <- function(sel_prob) -->
+<!-- {u <- runif(1, 0, 1) -->
+<!--  cum_sel_prob <- cumsum(sel_prob) -->
+<!--  m <- length(sel_prob) -->
+<!--  s <- rep(0L, m) -->
+<!--  for(i in 1:m) -->
+<!--  {s[i] <- as.integer(u <= cum_sel_prob[i]) -->
+<!--   if(s[i] == 1L) u <- u + 1 -->
+<!--  } -->
+<!--  return(s) -->
+<!-- } -->
+<!-- ``` -->
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="sampling.html#cb4-1" tabindex="-1"></a>sys_sampling_with_sel_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(sel_prob) {</span>
+<span id="cb4-2"><a href="sampling.html#cb4-2" tabindex="-1"></a>  u <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb4-3"><a href="sampling.html#cb4-3" tabindex="-1"></a>  cum_sel_prob <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(sel_prob)</span>
+<span id="cb4-4"><a href="sampling.html#cb4-4" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fu">sum</span>(sel_prob))</span>
+<span id="cb4-5"><a href="sampling.html#cb4-5" tabindex="-1"></a>  thresholds <span class="ot">&lt;-</span> u <span class="sc">+</span> <span class="dv">0</span><span class="sc">:</span>(n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb4-6"><a href="sampling.html#cb4-6" tabindex="-1"></a>  thresholds <span class="ot">&lt;-</span> thresholds[thresholds <span class="sc">&lt;=</span> <span class="fu">max</span>(cum_sel_prob)]</span>
+<span id="cb4-7"><a href="sampling.html#cb4-7" tabindex="-1"></a>  idx <span class="ot">&lt;-</span> <span class="fu">findInterval</span>(thresholds, cum_sel_prob) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb4-8"><a href="sampling.html#cb4-8" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">integer</span>(<span class="fu">length</span>(sel_prob))</span>
+<span id="cb4-9"><a href="sampling.html#cb4-9" tabindex="-1"></a>  s[idx] <span class="ot">&lt;-</span> <span class="dv">1</span><span class="dt">L</span></span>
+<span id="cb4-10"><a href="sampling.html#cb4-10" tabindex="-1"></a>  <span class="fu">return</span>(s)</span>
 <span id="cb4-11"><a href="sampling.html#cb4-11" tabindex="-1"></a>}</span></code></pre></div>
 <p>The R function <code>UPsystematic()</code> in <strong><code>sampling</code></strong> package can do systematic sampling with
-unequal probabilities. Below, we show an example to test <code>sys_smpling_with_sel_prob()</code> and <code>sampling::UPsystematic()</code>.</p>
+unequal probabilities. Below, we show an example to test <code>sys_sampling_with_sel_prob()</code> and <code>sampling::UPsystematic()</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="sampling.html#cb5-1" tabindex="-1"></a><span class="fu">library</span>(sampling)</span>
 <span id="cb5-2"><a href="sampling.html#cb5-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb5-3"><a href="sampling.html#cb5-3" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
@@ -582,7 +595,7 @@ unequal probabilities. Below, we show an example to test <code>sys_smpling_with_
 <span id="cb5-17"><a href="sampling.html#cb5-17" tabindex="-1"></a></span>
 <span id="cb5-18"><a href="sampling.html#cb5-18" tabindex="-1"></a><span class="co"># Simple example - sample selection </span></span>
 <span id="cb5-19"><a href="sampling.html#cb5-19" tabindex="-1"></a>the_re_4_sys <span class="ot">&lt;-</span> <span class="fu">eval_sampling</span>(<span class="at">selec_prob =</span> selc_prob, </span>
-<span id="cb5-20"><a href="sampling.html#cb5-20" tabindex="-1"></a>                              <span class="at">the_func =</span> sys_smpling_with_sel_prob)</span>
+<span id="cb5-20"><a href="sampling.html#cb5-20" tabindex="-1"></a>                              <span class="at">the_func =</span> sys_sampling_with_sel_prob)</span>
 <span id="cb5-21"><a href="sampling.html#cb5-21" tabindex="-1"></a><span class="fu">kable</span>(the_re_4_sys)</span></code></pre></div>
 <table>
 <thead>
@@ -596,38 +609,38 @@ unequal probabilities. Below, we show an example to test <code>sys_smpling_with_
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="right">1468</td>
-<td align="right">0.1468</td>
+<td align="right">1447</td>
+<td align="right">0.1447</td>
 <td align="right">0.1428571</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
-<td align="right">2797</td>
-<td align="right">0.2797</td>
+<td align="right">2843</td>
+<td align="right">0.2843</td>
 <td align="right">0.2857143</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
-<td align="right">4300</td>
-<td align="right">0.4300</td>
+<td align="right">4239</td>
+<td align="right">0.4239</td>
 <td align="right">0.4285714</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
-<td align="right">5700</td>
-<td align="right">0.5700</td>
+<td align="right">5761</td>
+<td align="right">0.5761</td>
 <td align="right">0.5714286</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
-<td align="right">7203</td>
-<td align="right">0.7203</td>
+<td align="right">7157</td>
+<td align="right">0.7157</td>
 <td align="right">0.7142857</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
-<td align="right">8532</td>
-<td align="right">0.8532</td>
+<td align="right">8553</td>
+<td align="right">0.8553</td>
 <td align="right">0.8571429</td>
 </tr>
 </tbody>
@@ -647,38 +660,38 @@ unequal probabilities. Below, we show an example to test <code>sys_smpling_with_
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="right">1471</td>
-<td align="right">0.1471</td>
+<td align="right">1486</td>
+<td align="right">0.1486</td>
 <td align="right">0.1428571</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
-<td align="right">2891</td>
-<td align="right">0.2891</td>
+<td align="right">2886</td>
+<td align="right">0.2886</td>
 <td align="right">0.2857143</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
-<td align="right">4301</td>
-<td align="right">0.4301</td>
+<td align="right">4292</td>
+<td align="right">0.4292</td>
 <td align="right">0.4285714</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
-<td align="right">5660</td>
-<td align="right">0.5660</td>
+<td align="right">5687</td>
+<td align="right">0.5687</td>
 <td align="right">0.5714286</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
-<td align="right">7066</td>
-<td align="right">0.7066</td>
+<td align="right">7088</td>
+<td align="right">0.7088</td>
 <td align="right">0.7142857</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
-<td align="right">8611</td>
-<td align="right">0.8611</td>
+<td align="right">8561</td>
+<td align="right">0.8561</td>
 <td align="right">0.8571429</td>
 </tr>
 </tbody>

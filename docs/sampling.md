@@ -299,22 +299,40 @@ do we do systematic sampling? According to Antoine (2015) and Tillé (2010), an 
 
 The following is an R program that implements the algorithm.
 
+
+<!-- ```{r} -->
+<!-- sys_smpling_with_sel_prob <- function(sel_prob) -->
+<!-- {u <- runif(1, 0, 1) -->
+<!--  cum_sel_prob <- cumsum(sel_prob) -->
+<!--  m <- length(sel_prob) -->
+<!--  s <- rep(0L, m) -->
+<!--  for(i in 1:m) -->
+<!--  {s[i] <- as.integer(u <= cum_sel_prob[i]) -->
+<!--   if(s[i] == 1L) u <- u + 1 -->
+<!--  } -->
+<!--  return(s) -->
+<!-- } -->
+<!-- ``` -->
+
+
+
 ``` r
-sys_smpling_with_sel_prob <- function(sel_prob)
-{u <- runif(1, 0, 1)
- cum_sel_prob <- cumsum(sel_prob)
- m <- length(sel_prob)
- s <- rep(0L, m)
- for(i in 1:m)
- {s[i] <- as.integer(u <= cum_sel_prob[i])
-  if(s[i] == 1L) u <- u + 1
- }
- return(s)
+sys_sampling_with_sel_prob <- function(sel_prob) {
+  u <- runif(1)
+  cum_sel_prob <- cumsum(sel_prob)
+  n <- floor(sum(sel_prob))
+  thresholds <- u + 0:(n - 1)
+  thresholds <- thresholds[thresholds <= max(cum_sel_prob)]
+  idx <- findInterval(thresholds, cum_sel_prob) + 1
+  s <- integer(length(sel_prob))
+  s[idx] <- 1L
+  return(s)
 }
 ```
 
+
 The R function `UPsystematic()` in **`sampling`** package can do systematic sampling with 
-unequal probabilities. Below, we show an example to test `sys_smpling_with_sel_prob()` and `sampling::UPsystematic()`.
+unequal probabilities. Below, we show an example to test `sys_sampling_with_sel_prob()` and `sampling::UPsystematic()`.
 
 ``` r
 library(sampling)
@@ -336,7 +354,7 @@ selc_prob <- 3 * (1:N)/sum(1:N)
 
 # Simple example - sample selection 
 the_re_4_sys <- eval_sampling(selec_prob = selc_prob, 
-                              the_func = sys_smpling_with_sel_prob)
+                              the_func = sys_sampling_with_sel_prob)
 kable(the_re_4_sys)
 ```
 
@@ -344,12 +362,12 @@ kable(the_re_4_sys)
 
 |the_vec | Freq| relative_freq|    the_pi|
 |:-------|----:|-------------:|---------:|
-|1       | 1468|        0.1468| 0.1428571|
-|2       | 2797|        0.2797| 0.2857143|
-|3       | 4300|        0.4300| 0.4285714|
-|4       | 5700|        0.5700| 0.5714286|
-|5       | 7203|        0.7203| 0.7142857|
-|6       | 8532|        0.8532| 0.8571429|
+|1       | 1447|        0.1447| 0.1428571|
+|2       | 2843|        0.2843| 0.2857143|
+|3       | 4239|        0.4239| 0.4285714|
+|4       | 5761|        0.5761| 0.5714286|
+|5       | 7157|        0.7157| 0.7142857|
+|6       | 8553|        0.8553| 0.8571429|
 
 ``` r
 the_re_4_UPmaxentropy <- eval_sampling(selec_prob = selc_prob, 
@@ -361,12 +379,12 @@ kable(the_re_4_UPmaxentropy)
 
 |the_vec | Freq| relative_freq|    the_pi|
 |:-------|----:|-------------:|---------:|
-|1       | 1471|        0.1471| 0.1428571|
-|2       | 2891|        0.2891| 0.2857143|
-|3       | 4301|        0.4301| 0.4285714|
-|4       | 5660|        0.5660| 0.5714286|
-|5       | 7066|        0.7066| 0.7142857|
-|6       | 8611|        0.8611| 0.8571429|
+|1       | 1486|        0.1486| 0.1428571|
+|2       | 2886|        0.2886| 0.2857143|
+|3       | 4292|        0.4292| 0.4285714|
+|4       | 5687|        0.5687| 0.5714286|
+|5       | 7088|        0.7088| 0.7142857|
+|6       | 8561|        0.8561| 0.8571429|
 
 
 
