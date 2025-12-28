@@ -16,6 +16,7 @@ exercises
 unit-selection-probability-in-srs
 all-possible-samples-for-srs-with-replacement
 an-algorithm-for-drawing-an-srs
+ur
 weighting-system
 general-ideas-about-weighting
 the-three-stages-in-producing-final-weights

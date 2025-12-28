@@ -209,7 +209,7 @@ pps_action <- function(size_vec, the_n)
 \sum_{i=1}^N \pi_i = n.
 (\#eq:pisum)
 \end{equation}
-Actually, \@ref(eq:pisum) always holds true if the sample size is fixed as $n$---see a proof in ???.
+Actually, \@ref(eq:pisum) always holds true if the sample size is fixed as $n$---see in \@ref(ur).
 <!-- below is a quick proof: -->
 <!-- \begin{align} -->
 <!-- \sum_{i=1}^N \pi_i &= \sum_{i=1}^N\sum_{i\in s}p(s) \notag\\ -->
@@ -342,4 +342,25 @@ $$
 \frac{n!(N-n)!}{N!},
 $$
 which is $1/{N \choose n}$, of being selected.
+
+### Useful results {#ur}
+
+Suppose the population size is $N$. If the sample size is $n$, which is fixed, then
+$$
+E(\sum_{k = 1}^ n w_{k(s)} y_{k(s)}) = \sum_{k=1}^N y_k,
+$$
+where $w_{k(s)}$ is the weight for the $k$-th unit in the sample (indicated by subscript $(s)$) and $y_{k(s)}$ is the $k$-th unit in the sample.
+
+Two special cases:
+
+1. Let $y_k$ be $\pi_k = 1/w_k$, then we have
+$$
+\sum_{k=1}^N \pi_k = n.
+$$
+1. Let $y_k = 1$ for $k=1, \ldots, N$, then
+$$
+E(\sum_{k=1}^n w_{k(s)}) = N.
+$$
+
+
 

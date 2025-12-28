@@ -267,7 +267,7 @@ pps_action <- function(size_vec, the_n)
 \sum_{i=1}^N \pi_i = n.
 (\#eq:pisum)
 \end{equation}
-Actually, \@ref(eq:pisum) always holds true if the sample size is fixed as $n$---see a proof in ???.
+Actually, \@ref(eq:pisum) always holds true if the sample size is fixed as $n$---see in \@ref(ur).
 <!-- below is a quick proof: -->
 <!-- \begin{align} -->
 <!-- \sum_{i=1}^N \pi_i &= \sum_{i=1}^N\sum_{i\in s}p(s) \notag\\ -->
@@ -362,12 +362,12 @@ kable(the_re_4_sys)
 
 |the_vec | Freq| relative_freq|    the_pi|
 |:-------|----:|-------------:|---------:|
-|1       | 1447|        0.1447| 0.1428571|
-|2       | 2843|        0.2843| 0.2857143|
-|3       | 4239|        0.4239| 0.4285714|
-|4       | 5761|        0.5761| 0.5714286|
-|5       | 7157|        0.7157| 0.7142857|
-|6       | 8553|        0.8553| 0.8571429|
+|1       | 1436|        0.1436| 0.1428571|
+|2       | 2854|        0.2854| 0.2857143|
+|3       | 4268|        0.4268| 0.4285714|
+|4       | 5732|        0.5732| 0.5714286|
+|5       | 7146|        0.7146| 0.7142857|
+|6       | 8564|        0.8564| 0.8571429|
 
 ``` r
 the_re_4_UPmaxentropy <- eval_sampling(selec_prob = selc_prob, 
@@ -379,12 +379,12 @@ kable(the_re_4_UPmaxentropy)
 
 |the_vec | Freq| relative_freq|    the_pi|
 |:-------|----:|-------------:|---------:|
-|1       | 1486|        0.1486| 0.1428571|
-|2       | 2886|        0.2886| 0.2857143|
-|3       | 4292|        0.4292| 0.4285714|
-|4       | 5687|        0.5687| 0.5714286|
-|5       | 7088|        0.7088| 0.7142857|
-|6       | 8561|        0.8561| 0.8571429|
+|1       | 1412|        0.1412| 0.1428571|
+|2       | 2796|        0.2796| 0.2857143|
+|3       | 4301|        0.4301| 0.4285714|
+|4       | 5738|        0.5738| 0.5714286|
+|5       | 7162|        0.7162| 0.7142857|
+|6       | 8591|        0.8591| 0.8571429|
 
 
 
@@ -427,4 +427,25 @@ $$
 \frac{n!(N-n)!}{N!},
 $$
 which is $1/{N \choose n}$, of being selected.
+
+### Useful results {#ur}
+
+Suppose the population size is $N$. If the sample size is $n$, which is fixed, then
+$$
+E(\sum_{k = 1}^ n w_{k(s)} y_{k(s)}) = \sum_{k=1}^N y_k,
+$$
+where $w_{k(s)}$ is the weight for the $k$-th unit in the sample (indicated by subscript $(s)$) and $y_{k(s)}$ is the $k$-th unit in the sample.
+
+Two special cases:
+
+1. Let $y_k$ be $\pi_k = 1/w_k$, then we have
+$$
+\sum_{k=1}^N \pi_k = n.
+$$
+1. Let $y_k = 1$ for $k=1, \ldots, N$, then
+$$
+E(\sum_{k=1}^n w_{k(s)}) = N.
+$$
+
+
 

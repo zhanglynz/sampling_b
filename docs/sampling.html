@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2025-10-30" />
+<meta name="date" content="2025-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -160,6 +160,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.1" data-path="sampling.html"><a href="sampling.html#unit-selection-probability-in-srs"><i class="fa fa-check"></i><b>2.4.1</b> Unit selection probability in SRS</a></li>
 <li class="chapter" data-level="2.4.2" data-path="sampling.html"><a href="sampling.html#all-possible-samples-for-srs-with-replacement"><i class="fa fa-check"></i><b>2.4.2</b> All possible samples for SRS with replacement</a></li>
 <li class="chapter" data-level="2.4.3" data-path="sampling.html"><a href="sampling.html#an-algorithm-for-drawing-an-srs"><i class="fa fa-check"></i><b>2.4.3</b> An algorithm for drawing an SRS</a></li>
+<li class="chapter" data-level="2.4.4" data-path="sampling.html"><a href="sampling.html#ur"><i class="fa fa-check"></i><b>2.4.4</b> Useful results</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="weighting-system.html"><a href="weighting-system.html"><i class="fa fa-check"></i><b>3</b> Weighting System</a>
@@ -520,7 +521,7 @@ where <span class="math inline">\(n\)</span> and <span class="math inline">\(N\)
 \sum_{i=1}^N \pi_i = n.
 \tag{2.2}
 \end{equation}\]</span>
-Actually, <a href="sampling.html#eq:pisum">(2.2)</a> always holds true if the sample size is fixed as <span class="math inline">\(n\)</span>—see a proof in ???.
+Actually, <a href="sampling.html#eq:pisum">(2.2)</a> always holds true if the sample size is fixed as <span class="math inline">\(n\)</span>—see in <a href="sampling.html#ur">2.4.4</a>.
 <!-- below is a quick proof: -->
 <!-- \begin{align} -->
 <!-- \sum_{i=1}^N \pi_i &= \sum_{i=1}^N\sum_{i\in s}p(s) \notag\\ -->
@@ -609,38 +610,38 @@ unequal probabilities. Below, we show an example to test <code>sys_sampling_with
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="right">1447</td>
-<td align="right">0.1447</td>
+<td align="right">1436</td>
+<td align="right">0.1436</td>
 <td align="right">0.1428571</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
-<td align="right">2843</td>
-<td align="right">0.2843</td>
+<td align="right">2854</td>
+<td align="right">0.2854</td>
 <td align="right">0.2857143</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
-<td align="right">4239</td>
-<td align="right">0.4239</td>
+<td align="right">4268</td>
+<td align="right">0.4268</td>
 <td align="right">0.4285714</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
-<td align="right">5761</td>
-<td align="right">0.5761</td>
+<td align="right">5732</td>
+<td align="right">0.5732</td>
 <td align="right">0.5714286</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
-<td align="right">7157</td>
-<td align="right">0.7157</td>
+<td align="right">7146</td>
+<td align="right">0.7146</td>
 <td align="right">0.7142857</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
-<td align="right">8553</td>
-<td align="right">0.8553</td>
+<td align="right">8564</td>
+<td align="right">0.8564</td>
 <td align="right">0.8571429</td>
 </tr>
 </tbody>
@@ -660,38 +661,38 @@ unequal probabilities. Below, we show an example to test <code>sys_sampling_with
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="right">1486</td>
-<td align="right">0.1486</td>
+<td align="right">1412</td>
+<td align="right">0.1412</td>
 <td align="right">0.1428571</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
-<td align="right">2886</td>
-<td align="right">0.2886</td>
+<td align="right">2796</td>
+<td align="right">0.2796</td>
 <td align="right">0.2857143</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
-<td align="right">4292</td>
-<td align="right">0.4292</td>
+<td align="right">4301</td>
+<td align="right">0.4301</td>
 <td align="right">0.4285714</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
-<td align="right">5687</td>
-<td align="right">0.5687</td>
+<td align="right">5738</td>
+<td align="right">0.5738</td>
 <td align="right">0.5714286</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
-<td align="right">7088</td>
-<td align="right">0.7088</td>
+<td align="right">7162</td>
+<td align="right">0.7162</td>
 <td align="right">0.7142857</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
-<td align="right">8561</td>
-<td align="right">0.8561</td>
+<td align="right">8591</td>
+<td align="right">0.8591</td>
 <td align="right">0.8571429</td>
 </tr>
 </tbody>
@@ -732,6 +733,25 @@ possible samples.</p>
 \frac{n!(N-n)!}{N!},
 \]</span>
 which is <span class="math inline">\(1/{N \choose n}\)</span>, of being selected.</p>
+</div>
+<div id="ur" class="section level3 hasAnchor" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> Useful results<a href="sampling.html#ur" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Suppose the population size is <span class="math inline">\(N\)</span>. If the sample size is <span class="math inline">\(n\)</span>, which is fixed, then
+<span class="math display">\[
+E(\sum_{k = 1}^ n w_{k(s)} y_{k(s)}) = \sum_{k=1}^N y_k,
+\]</span>
+where <span class="math inline">\(w_{k(s)}\)</span> is the weight for the <span class="math inline">\(k\)</span>-th unit in the sample (indicated by subscript <span class="math inline">\((s)\)</span>) and <span class="math inline">\(y_{k(s)}\)</span> is the <span class="math inline">\(k\)</span>-th unit in the sample.</p>
+<p>Two special cases:</p>
+<ol style="list-style-type: decimal">
+<li>Let <span class="math inline">\(y_k\)</span> be <span class="math inline">\(\pi_k = 1/w_k\)</span>, then we have
+<span class="math display">\[
+\sum_{k=1}^N \pi_k = n.
+\]</span></li>
+<li>Let <span class="math inline">\(y_k = 1\)</span> for <span class="math inline">\(k=1, \ldots, N\)</span>, then
+<span class="math display">\[
+E(\sum_{k=1}^n w_{k(s)}) = N.
+\]</span></li>
+</ol>
 
 </div>
 </div>
