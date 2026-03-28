@@ -11,7 +11,7 @@ Member/Item/Unit ID | Var$_1$ | Var$_2$ | $\cdots$ | Var$_m$
  $\vdots$ |        |        |           |
  $N$      |        |        |           |
 
-So essentially **a population is a list of members/items with associated characteristic variables that are of interest to the study.** 
+So essentially **a population is a (real or imaginary) list of members/items with associated characteristic variables that are of interest to the study.** 
 However, when it comes to the finer details of the population concept, things become more complicated. Following Lohr (2022), we distinguish three populations, namely, ***target population***, ***sampling frame population*** and ***sampled population***. We **define** target population; if we can **create** a sampling frame---this is often the case---then we **have** the sampling frame population; we can ***study/analyze*** sampled population, but we never sure about what exactly the sampled population is.  
 
 In Figure 1, we draw a Venn diagram to show sampling frame population and target population.
