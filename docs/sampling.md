@@ -88,6 +88,30 @@ selection probabilities for units are not all equal. The distribution of the sam
 called *Poisson binomial distribution*.
 - **Conditional Poisson sampling:** 
 This design has prescribed **unequal inclusion probabilities** but results in samples with **fixed sample size**; see more details in Tillé and Wilhelm (2017).
+- **One-stage clustering sampling:**
+We define
+$$
+N := \hbox{number of clusters in the population}, 
+$$
+and
+$$
+n := \hbox{sample size (number of clusters to draw)}.
+$$
+There are ${N \choose n}$ possible samples, and let $\cal{Q}$ denote the set of these possible samples.
+$$
+p(s) = \left\{
+\begin{array}{cl}
+1/{N \choose n}, & \hbox{if}\ s\in \cal{Q},\\
+0, & \hbox{otherwise}.
+\end{array}
+\right.
+$$
+Let $\pi_{ij}$ be the selection probability of unit $j$ in cluster $i$. Then
+$$
+\pi_{ij} = \frac{n}{N}.
+$$
+
+
 
 ## Three theoretical principles
 
@@ -362,12 +386,12 @@ kable(the_re_4_sys)
 
 |the_vec | Freq| relative_freq|    the_pi|
 |:-------|----:|-------------:|---------:|
-|1       | 1459|        0.1459| 0.1428571|
-|2       | 2860|        0.2860| 0.2857143|
-|3       | 4233|        0.4233| 0.4285714|
-|4       | 5767|        0.5767| 0.5714286|
-|5       | 7140|        0.7140| 0.7142857|
-|6       | 8541|        0.8541| 0.8571429|
+|1       | 1442|        0.1442| 0.1428571|
+|2       | 2880|        0.2880| 0.2857143|
+|3       | 4195|        0.4195| 0.4285714|
+|4       | 5805|        0.5805| 0.5714286|
+|5       | 7120|        0.7120| 0.7142857|
+|6       | 8558|        0.8558| 0.8571429|
 
 ``` r
 the_re_4_UPmaxentropy <- eval_sampling(selec_prob = selc_prob, 
@@ -379,12 +403,12 @@ kable(the_re_4_UPmaxentropy)
 
 |the_vec | Freq| relative_freq|    the_pi|
 |:-------|----:|-------------:|---------:|
-|1       | 1434|        0.1434| 0.1428571|
-|2       | 2891|        0.2891| 0.2857143|
-|3       | 4289|        0.4289| 0.4285714|
-|4       | 5753|        0.5753| 0.5714286|
-|5       | 7077|        0.7077| 0.7142857|
-|6       | 8556|        0.8556| 0.8571429|
+|1       | 1450|        0.1450| 0.1428571|
+|2       | 2815|        0.2815| 0.2857143|
+|3       | 4236|        0.4236| 0.4285714|
+|4       | 5772|        0.5772| 0.5714286|
+|5       | 7151|        0.7151| 0.7142857|
+|6       | 8576|        0.8576| 0.8571429|
 
 
 

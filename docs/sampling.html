@@ -23,7 +23,7 @@
 <meta name="author" content="Lingyun Zhang" />
 
 
-<meta name="date" content="2026-03-29" />
+<meta name="date" content="2026-05-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -282,6 +282,28 @@ selection probabilities for units are not all equal. The distribution of the sam
 called <em>Poisson binomial distribution</em>.</li>
 <li><strong>Conditional Poisson sampling:</strong>
 This design has prescribed <strong>unequal inclusion probabilities</strong> but results in samples with <strong>fixed sample size</strong>; see more details in Tillé and Wilhelm (2017).</li>
+<li><strong>One-stage clustering sampling:</strong>
+We define
+<span class="math display">\[
+N := \hbox{number of clusters in the population},
+\]</span>
+and
+<span class="math display">\[
+n := \hbox{sample size (number of clusters to draw)}.
+\]</span>
+There are <span class="math inline">\({N \choose n}\)</span> possible samples, and let <span class="math inline">\(\cal{Q}\)</span> denote the set of these possible samples.
+<span class="math display">\[
+p(s) = \left\{
+\begin{array}{cl}
+1/{N \choose n}, &amp; \hbox{if}\ s\in \cal{Q},\\
+0, &amp; \hbox{otherwise}.
+\end{array}
+\right.
+\]</span>
+Let <span class="math inline">\(\pi_{ij}\)</span> be the selection probability of unit <span class="math inline">\(j\)</span> in cluster <span class="math inline">\(i\)</span>. Then
+<span class="math display">\[
+\pi_{ij} = \frac{n}{N}.
+\]</span></li>
 </ul>
 </div>
 <div id="three-theoretical-principles" class="section level2 hasAnchor" number="2.2">
@@ -610,38 +632,38 @@ unequal probabilities. Below, we show an example to test <code>sys_sampling_with
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="right">1459</td>
-<td align="right">0.1459</td>
+<td align="right">1442</td>
+<td align="right">0.1442</td>
 <td align="right">0.1428571</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
-<td align="right">2860</td>
-<td align="right">0.2860</td>
+<td align="right">2880</td>
+<td align="right">0.2880</td>
 <td align="right">0.2857143</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
-<td align="right">4233</td>
-<td align="right">0.4233</td>
+<td align="right">4195</td>
+<td align="right">0.4195</td>
 <td align="right">0.4285714</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
-<td align="right">5767</td>
-<td align="right">0.5767</td>
+<td align="right">5805</td>
+<td align="right">0.5805</td>
 <td align="right">0.5714286</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
-<td align="right">7140</td>
-<td align="right">0.7140</td>
+<td align="right">7120</td>
+<td align="right">0.7120</td>
 <td align="right">0.7142857</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
-<td align="right">8541</td>
-<td align="right">0.8541</td>
+<td align="right">8558</td>
+<td align="right">0.8558</td>
 <td align="right">0.8571429</td>
 </tr>
 </tbody>
@@ -661,38 +683,38 @@ unequal probabilities. Below, we show an example to test <code>sys_sampling_with
 <tbody>
 <tr class="odd">
 <td align="left">1</td>
-<td align="right">1434</td>
-<td align="right">0.1434</td>
+<td align="right">1450</td>
+<td align="right">0.1450</td>
 <td align="right">0.1428571</td>
 </tr>
 <tr class="even">
 <td align="left">2</td>
-<td align="right">2891</td>
-<td align="right">0.2891</td>
+<td align="right">2815</td>
+<td align="right">0.2815</td>
 <td align="right">0.2857143</td>
 </tr>
 <tr class="odd">
 <td align="left">3</td>
-<td align="right">4289</td>
-<td align="right">0.4289</td>
+<td align="right">4236</td>
+<td align="right">0.4236</td>
 <td align="right">0.4285714</td>
 </tr>
 <tr class="even">
 <td align="left">4</td>
-<td align="right">5753</td>
-<td align="right">0.5753</td>
+<td align="right">5772</td>
+<td align="right">0.5772</td>
 <td align="right">0.5714286</td>
 </tr>
 <tr class="odd">
 <td align="left">5</td>
-<td align="right">7077</td>
-<td align="right">0.7077</td>
+<td align="right">7151</td>
+<td align="right">0.7151</td>
 <td align="right">0.7142857</td>
 </tr>
 <tr class="even">
 <td align="left">6</td>
-<td align="right">8556</td>
-<td align="right">0.8556</td>
+<td align="right">8576</td>
+<td align="right">0.8576</td>
 <td align="right">0.8571429</td>
 </tr>
 </tbody>

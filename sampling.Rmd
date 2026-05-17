@@ -88,6 +88,30 @@ selection probabilities for units are not all equal. The distribution of the sam
 called *Poisson binomial distribution*.
 - **Conditional Poisson sampling:** 
 This design has prescribed **unequal inclusion probabilities** but results in samples with **fixed sample size**; see more details in Till`r knitr::asis_output("\u00E9")` and Wilhelm (2017).
+- **One-stage clustering sampling:**
+We define
+$$
+N := \hbox{number of clusters in the population}, 
+$$
+and
+$$
+n := \hbox{sample size (number of clusters to draw)}.
+$$
+There are ${N \choose n}$ possible samples, and let $\cal{Q}$ denote the set of these possible samples.
+$$
+p(s) = \left\{
+\begin{array}{cl}
+1/{N \choose n}, & \hbox{if}\ s\in \cal{Q},\\
+0, & \hbox{otherwise}.
+\end{array}
+\right.
+$$
+Let $\pi_{ij}$ be the selection probability of unit $j$ in cluster $i$. Then
+$$
+\pi_{ij} = \frac{n}{N}.
+$$
+
+
 
 ## Three theoretical principles
 
